@@ -248,7 +248,9 @@
       font-family: 'Inter','Tajawal',sans-serif; font-size: 0.875rem;
       cursor: pointer; outline: none;
     }
-    @media (max-width: 1024px) { .kpi-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 1024px) {
+      .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 768px) {
       .kpi-grid { grid-template-columns: repeat(2, 1fr); }
       .market-grid { grid-template-columns: 1fr; }
@@ -257,8 +259,105 @@
       .portfolio-summary { grid-template-columns: repeat(2, 1fr); }
       .nav-links { display: none; }
       .hero-left h1 { font-size: 1.75rem; }
+      .container { padding: 0 14px; }
+      .kpi-card { padding: 12px 14px; }
+      .kpi-value { font-size: 1.35rem; }
+      .market-card { padding: 14px; }
+      .market-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .table-header { padding: 12px 14px; }
+      .table-header h3 { font-size: 0.875rem; }
+      thead th { padding: 8px 10px; font-size: 0.625rem; }
+      tbody td { padding: 8px 10px; font-size: 0.75rem; }
+      .bottom-card { padding: 14px; }
+      .hero { padding: 20px 0 14px; gap: 10px; }
+      .hero-right .status-badge { font-size: 0.7rem; padding: 4px 10px; }
+      .hero-right .shariah-badge { font-size: 0.65rem; padding: 4px 10px; }
+      .filter-chip { padding: 6px 12px; font-size: 0.7rem; }
+      .search-bar { padding: 8px 12px; }
+      .stock-item { padding: 10px 12px; }
+      .stock-name { font-size: 0.8rem; }
+      .stock-ticker { font-size: 0.65rem; }
+      .stock-price { font-size: 0.8rem; }
+      .stock-change { font-size: 0.65rem; }
+      .score-badge { width: 26px; height: 26px; font-size: 0.7rem; }
+      .signal-pill { font-size: 0.65rem; padding: 2px 8px; }
+      .analysis-card { padding: 14px; }
+      .metric-label { font-size: 0.75rem; }
+      .metric-value { font-size: 0.8rem; }
+      .portfolio-card { padding: 12px; }
+      .port-value { font-size: 1.2rem; }
+      .portfolio-summary { gap: 8px; }
+      .pick-item { padding: 8px 0; }
+      .pick-name { font-size: 0.8rem; }
+      .pick-desc { font-size: 0.65rem; }
+      .bottom-nav { display: flex; }
+      body { padding-bottom: 60px; }
+      .round-btn { display: flex; }
+      .portfolio-summary { grid-template-columns: repeat(2, 1fr); }
+      #analysisStockSelect { width: 100%; max-width: none; }
     }
-    @media (max-width: 480px) { .kpi-grid { grid-template-columns: 1fr 1fr; } .market-stats { grid-template-columns: repeat(2, 1fr); } .portfolio-summary { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) {
+      .kpi-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .market-stats { grid-template-columns: 1fr 1fr; }
+      .portfolio-summary { grid-template-columns: 1fr 1fr; gap: 6px; }
+      .hero-left h1 { font-size: 1.35rem; }
+      .hero-left .subtitle { font-size: 0.8rem; }
+      .kpi-card { padding: 10px 12px; }
+      .kpi-label { font-size: 0.65rem; margin-bottom: 3px; }
+      .kpi-value { font-size: 1.2rem; }
+      .kpi-change { font-size: 0.65rem; }
+      .container { padding: 0 10px; }
+      .market-stats { gap: 6px; }
+      .market-stat .stat-label { font-size: 0.6rem; }
+      .market-stat .stat-value { font-size: 0.85rem; }
+      thead th { padding: 6px 6px; font-size: 0.55rem; }
+      tbody td { padding: 6px 6px; font-size: 0.65rem; }
+      .score-badge { width: 22px; height: 22px; font-size: 0.6rem; border-radius: 6px; }
+      .stock-flag { font-size: 1rem; }
+      .stock-left { gap: 6px; }
+      .filter-chip { padding: 5px 10px; font-size: 0.65rem; }
+      .table-header h3 { font-size: 0.8rem; }
+      .table-header .count { font-size: 0.65rem; }
+      .bottom-nav a { font-size: 0.55rem; }
+      .bottom-nav a .nav-icon { font-size: 1.1rem; }
+      .chart-bars { height: 90px; gap: 4px; }
+      .chart-label { font-size: 0.5rem; }
+      .chart-value { font-size: 0.5rem; }
+    }
+
+    /* Bottom Navigation Bar (mobile) */
+    .bottom-nav {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(11, 17, 32, 0.95);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid #1E293B;
+      height: 56px; justify-content: space-around; align-items: center;
+    }
+    .bottom-nav a {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2px; text-decoration: none; color: #64748B;
+      font-size: 0.6rem; font-weight: 500; transition: all 0.2s;
+      padding: 4px 8px; border-radius: 8px; min-width: 60px; min-height: 44px;
+    }
+    .bottom-nav a .nav-icon { font-size: 1.25rem; line-height: 1; }
+    .bottom-nav a.active { color: #D4A853; }
+    .bottom-nav a:hover { color: #E2E8F0; }
+    [data-theme="light"] .bottom-nav { background: rgba(255,255,255,0.95); border-color: #E2E8F0; }
+    [data-theme="light"] .bottom-nav a { color: #94A3B8; }
+    [data-theme="light"] .bottom-nav a.active { color: #C49A3F; }
+    [data-theme="light"] .bottom-nav a:hover { color: #0F172A; }
+
+    /* Mobile floating refresh button */
+    .round-btn {
+      display: none; position: fixed; bottom: 68px; right: 14px; z-index: 199;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: #D4A853; color: #0B1120; border: none;
+      font-size: 1.25rem; cursor: pointer; transition: all 0.2s;
+      align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(212,168,83,0.3);
+    }
+    .round-btn:hover { background: #C49A3F; transform: scale(1.05); }
+    .round-btn:active { transform: scale(0.95); }
     [data-theme="light"] body { background: #F8FAFC; color: #0F172A; }
     [data-theme="light"] nav { background: rgba(255,255,255,0.92); border-color: #E2E8F0; }
     [data-theme="light"] .kpi-card { background: #FFFFFF; border-color: #E2E8F0; }
@@ -409,11 +508,45 @@
     <div class="links"><a href="#">الخصوصية</a><a href="#">هيئة الشريعة</a><a href="#">اتصل بنا</a></div>
   </footer>
 
+  <!-- Bottom Navigation Bar (موبايل) -->
+  <div class="bottom-nav">
+    <a href="#" data-tab="dashboard" class="active"><span class="nav-icon">📊</span> لوحة البيانات</a>
+    <a href="#" data-tab="stocks"><span class="nav-icon">📋</span> الأسهم</a>
+    <a href="#" data-tab="analysis"><span class="nav-icon">📈</span> التحليل</a>
+    <a href="#" data-tab="portfolio"><span class="nav-icon">💼</span> المحفظة</a>
+  </div>
+
+  <!-- Floating Refresh Button (موبايل) -->
+  <button class="round-btn" onclick="document.querySelector('[data-tab=dashboard]').click();refreshData()" aria-label="تحديث">🔄</button>
+
   <script>
     // ========== STATE ==========
     let dashboardData = null;
     let stocksCache = [];
     let currentFilter = 'all';
+
+    // ========== TAB SWITCHING (Desktop + Bottom Nav) ==========
+    document.querySelectorAll('[data-tab]').forEach(el => {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        const tabName = this.dataset.tab;
+        // Update desktop nav
+        document.querySelectorAll('.nav-links a[data-tab]').forEach(a => a.classList.remove('active'));
+        const desktopLink = document.querySelector('.nav-links a[data-tab="'+tabName+'"]');
+        if (desktopLink) desktopLink.classList.add('active');
+        // Update bottom nav
+        document.querySelectorAll('.bottom-nav a[data-tab]').forEach(a => a.classList.remove('active'));
+        const bottomLink = document.querySelector('.bottom-nav a[data-tab="'+tabName+'"]');
+        if (bottomLink) bottomLink.classList.add('active');
+        // Show tab
+        document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+        document.getElementById('tab-' + tabName).classList.add('active');
+        // Render tab content if needed
+        if (tabName === 'stocks' && stocksCache.length > 0) renderStocksList();
+        if (tabName === 'analysis' && stocksCache.length > 0) populateAnalysisSelect();
+        if (tabName === 'portfolio') renderPortfolio();
+      });
+    });
 
     // ========== THEME ==========
     function toggleTheme() {
@@ -706,17 +839,6 @@
         document.documentElement.setAttribute('data-theme', 'light');
         document.querySelector('.theme-btn').textContent = '☀️';
       }
-      // Tab system
-      document.querySelectorAll('[data-tab]').forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const tab = this.dataset.tab;
-          document.querySelectorAll('[data-tab]').forEach(l => l.classList.remove('active'));
-          this.classList.add('active');
-          document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-          document.getElementById('tab-' + tab).classList.add('active');
-        });
-      });
       // Load data
       await refreshData();
     });
