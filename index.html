@@ -286,6 +286,7 @@
       .kpi-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
+      html { overflow-x: hidden; }
       .kpi-grid { grid-template-columns: repeat(2, 1fr); }
       .market-grid { grid-template-columns: 1fr; }
       .bottom-grid { grid-template-columns: 1fr; }
@@ -302,8 +303,8 @@
       .table-header h3 { font-size: 0.875rem; }
       thead th { padding: 8px 10px; font-size: 0.625rem; }
       tbody td { padding: 8px 10px; font-size: 0.75rem; }
-      .bottom-card { padding: 14px; }
-      .hero { padding: 20px 0 14px; gap: 10px; }
+      .bottom-card { padding: 14px; min-width: 0; overflow: hidden; }
+      .hero { flex-direction: column; padding: 20px 0 14px; gap: 10px; }
       .hero-right .status-badge { font-size: 0.7rem; padding: 4px 10px; }
       .hero-right .shariah-badge { font-size: 0.65rem; padding: 4px 10px; }
       .filter-chip { padding: 6px 12px; font-size: 0.7rem; }
@@ -321,9 +322,10 @@
       .portfolio-card { padding: 12px; }
       .port-value { font-size: 1.2rem; }
       .portfolio-summary { gap: 8px; }
-      .pick-item { padding: 8px 0; }
+      .pick-item { padding: 8px 0; min-width: 0; }
       .pick-name { font-size: 0.8rem; }
       .pick-desc { font-size: 0.65rem; }
+      .pick-info { min-width: 0; overflow: hidden; }
       .chart-bars { height: 90px; gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .chart-bar-group { min-width: 48px; }
       .chart-bar { width: 85%; }
