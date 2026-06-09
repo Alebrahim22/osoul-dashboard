@@ -177,8 +177,9 @@
     .pick-return { font-size: 0.875rem; font-weight: 600; }
     .halal-badge { font-size: 0.625rem; padding: 1px 8px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.2); margin-right: 8px; }
     .chart-bars { display: flex; align-items: flex-end; gap: 8px; height: 120px; padding: 16px 0 0; }
-    .chart-bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-    .chart-bar { width: 100%; min-height: 4px; border-radius: 4px 4px 0 0; transition: height 0.5s ease; }
+    .chart-bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .chart-bar { width: 85%; min-height: 4px; border-radius: 4px 4px 0 0; transition: height 0.5s ease; }
+    .chart-bar:first-of-type { margin-bottom: 0; }
     .chart-bar.pos { background: linear-gradient(to top, #10B98133, #10B981); }
     .chart-bar.neg { background: linear-gradient(to top, #EF444433, #EF4444); }
     .chart-label { font-size: 0.625rem; color: #64748B; font-weight: 500; }
@@ -332,9 +333,11 @@
       .bottom-card { padding: 12px; }
       .pick-item { padding: 6px 0; }
       .bottom-card h3 { font-size: 0.85rem; margin-bottom: 10px; }
-      .chart-bars { height: 80px; gap: 4px; padding: 8px 0 0; }
+      .chart-bars { height: 80px; gap: 4px; padding: 8px 0 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .chart-label { font-size: 0.5rem; }
       .chart-value { font-size: 0.5rem; }
+      .chart-bar-group { min-width: 48px; }
+      .chart-bar { width: 40%; }
       .pick-name { font-size: 0.75rem; }
       .pick-desc { font-size: 0.6rem; }
       .pick-return { font-size: 0.75rem; }
@@ -711,7 +714,7 @@
             const usH = Math.max(4, Math.abs(m.us || 0) / maxVal * 100);
             const kwH = Math.max(4, Math.abs(m.kw || 0) / maxVal * 100);
             const mName = m.month.substring(5,7) + '/' + m.month.substring(2,4);
-            return '<div class="chart-bar-group"><div class="chart-value" style="font-size:0.55rem;">' + (m.us>0?'+':'') + (m.us||0).toFixed(1) + '%</div><div class="chart-bar ' + (m.us >= 0 ? 'pos' : 'neg') + '" style="height:' + usH + 'px;width:90%;margin:0 auto;"></div><div class="chart-bar ' + (m.kw >= 0 ? 'pos' : 'neg') + '" style="height:' + kwH + 'px;width:90%;margin:0 auto;"></div><div class="chart-label">' + mName + '</div></div>';
+            return '<div class="chart-bar-group"><div class="chart-value" style="font-size:0.55rem;">' + (m.us>0?'+':'') + (m.us||0).toFixed(1) + '%</div><div class="chart-bar ' + (m.us >= 0 ? 'pos' : 'neg') + '" style="height:' + usH + 'px;"></div><div class="chart-bar ' + (m.kw >= 0 ? 'pos' : 'neg') + '" style="height:' + kwH + 'px;"></div><div class="chart-label">' + mName + '</div></div>';
           }).join('') + '</div>' +
           '<div style="display:flex;justify-content:center;gap:16px;margin-top:8px;font-size:0.65rem;color:#64748B;"><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:linear-gradient(to top,#10B98133,#10B981);display:inline-block;"></span> US</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:linear-gradient(to top,#3B82F633,#3B82F6);display:inline-block;"></span> KW</span></div>';
       } else {
