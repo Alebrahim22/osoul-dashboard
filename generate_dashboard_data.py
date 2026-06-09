@@ -291,23 +291,87 @@ def build_activity_log(trades, positions):
     return activity[:5]
 
 
+def fetch_current_prices(tickers):
+    """Fetch current prices for a list of tickers via yfinance (download individually)"""
+    import yfinance as yf
+    import pandas as pd
+    prices = {}
+    if not tickers:
+        return prices
+    us_tickers = [t for t in tickers if '.KW' not in t]
+    if us_tickers:
+        for t in us_tickers:
+            try:
+                data = yf.download(t, period='6mo', progress=False, auto_adjust=True)
+                if data is not None and not data.empty:
+                    # yfinance returns MultiIndex columns even for single ticker: ('Close', 'TICKER')
+                    close = data['Close']
+                    if isinstance(close, pd.DataFrame) and not close.empty:
+                        last_val = close.values[-1][0]  # last row, first column
+                        prices[t] = float(last_val)
+            except Exception:
+                pass
+        print(f"   💹 Fetched US prices: {len(prices)}/{len(us_tickers)}")
+    return prices
+
+
 def format_trades_for_dashboard(paper_trades):
     """تحويل trades من paper_trades.json إلى صيغة الـ Dashboard"""
     positions = []
     closed = []
 
+    # Stock name lookup
+    stock_names = {
+        "AAPL": "Apple Inc.", "MSFT": "Microsoft Corp.", "GOOGL": "Alphabet Inc.",
+        "AMZN": "Amazon.com Inc.", "TSLA": "Tesla Inc.",
+        "JNJ": "Johnson & Johnson", "XOM": "Exxon Mobil Corp.", "JPM": "JPMorgan Chase & Co.",
+        "WMT": "Walmart Inc.", "PG": "Procter & Gamble",
+        "CAT": "Caterpillar Inc.", "BA": "Boeing Co.",
+        "CVX": "Chevron Corp.", "UNH": "UnitedHealth Group", "LLY": "Eli Lilly & Co.",
+        "V": "Visa Inc.", "HD": "Home Depot Inc.", "MCD": "McDonald's Corp.",
+        "KO": "Coca-Cola Co.", "DIS": "Walt Disney Co.",
+        "NBK.KW": "بنك الكويت الوطني", "KFH.KW": "بيت التمويل الكويتي", "ZAIN.KW": "مجموعة زين",
+        "MABANEE.KW": "مجموعة مباني", "BOUBYAN.KW": "بوبيان للبتروكيماويات",
+        "HUMANSOFT.KW": "مجموعة humanosoft", "BPCC.KW": "شركة بورصة الكويت",
+        "SRE.KW": "المجموعة السعودية", "ALMANAR.KW": "المنار القابضة",
+        "NIND.KW": "العقارات الوطنية", "BURG.KW": "برغرايززر",
+        "GBK.KW": "بنك الخليج", "ABK.KW": "البنك الأهلي المتحد",
+        "COAST.KW": "كوست", "KRE.KW": "كريم العقارية",
+        "STC.KW": "الشركة التجارية", "GFH.KW": "GFH المالية",
+        "OOREDOO.KW": "Ooredoo الكويت", "CBK.KW": "بنك الكويت المركزي"
+    }
+
+    # Collect all open tickers for price fetching
+    open_tickers = [t.get("stock") for t in paper_trades if t.get("status") in ("OPEN", "T1_HIT")]
+    open_tickers = [t for t in open_tickers if t]  # Remove None
+
+    # Fetch current prices
+    current_prices = fetch_current_prices(open_tickers)
+
     for t in paper_trades:
+        stock = t.get("stock", "???")
         entry = t.get("entry_price", t.get("entryPrice", 0))
-        current = t.get("current_price", t.get("currentPrice", entry))
+
+        # Use live price if available, otherwise entry price
+        live_price = current_prices.get(stock)
+        current = live_price if live_price else t.get("current_price", t.get("currentPrice", entry))
         high = t.get("high_price", t.get("highPrice", current))
         target1 = t.get("target1", round(entry * 1.07, 2))
         target2 = t.get("target2", round(entry * 1.12, 2))
         stop = t.get("stop_loss", t.get("stopLoss", round(entry * 0.95, 2)))
 
+        # Detect market from ticker suffix
+        market = "KW" if ".KW" in stock else "US"
+        # Get B/P/E scores if available
+        scores = t.get("scores", {})
+        b_score = scores.get("b", None)
+        p_score = scores.get("p", None)
+        e_score = scores.get("e", None)
+
         item = {
-            "ticker": t.get("ticker", "???"),
-            "market": t.get("market", "US"),
-            "name": t.get("name", ""),
+            "ticker": stock,
+            "market": market,
+            "name": stock_names.get(stock, stock),
             "entryDate": t.get("entry_date", t.get("entryDate", "")),
             "entryPrice": entry,
             "currentPrice": current,
@@ -315,6 +379,9 @@ def format_trades_for_dashboard(paper_trades):
             "target1": target1,
             "target2": target2,
             "stopLoss": stop,
+            "bScore": b_score,
+            "pScore": p_score,
+            "eScore": e_score,
             "target1Hit": current >= target1,
             "target2Hit": current >= target2,
             "status": t.get("status", "active")
