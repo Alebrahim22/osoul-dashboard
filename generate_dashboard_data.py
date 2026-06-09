@@ -51,14 +51,19 @@ SCORE_CATEGORIES = [
 ]
 
 US_TICKERS = [
-    "AAPL","MSFT","GOOGL","AMZN","NVDA","META","TSLA","JPM","V","JNJ",
-    "XOM","WMT","PG","UNH","HD","DIS","KO","CAT","BA","LLY"
+    "NVDA","GOOGL","AAPL","MSFT","AMZN","AVGO","TSLA","META","MU","SPGI",
+    "LLY","WMT","JPM","AMD","XOM","V","MA","UNH","JNJ","PG",
+    "COST","HD","ORCL","ABBV","CVX","KO","MRK","CRM","BAC","PEP",
+    "QCOM","TMO","TMUS","LIN","ACN","MCD","ABT","AMAT","DIS","ADBE",
+    "CSCO","TXN","INTU","IBM","NEE","PM","GE","NKE","DHR","AMGN"
 ]
 
 KW_TICKERS = [
-    "NBK","KFH","ZAIN","MABANEE","AGLT","KIPCO","NIND","ALAFCO",
-    "BURG","SALHIA","WATANIYA","GBK","AHLI","COAST","KPRO","AAYAN",
-    "ALMUDON","ALIMTIAZ","EKTTITAB"
+    "NBK","GBK","ABK","KIB","BURG","KFH","BOUBYAN","KINV","IFA","NINV",
+    "KPROJ","ARZAN","AAYAN","KRE","URC","SRE","MABANEE","ALTIJARIA","NIND",
+    "CABLE","SHIP","BPCC","MKHZN","ZAIN","HUMANSOFT","IFAHR","CGC",
+    "OULAFUEL","JAZEERA","GFH","WARBABANK","STC","MEZZAN","INTEGRATED",
+    "BOURSA","ALG","BEYOUT","ALFTAQA","TROLLEY"
 ]
 
 # Walkforward results (hardcoded from actual backtest)
@@ -171,35 +176,81 @@ def compute_score_distribution(scores_data):
 def build_stocks_array(scores_data):
     # Stock names lookup
     stock_names = {
-        "AAPL": "Apple Inc.", "MSFT": "Microsoft Corp.", "GOOGL": "Alphabet Inc.",
-        "AMZN": "Amazon.com Inc.", "NVDA": "NVIDIA Corp.", "JNJ": "Johnson & Johnson",
-        "XOM": "Exxon Mobil Corp.", "JPM": "JPMorgan Chase & Co.", "WMT": "Walmart Inc.",
-        "PG": "Procter & Gamble", "CAT": "Caterpillar Inc.", "BA": "Boeing Co.",
-        "CVX": "Chevron Corp.", "UNH": "UnitedHealth Group", "LLY": "Eli Lilly & Co.",
-        "V": "Visa Inc.", "HD": "Home Depot Inc.", "MCD": "McDonald's Corp.",
-        "KO": "Coca-Cola Co.", "DIS": "Walt Disney Co.",
-        "NBK": "بنك الكويت الوطني", "KFH": "بيت التمويل الكويتي", "ZAIN": "مجموعة زين",
-        "MABANEE": "مجموعة مباني", "AGLT": "مجموعة أجيليتي", "KIPCO": "شركة مشاريع الكويت",
-        "NIND": "العقارات الوطنية", "ALAFCO": "الافكو", "BURG": "برغرايززر",
-        "SALHIA": "سلهيا", "WATANIYA": "الوطنية", "GBK": "بنك الخليج",
-        "AHLI": "البنك الأهلي المتحد", "COAST": "كوست",
+        "NVDA": "NVIDIA Corp.", "GOOGL": "Alphabet Inc.", "AAPL": "Apple Inc.",
+        "MSFT": "Microsoft Corp.", "AMZN": "Amazon.com Inc.", "AVGO": "Broadcom Inc.",
+        "TSLA": "Tesla Inc.", "META": "Meta Platforms Inc.", "MU": "Micron Technology Inc.",
+        "SPGI": "S&P Global Inc.", "LLY": "Eli Lilly & Co.", "WMT": "Walmart Inc.",
+        "JPM": "JPMorgan Chase & Co.", "AMD": "Advanced Micro Devices", "XOM": "Exxon Mobil Corp.",
+        "V": "Visa Inc.", "MA": "Mastercard Inc.", "UNH": "UnitedHealth Group Inc.",
+        "JNJ": "Johnson & Johnson", "PG": "Procter & Gamble Co.",
+        "COST": "Costco Wholesale Corp.", "HD": "Home Depot Inc.", "ORCL": "Oracle Corp.",
+        "ABBV": "AbbVie Inc.", "CVX": "Chevron Corp.", "KO": "Coca-Cola Co.",
+        "MRK": "Merck & Co.", "CRM": "Salesforce Inc.", "BAC": "Bank of America Corp.",
+        "PEP": "PepsiCo Inc.", "QCOM": "Qualcomm Inc.", "TMO": "Thermo Fisher Scientific Inc.",
+        "TMUS": "T-Mobile US Inc.", "LIN": "Linde plc", "ACN": "Accenture plc",
+        "MCD": "McDonald's Corp.", "ABT": "Abbott Laboratories", "AMAT": "Applied Materials Inc.",
+        "DIS": "Walt Disney Co.", "ADBE": "Adobe Inc.",
+        "CSCO": "Cisco Systems Inc.", "TXN": "Texas Instruments Inc.",
+        "INTU": "Intuit Inc.", "IBM": "International Business Machines",
+        "NEE": "NextEra Energy Inc.", "PM": "Philip Morris International",
+        "GE": "General Electric Co.", "NKE": "Nike Inc.",
+        "DHR": "Danaher Corp.", "AMGN": "Amgen Inc.",
+        "NBK": "بنك الكويت الوطني", "GBK": "بنك الخليج", "ABK": "البنك الأهلي المتحد",
+        "KIB": "بنك الكويت الدولي", "BURG": "بنك برقان", "KFH": "بيت التمويل الكويتي",
+        "BOUBYAN": "بنك بوبيان", "KINV": "شركة الاستثمارات الكويتية",
+        "IFA": "المستشارون الماليون الدوليون", "NINV": "الاستثمارات الوطنية",
+        "KPROJ": "مجموعة مشاريع الكويت", "ARZAN": "مجموعة أرزان المالية",
+        "AAYAN": "عيان للإجارة والاستثمار", "KRE": "الشركة العقارية الكويتية",
+        "URC": "عقارات الاتحاد", "SRE": "مجموعة الصالحية العقارية",
+        "MABANEE": "مجموعة مباني", "ALTIJARIA": "الشركة التجارية العقارية",
+        "NIND": "مجموعة الصناعات الوطنية", "CABLE": "الكابلات الكهربائية الكويتية",
+        "SHIP": "الهيئة الهندسية الثقيلة وبناء السفن", "BPCC": "بوبيان للبتروكيماويات",
+        "MKHZN": "أجيليتي (المخازن)", "ZAIN": "مجموعة زين",
+        "HUMANSOFT": "مجموعة Human Soft", "IFAHR": "فنادق ومنتجعات IFA",
+        "CGC": "مجموعة كوجين للمقاولات", "OULAFUEL": "مؤسسة أولى للوقود",
+        "JAZEERA": "طيران الجزيرة", "GFH": "GFH المالية",
+        "WARBABANK": "بنك وربة", "STC": "الشركة الكويتية للاتصالات",
+        "MEZZAN": "مجموعة المزان القابضة", "INTEGRATED": "الشركة المتكاملة القابضة",
+        "BOURSA": "بورصة الكويت للأوراق المالية", "ALG": "علي الغانم وأولاده للسيارات",
+        "BEYOUT": "مجموعة بيوت القابضة", "ALFTAQA": "شركة أفتاق للطاقة",
+        "TROLLEY": "شركة ترولي للتجارة العامة"
     }
     sectors = {
-        "AAPL": "Technology", "MSFT": "Technology", "GOOGL": "Technology",
-        "AMZN": "Consumer Cyclical", "NVDA": "Technology",
-        "JNJ": "Healthcare", "XOM": "Energy", "JPM": "Financials",
-        "WMT": "Consumer Defensive", "PG": "Consumer Defensive",
-        "CAT": "Industrials", "BA": "Industrials", "CVX": "Energy",
-        "UNH": "Healthcare", "LLY": "Healthcare", "V": "Financials",
-        "HD": "Consumer Cyclical", "MCD": "Consumer Cyclical",
-        "KO": "Consumer Defensive", "DIS": "Communication",
-        "NBK": "بنوك", "KFH": "بنوك إسلامية", "ZAIN": "اتصالات",
-        "MABANEE": "استثمار", "AGLT": "خدمات لوجستية", "KIPCO": "استثمار",
-        "NIND": "عقار", "ALAFCO": "تأجير طائرات", "BURG": "غذاء",
-        "SALHIA": "عقار", "WATANIYA": "اتصالات", "GBK": "بنوك",
-        "AHLI": "بنوك", "COAST": "استثمار",
+        "NVDA": "Technology", "GOOGL": "Technology", "AAPL": "Technology",
+        "MSFT": "Technology", "AMZN": "Consumer Cyclical", "AVGO": "Technology",
+        "TSLA": "Consumer Cyclical", "META": "Technology", "MU": "Technology",
+        "SPGI": "Financials", "LLY": "Healthcare", "WMT": "Consumer Defensive",
+        "JPM": "Financials", "AMD": "Technology", "XOM": "Energy",
+        "V": "Financials", "MA": "Financials", "UNH": "Healthcare",
+        "JNJ": "Healthcare", "PG": "Consumer Defensive",
+        "COST": "Consumer Defensive", "HD": "Consumer Cyclical", "ORCL": "Technology",
+        "ABBV": "Healthcare", "CVX": "Energy", "KO": "Consumer Defensive",
+        "MRK": "Healthcare", "CRM": "Technology", "BAC": "Financials",
+        "PEP": "Consumer Defensive", "QCOM": "Technology", "TMO": "Healthcare",
+        "TMUS": "Communication", "LIN": "Basic Materials", "ACN": "Technology",
+        "MCD": "Consumer Cyclical", "ABT": "Healthcare", "AMAT": "Technology",
+        "DIS": "Communication", "ADBE": "Technology",
+        "CSCO": "Technology", "TXN": "Technology",
+        "INTU": "Technology", "IBM": "Technology",
+        "NEE": "Utilities", "PM": "Consumer Defensive",
+        "GE": "Industrials", "NKE": "Consumer Cyclical",
+        "DHR": "Healthcare", "AMGN": "Healthcare",
+        "NBK": "بنوك", "GBK": "بنوك", "ABK": "بنوك", "KIB": "بنوك",
+        "BURG": "بنوك", "KFH": "بنوك إسلامية", "BOUBYAN": "بنوك إسلامية",
+        "KINV": "استثمار", "IFA": "استثمار", "NINV": "استثمار",
+        "KPROJ": "استثمار", "ARZAN": "استثمار", "AAYAN": "استثمار",
+        "KRE": "عقار", "URC": "عقار", "SRE": "عقار",
+        "MABANEE": "عقار", "ALTIJARIA": "عقار",
+        "NIND": "استثمار", "CABLE": "صناعة", "SHIP": "صناعة",
+        "BPCC": "بتروكيماويات", "MKHZN": "خدمات لوجستية",
+        "ZAIN": "اتصالات", "HUMANSOFT": "تقنية", "IFAHR": "سياحة وفنادق",
+        "CGC": "مقاولات", "OULAFUEL": "وقود", "JAZEERA": "طيران",
+        "GFH": "استثمار", "WARBABANK": "بنوك إسلامية",
+        "STC": "اتصالات", "MEZZAN": "غذاء", "INTEGRATED": "صناعة",
+        "BOURSA": "استثمار", "ALG": "سيارات", "BEYOUT": "استثمار",
+        "ALFTAQA": "طاقة", "TROLLEY": "تجارة"
     }
-    kw_tickers = ["NBK","KFH","ZAIN","MABANEE","AGLT","KIPCO","NIND","ALAFCO","BURG","SALHIA","WATANIYA","GBK","AHLI","COAST"]
+    kw_tickers = ["NBK","GBK","ABK","KIB","BURG","KFH","BOUBYAN","KINV","IFA","NINV","KPROJ","ARZAN","AAYAN","KRE","URC","SRE","MABANEE","ALTIJARIA","NIND","CABLE","SHIP","BPCC","MKHZN","ZAIN","HUMANSOFT","IFAHR","CGC","OULAFUEL","JAZEERA","GFH","WARBABANK","STC","MEZZAN","INTEGRATED","BOURSA","ALG","BEYOUT","ALFTAQA","TROLLEY"]
 
     stocks = []
     for ticker, versions in scores_data.items():
@@ -300,18 +351,32 @@ def fetch_current_prices(tickers):
         return prices
     us_tickers = [t for t in tickers if '.KW' not in t]
     if us_tickers:
-        for t in us_tickers:
+        # Batch in groups of 10
+        for i in range(0, len(us_tickers), 10):
+            group = us_tickers[i:i+10]
             try:
-                data = yf.download(t, period='6mo', progress=False, auto_adjust=True)
+                data = yf.download(group, period='1mo', progress=False, auto_adjust=True)
                 if data is not None and not data.empty:
-                    # yfinance returns MultiIndex columns even for single ticker: ('Close', 'TICKER')
-                    close = data['Close']
-                    if isinstance(close, pd.DataFrame) and not close.empty:
-                        last_val = close.values[-1][0]  # last row, first column
-                        prices[t] = float(last_val)
+                    close = data['Close'] if 'Close' in data else data.get('Adj Close', data)
+                    if isinstance(close, pd.DataFrame):
+                        for t in group:
+                            if t in close.columns:
+                                last = close[t].dropna()
+                                if not last.empty:
+                                    prices[t] = float(last.iloc[-1])
             except Exception:
                 pass
-        print(f"   💹 Fetched US prices: {len(prices)}/{len(us_tickers)}")
+        # Fallback for failed tickers
+        failed = [t for t in us_tickers if t not in prices]
+        for t in failed:
+            try:
+                stock = yf.Ticker(t)
+                h = stock.history(period='5d')
+                if h is not None and not h.empty:
+                    prices[t] = float(h['Close'].iloc[-1])
+            except Exception:
+                pass
+        print(f"   Fetched US prices: {len(prices)}/{len(us_tickers)}")
     return prices
 
 
@@ -322,23 +387,44 @@ def format_trades_for_dashboard(paper_trades):
 
     # Stock name lookup
     stock_names = {
-        "AAPL": "Apple Inc.", "MSFT": "Microsoft Corp.", "GOOGL": "Alphabet Inc.",
-        "AMZN": "Amazon.com Inc.", "TSLA": "Tesla Inc.",
-        "JNJ": "Johnson & Johnson", "XOM": "Exxon Mobil Corp.", "JPM": "JPMorgan Chase & Co.",
-        "WMT": "Walmart Inc.", "PG": "Procter & Gamble",
-        "CAT": "Caterpillar Inc.", "BA": "Boeing Co.",
-        "CVX": "Chevron Corp.", "UNH": "UnitedHealth Group", "LLY": "Eli Lilly & Co.",
-        "V": "Visa Inc.", "HD": "Home Depot Inc.", "MCD": "McDonald's Corp.",
-        "KO": "Coca-Cola Co.", "DIS": "Walt Disney Co.",
-        "NBK.KW": "بنك الكويت الوطني", "KFH.KW": "بيت التمويل الكويتي", "ZAIN.KW": "مجموعة زين",
-        "MABANEE.KW": "مجموعة مباني", "BOUBYAN.KW": "بوبيان للبتروكيماويات",
-        "HUMANSOFT.KW": "مجموعة humanosoft", "BPCC.KW": "شركة بورصة الكويت",
-        "SRE.KW": "المجموعة السعودية", "ALMANAR.KW": "المنار القابضة",
-        "NIND.KW": "العقارات الوطنية", "BURG.KW": "برغرايززر",
-        "GBK.KW": "بنك الخليج", "ABK.KW": "البنك الأهلي المتحد",
-        "COAST.KW": "كوست", "KRE.KW": "كريم العقارية",
-        "STC.KW": "الشركة التجارية", "GFH.KW": "GFH المالية",
-        "OOREDOO.KW": "Ooredoo الكويت", "CBK.KW": "بنك الكويت المركزي"
+        "NVDA": "NVIDIA Corp.", "GOOGL": "Alphabet Inc.", "AAPL": "Apple Inc.",
+        "MSFT": "Microsoft Corp.", "AMZN": "Amazon.com Inc.", "AVGO": "Broadcom Inc.",
+        "TSLA": "Tesla Inc.", "META": "Meta Platforms Inc.", "MU": "Micron Technology Inc.",
+        "SPGI": "S&P Global Inc.", "LLY": "Eli Lilly & Co.", "WMT": "Walmart Inc.",
+        "JPM": "JPMorgan Chase & Co.", "AMD": "Advanced Micro Devices", "XOM": "Exxon Mobil Corp.",
+        "V": "Visa Inc.", "MA": "Mastercard Inc.", "UNH": "UnitedHealth Group Inc.",
+        "JNJ": "Johnson & Johnson", "PG": "Procter & Gamble Co.",
+        "COST": "Costco Wholesale Corp.", "HD": "Home Depot Inc.", "ORCL": "Oracle Corp.",
+        "ABBV": "AbbVie Inc.", "CVX": "Chevron Corp.", "KO": "Coca-Cola Co.",
+        "MRK": "Merck & Co.", "CRM": "Salesforce Inc.", "BAC": "Bank of America Corp.",
+        "PEP": "PepsiCo Inc.", "QCOM": "Qualcomm Inc.", "TMO": "Thermo Fisher Scientific Inc.",
+        "TMUS": "T-Mobile US Inc.", "LIN": "Linde plc", "ACN": "Accenture plc",
+        "MCD": "McDonald's Corp.", "ABT": "Abbott Laboratories", "AMAT": "Applied Materials Inc.",
+        "DIS": "Walt Disney Co.", "ADBE": "Adobe Inc.",
+        "CSCO": "Cisco Systems Inc.", "TXN": "Texas Instruments Inc.",
+        "INTU": "Intuit Inc.", "IBM": "International Business Machines",
+        "NEE": "NextEra Energy Inc.", "PM": "Philip Morris International",
+        "GE": "General Electric Co.", "NKE": "Nike Inc.",
+        "DHR": "Danaher Corp.", "AMGN": "Amgen Inc.",
+        "NBK.KW": "بنك الكويت الوطني", "GBK.KW": "بنك الخليج", "ABK.KW": "البنك الأهلي المتحد",
+        "KIB.KW": "بنك الكويت الدولي", "BURG.KW": "بنك برقان", "KFH.KW": "بيت التمويل الكويتي",
+        "BOUBYAN.KW": "بنك بوبيان", "KINV.KW": "شركة الاستثمارات الكويتية",
+        "IFA.KW": "المستشارون الماليون الدوليون", "NINV.KW": "الاستثمارات الوطنية",
+        "KPROJ.KW": "مجموعة مشاريع الكويت", "ARZAN.KW": "مجموعة أرزان المالية",
+        "AAYAN.KW": "عيان للإجارة والاستثمار", "KRE.KW": "الشركة العقارية الكويتية",
+        "URC.KW": "عقارات الاتحاد", "SRE.KW": "مجموعة الصالحية العقارية",
+        "MABANEE.KW": "مجموعة مباني", "ALTIJARIA.KW": "الشركة التجارية العقارية",
+        "NIND.KW": "مجموعة الصناعات الوطنية", "CABLE.KW": "الكابلات الكهربائية الكويتية",
+        "SHIP.KW": "الهيئة الهندسية الثقيلة وبناء السفن", "BPCC.KW": "بوبيان للبتروكيماويات",
+        "MKHZN.KW": "أجيليتي (المخازن)", "ZAIN.KW": "مجموعة زين",
+        "HUMANSOFT.KW": "مجموعة Human Soft", "IFAHR.KW": "فنادق ومنتجعات IFA",
+        "CGC.KW": "مجموعة كوجين للمقاولات", "OULAFUEL.KW": "مؤسسة أولى للوقود",
+        "JAZEERA.KW": "طيران الجزيرة", "GFH.KW": "GFH المالية",
+        "WARBABANK.KW": "بنك وربة", "STC.KW": "الشركة الكويتية للاتصالات",
+        "MEZZAN.KW": "مجموعة المزان القابضة", "INTEGRATED.KW": "الشركة المتكاملة القابضة",
+        "BOURSA.KW": "بورصة الكويت للأوراق المالية", "ALG.KW": "علي الغانم وأولاده للسيارات",
+        "BEYOUT.KW": "مجموعة بيوت القابضة", "ALFTAQA.KW": "شركة أفتاق للطاقة",
+        "TROLLEY.KW": "شركة ترولي للتجارة العامة"
     }
 
     # Collect all open tickers for price fetching

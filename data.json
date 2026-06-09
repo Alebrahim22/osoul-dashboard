@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-06-09T19:30:45.469708+00:00",
+  "lastUpdated": "2026-06-09T21:15:46.332065+00:00",
   "system": {
     "status": "active",
     "nextScan": "2026-07-01T01:00:00+03:00",
     "uptime": "قيد التشغيل"
   },
   "summary": {
-    "openTrades": 30,
+    "openTrades": 79,
     "totalTrades": 236,
     "winRate": 46.2,
     "totalPnl": 0,
@@ -18,7 +18,7 @@
   "markets": {
     "US": {
       "flag": "🇺🇸",
-      "activeTickers": 20,
+      "activeTickers": 50,
       "annualReturn": 24.95,
       "benchmarkReturn": 22.18,
       "benchmarkName": "S&P 500",
@@ -31,7 +31,7 @@
     },
     "KW": {
       "flag": "🇰🇼",
-      "activeTickers": 19,
+      "activeTickers": 39,
       "annualReturn": 37.78,
       "benchmarkReturn": 12.09,
       "benchmarkName": "Boursa Kuwait",
@@ -50,8 +50,8 @@
       "name": "Apple Inc.",
       "entryDate": "2026-06-09",
       "entryPrice": 290.925,
-      "currentPrice": 290.9599914550781,
-      "highPrice": 290.9599914550781,
+      "currentPrice": 290.54998779296875,
+      "highPrice": 290.54998779296875,
       "target1": 311.2897,
       "target2": 325.836,
       "stopLoss": 276.3787,
@@ -68,8 +68,8 @@
       "name": "Microsoft Corp.",
       "entryDate": "2026-06-09",
       "entryPrice": 401.38,
-      "currentPrice": 402.25,
-      "highPrice": 402.25,
+      "currentPrice": 403.4100036621094,
+      "highPrice": 403.4100036621094,
       "target1": 429.4766,
       "target2": 449.5456,
       "stopLoss": 381.311,
@@ -86,8 +86,8 @@
       "name": "Alphabet Inc.",
       "entryDate": "2026-06-09",
       "entryPrice": 359.39,
-      "currentPrice": 359.39,
-      "highPrice": 359.39,
+      "currentPrice": 364.260009765625,
+      "highPrice": 364.260009765625,
       "target1": 384.5473,
       "target2": 402.5168,
       "stopLoss": 341.4205,
@@ -104,8 +104,8 @@
       "name": "Amazon.com Inc.",
       "entryDate": "2026-06-09",
       "entryPrice": 242.84,
-      "currentPrice": 244.27000427246094,
-      "highPrice": 244.27000427246094,
+      "currentPrice": 244.19000244140625,
+      "highPrice": 244.19000244140625,
       "target1": 259.8388,
       "target2": 271.9808,
       "stopLoss": 230.698,
@@ -122,8 +122,8 @@
       "name": "Johnson & Johnson",
       "entryDate": "2026-06-09",
       "entryPrice": 236.435,
-      "currentPrice": 236.435,
-      "highPrice": 236.435,
+      "currentPrice": 237.0,
+      "highPrice": 237.0,
       "target1": 252.9854,
       "target2": 264.8072,
       "stopLoss": 224.6132,
@@ -140,8 +140,8 @@
       "name": "Exxon Mobil Corp.",
       "entryDate": "2026-06-09",
       "entryPrice": 148.615,
-      "currentPrice": 148.4250030517578,
-      "highPrice": 148.4250030517578,
+      "currentPrice": 148.91000366210938,
+      "highPrice": 148.91000366210938,
       "target1": 159.0181,
       "target2": 166.4488,
       "stopLoss": 141.1843,
@@ -158,8 +158,8 @@
       "name": "Walmart Inc.",
       "entryDate": "2026-06-09",
       "entryPrice": 120.42,
-      "currentPrice": 120.42,
-      "highPrice": 120.42,
+      "currentPrice": 118.87999725341797,
+      "highPrice": 118.87999725341797,
       "target1": 128.8494,
       "target2": 134.8704,
       "stopLoss": 114.399,
@@ -173,11 +173,11 @@
     {
       "ticker": "PG",
       "market": "US",
-      "name": "Procter & Gamble",
+      "name": "Procter & Gamble Co.",
       "entryDate": "2026-06-09",
       "entryPrice": 149.13,
-      "currentPrice": 149.13,
-      "highPrice": 149.13,
+      "currentPrice": 148.6699981689453,
+      "highPrice": 148.6699981689453,
       "target1": 159.5691,
       "target2": 167.0256,
       "stopLoss": 141.6735,
@@ -191,11 +191,11 @@
     {
       "ticker": "CAT",
       "market": "US",
-      "name": "Caterpillar Inc.",
+      "name": "CAT",
       "entryDate": "2026-06-09",
       "entryPrice": 885.67,
-      "currentPrice": 912.77001953125,
-      "highPrice": 912.77001953125,
+      "currentPrice": 914.7000122070312,
+      "highPrice": 914.7000122070312,
       "target1": 947.6669,
       "target2": 991.9504,
       "stopLoss": 841.3865,
@@ -209,11 +209,11 @@
     {
       "ticker": "BA",
       "market": "US",
-      "name": "Boeing Co.",
+      "name": "BA",
       "entryDate": "2026-06-09",
       "entryPrice": 212.85,
-      "currentPrice": 214.5500030517578,
-      "highPrice": 214.5500030517578,
+      "currentPrice": 214.50999450683594,
+      "highPrice": 214.50999450683594,
       "target1": 227.7495,
       "target2": 238.392,
       "stopLoss": 202.2075,
@@ -230,8 +230,8 @@
       "name": "Chevron Corp.",
       "entryDate": "2026-06-09",
       "entryPrice": 186.52,
-      "currentPrice": 186.5449981689453,
-      "highPrice": 186.5449981689453,
+      "currentPrice": 186.75999450683594,
+      "highPrice": 186.75999450683594,
       "target1": 199.5764,
       "target2": 208.9024,
       "stopLoss": 177.194,
@@ -245,11 +245,11 @@
     {
       "ticker": "UNH",
       "market": "US",
-      "name": "UnitedHealth Group",
+      "name": "UnitedHealth Group Inc.",
       "entryDate": "2026-06-09",
       "entryPrice": 410.24,
-      "currentPrice": 411.19500732421875,
-      "highPrice": 411.19500732421875,
+      "currentPrice": 413.0,
+      "highPrice": 413.0,
       "target1": 438.9568,
       "target2": 459.4688,
       "stopLoss": 389.728,
@@ -266,8 +266,8 @@
       "name": "Eli Lilly & Co.",
       "entryDate": "2026-06-09",
       "entryPrice": 1150.34,
-      "currentPrice": 1147.030029296875,
-      "highPrice": 1147.030029296875,
+      "currentPrice": 1144.6800537109375,
+      "highPrice": 1144.6800537109375,
       "target1": 1230.8638,
       "target2": 1288.3808,
       "stopLoss": 1092.823,
@@ -284,8 +284,8 @@
       "name": "Visa Inc.",
       "entryDate": "2026-06-09",
       "entryPrice": 323.85,
-      "currentPrice": 324.05499267578125,
-      "highPrice": 324.05499267578125,
+      "currentPrice": 325.04998779296875,
+      "highPrice": 325.04998779296875,
       "target1": 346.5195,
       "target2": 362.712,
       "stopLoss": 307.6575,
@@ -302,8 +302,8 @@
       "name": "Home Depot Inc.",
       "entryDate": "2026-06-09",
       "entryPrice": 320.52,
-      "currentPrice": 320.52,
-      "highPrice": 320.52,
+      "currentPrice": 321.3299865722656,
+      "highPrice": 321.3299865722656,
       "target1": 342.9564,
       "target2": 358.9824,
       "stopLoss": 304.494,
@@ -320,8 +320,8 @@
       "name": "McDonald's Corp.",
       "entryDate": "2026-06-09",
       "entryPrice": 284.75,
-      "currentPrice": 281.7149963378906,
-      "highPrice": 281.7149963378906,
+      "currentPrice": 282.25,
+      "highPrice": 282.25,
       "target1": 304.6825,
       "target2": 318.92,
       "stopLoss": 270.5125,
@@ -338,8 +338,8 @@
       "name": "Coca-Cola Co.",
       "entryDate": "2026-06-09",
       "entryPrice": 81.57,
-      "currentPrice": 81.57,
-      "highPrice": 81.57,
+      "currentPrice": 81.33999633789062,
+      "highPrice": 81.33999633789062,
       "target1": 87.2799,
       "target2": 91.3584,
       "stopLoss": 77.4915,
@@ -356,8 +356,8 @@
       "name": "Walt Disney Co.",
       "entryDate": "2026-06-09",
       "entryPrice": 99.57,
-      "currentPrice": 99.57,
-      "highPrice": 99.57,
+      "currentPrice": 99.33000183105469,
+      "highPrice": 99.33000183105469,
       "target1": 106.5399,
       "target2": 111.5184,
       "stopLoss": 94.5915,
@@ -425,7 +425,7 @@
     {
       "ticker": "HUMANSOFT.KW",
       "market": "KW",
-      "name": "مجموعة humanosoft",
+      "name": "مجموعة Human Soft",
       "entryDate": "2026-06-09",
       "entryPrice": 2474.0,
       "currentPrice": 2474.0,
@@ -443,7 +443,7 @@
     {
       "ticker": "BPCC.KW",
       "market": "KW",
-      "name": "شركة بورصة الكويت",
+      "name": "بوبيان للبتروكيماويات",
       "entryDate": "2026-06-09",
       "entryPrice": 670.0,
       "currentPrice": 670.0,
@@ -461,7 +461,7 @@
     {
       "ticker": "SRE.KW",
       "market": "KW",
-      "name": "المجموعة السعودية",
+      "name": "مجموعة الصالحية العقارية",
       "entryDate": "2026-06-09",
       "entryPrice": 399.0,
       "currentPrice": 399.0,
@@ -479,7 +479,7 @@
     {
       "ticker": "ALMANAR.KW",
       "market": "KW",
-      "name": "المنار القابضة",
+      "name": "ALMANAR.KW",
       "entryDate": "2026-06-09",
       "entryPrice": 111.0,
       "currentPrice": 111.0,
@@ -497,7 +497,7 @@
     {
       "ticker": "NIND.KW",
       "market": "KW",
-      "name": "العقارات الوطنية",
+      "name": "مجموعة الصناعات الوطنية",
       "entryDate": "2026-06-09",
       "entryPrice": 236.0,
       "currentPrice": 236.0,
@@ -515,7 +515,7 @@
     {
       "ticker": "KRE.KW",
       "market": "KW",
-      "name": "كريم العقارية",
+      "name": "الشركة العقارية الكويتية",
       "entryDate": "2026-06-09",
       "entryPrice": 372.0,
       "currentPrice": 372.0,
@@ -533,7 +533,7 @@
     {
       "ticker": "STC.KW",
       "market": "KW",
-      "name": "الشركة التجارية",
+      "name": "الشركة الكويتية للاتصالات",
       "entryDate": "2026-06-09",
       "entryPrice": 664.0,
       "currentPrice": 664.0,
@@ -569,7 +569,7 @@
     {
       "ticker": "OOREDOO.KW",
       "market": "KW",
-      "name": "Ooredoo الكويت",
+      "name": "OOREDOO.KW",
       "entryDate": "2026-06-09",
       "entryPrice": 2049.0,
       "currentPrice": 2049.0,
@@ -583,9 +583,927 @@
       "target1Hit": false,
       "target2Hit": false,
       "status": "OPEN"
+    },
+    {
+      "ticker": "NVDA",
+      "market": "US",
+      "name": "NVIDIA Corp.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 208.19,
+      "currentPrice": 208.19000244140625,
+      "highPrice": 208.19000244140625,
+      "target1": 222.7633,
+      "target2": 233.1728,
+      "stopLoss": 197.7805,
+      "bScore": 10,
+      "pScore": 8.6,
+      "eScore": 9.1,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "AVGO",
+      "market": "US",
+      "name": "Broadcom Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 392.16,
+      "currentPrice": 392.1600036621094,
+      "highPrice": 392.1600036621094,
+      "target1": 419.6112,
+      "target2": 439.2192,
+      "stopLoss": 372.552,
+      "bScore": 10,
+      "pScore": 8.6,
+      "eScore": 9.1,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "META",
+      "market": "US",
+      "name": "Meta Platforms Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 584.59,
+      "currentPrice": 584.5900268554688,
+      "highPrice": 584.5900268554688,
+      "target1": 625.5113,
+      "target2": 654.7408,
+      "stopLoss": 555.3605,
+      "bScore": 10,
+      "pScore": 9.8,
+      "eScore": 9.4,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "MU",
+      "market": "US",
+      "name": "Micron Technology Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 935.89,
+      "currentPrice": 935.8900146484375,
+      "highPrice": 935.8900146484375,
+      "target1": 1001.4023,
+      "target2": 1048.1968,
+      "stopLoss": 889.0955,
+      "bScore": 10,
+      "pScore": 8.6,
+      "eScore": 9.1,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "SPGI",
+      "market": "US",
+      "name": "S&P Global Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 424.82,
+      "currentPrice": 424.82000732421875,
+      "highPrice": 424.82000732421875,
+      "target1": 454.5574,
+      "target2": 475.7984,
+      "stopLoss": 403.579,
+      "bScore": 8.9,
+      "pScore": 7.4,
+      "eScore": 7.8,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "AMD",
+      "market": "US",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-06-09",
+      "entryPrice": 475.505,
+      "currentPrice": 475.5050048828125,
+      "highPrice": 475.5050048828125,
+      "target1": 508.7904,
+      "target2": 532.5656,
+      "stopLoss": 451.7298,
+      "bScore": 8.3,
+      "pScore": 8.6,
+      "eScore": 8.7,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "MA",
+      "market": "US",
+      "name": "Mastercard Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 495.24,
+      "currentPrice": 495.239990234375,
+      "highPrice": 495.239990234375,
+      "target1": 529.9068,
+      "target2": 554.6688,
+      "stopLoss": 470.478,
+      "bScore": 10,
+      "pScore": 8.6,
+      "eScore": 8.2,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "COST",
+      "market": "US",
+      "name": "Costco Wholesale Corp.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 968.59,
+      "currentPrice": 968.5900268554688,
+      "highPrice": 968.5900268554688,
+      "target1": 1036.3913,
+      "target2": 1084.8208,
+      "stopLoss": 920.1605,
+      "bScore": 8.1,
+      "pScore": 9.8,
+      "eScore": 7.9,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "ORCL",
+      "market": "US",
+      "name": "Oracle Corp.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 205.81,
+      "currentPrice": 205.80999755859375,
+      "highPrice": 205.80999755859375,
+      "target1": 220.2167,
+      "target2": 230.5072,
+      "stopLoss": 195.5195,
+      "bScore": 10,
+      "pScore": 7.4,
+      "eScore": 8.1,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "MRK",
+      "market": "US",
+      "name": "Merck & Co.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 119.6,
+      "currentPrice": 119.5999984741211,
+      "highPrice": 119.5999984741211,
+      "target1": 127.972,
+      "target2": 133.952,
+      "stopLoss": 113.62,
+      "bScore": 9.4,
+      "pScore": 7.4,
+      "eScore": 7.0,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "CRM",
+      "market": "US",
+      "name": "Salesforce Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 175.35,
+      "currentPrice": 175.35000610351562,
+      "highPrice": 175.35000610351562,
+      "target1": 187.6245,
+      "target2": 196.392,
+      "stopLoss": 166.5825,
+      "bScore": 9.7,
+      "pScore": 7.4,
+      "eScore": 8.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "PEP",
+      "market": "US",
+      "name": "PepsiCo Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 142.78,
+      "currentPrice": 142.77999877929688,
+      "highPrice": 142.77999877929688,
+      "target1": 152.7746,
+      "target2": 159.9136,
+      "stopLoss": 135.641,
+      "bScore": 10,
+      "pScore": 7.4,
+      "eScore": 7.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "QCOM",
+      "market": "US",
+      "name": "Qualcomm Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 205.42,
+      "currentPrice": 205.4199981689453,
+      "highPrice": 205.4199981689453,
+      "target1": 219.7994,
+      "target2": 230.0704,
+      "stopLoss": 195.149,
+      "bScore": 10,
+      "pScore": 9.8,
+      "eScore": 9.2,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "TMO",
+      "market": "US",
+      "name": "Thermo Fisher Scientific Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 494.07,
+      "currentPrice": 494.07000732421875,
+      "highPrice": 494.07000732421875,
+      "target1": 528.6549,
+      "target2": 553.3584,
+      "stopLoss": 469.3665,
+      "bScore": 8.4,
+      "pScore": 8.6,
+      "eScore": 7.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "TMUS",
+      "market": "US",
+      "name": "T-Mobile US Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 179.46,
+      "currentPrice": 179.4600067138672,
+      "highPrice": 179.4600067138672,
+      "target1": 192.0222,
+      "target2": 200.9952,
+      "stopLoss": 170.487,
+      "bScore": 9.9,
+      "pScore": 7.4,
+      "eScore": 7.9,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "LIN",
+      "market": "US",
+      "name": "Linde plc",
+      "entryDate": "2026-06-09",
+      "entryPrice": 515.59,
+      "currentPrice": 515.5900268554688,
+      "highPrice": 515.5900268554688,
+      "target1": 551.6813,
+      "target2": 577.4608,
+      "stopLoss": 489.8105,
+      "bScore": 9.3,
+      "pScore": 7.4,
+      "eScore": 7.2,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "ACN",
+      "market": "US",
+      "name": "Accenture plc",
+      "entryDate": "2026-06-09",
+      "entryPrice": 173.47,
+      "currentPrice": 173.47000122070312,
+      "highPrice": 173.47000122070312,
+      "target1": 185.6129,
+      "target2": 194.2864,
+      "stopLoss": 164.7965,
+      "bScore": 10,
+      "pScore": 9.8,
+      "eScore": 8.3,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "ABT",
+      "market": "US",
+      "name": "Abbott Laboratories",
+      "entryDate": "2026-06-09",
+      "entryPrice": 91.25,
+      "currentPrice": 91.25,
+      "highPrice": 91.25,
+      "target1": 97.6375,
+      "target2": 102.2,
+      "stopLoss": 86.6875,
+      "bScore": 8.7,
+      "pScore": 9.8,
+      "eScore": 7.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "AMAT",
+      "market": "US",
+      "name": "Applied Materials Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 499.21,
+      "currentPrice": 499.2099914550781,
+      "highPrice": 499.2099914550781,
+      "target1": 534.1547,
+      "target2": 559.1152,
+      "stopLoss": 474.2495,
+      "bScore": 9.9,
+      "pScore": 9.8,
+      "eScore": 8.7,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "ADBE",
+      "market": "US",
+      "name": "Adobe Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 237.88,
+      "currentPrice": 237.8800048828125,
+      "highPrice": 237.8800048828125,
+      "target1": 254.5316,
+      "target2": 266.4256,
+      "stopLoss": 225.986,
+      "bScore": 10,
+      "pScore": 8.6,
+      "eScore": 8.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "CSCO",
+      "market": "US",
+      "name": "Cisco Systems Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 120.36,
+      "currentPrice": 120.36000061035156,
+      "highPrice": 120.36000061035156,
+      "target1": 128.7852,
+      "target2": 134.8032,
+      "stopLoss": 114.342,
+      "bScore": 10,
+      "pScore": 7.4,
+      "eScore": 8.1,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "TXN",
+      "market": "US",
+      "name": "Texas Instruments Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 288.63,
+      "currentPrice": 288.6300048828125,
+      "highPrice": 288.6300048828125,
+      "target1": 308.8341,
+      "target2": 323.2656,
+      "stopLoss": 274.1985,
+      "bScore": 10,
+      "pScore": 8.6,
+      "eScore": 8.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "INTU",
+      "market": "US",
+      "name": "Intuit Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 293.78,
+      "currentPrice": 293.7799987792969,
+      "highPrice": 293.7799987792969,
+      "target1": 314.3446,
+      "target2": 329.0336,
+      "stopLoss": 279.091,
+      "bScore": 10,
+      "pScore": 9.8,
+      "eScore": 8.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "IBM",
+      "market": "US",
+      "name": "International Business Machines",
+      "entryDate": "2026-06-09",
+      "entryPrice": 277.49,
+      "currentPrice": 277.489990234375,
+      "highPrice": 277.489990234375,
+      "target1": 296.9143,
+      "target2": 310.7888,
+      "stopLoss": 263.6155,
+      "bScore": 10,
+      "pScore": 6.2,
+      "eScore": 7.2,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "NEE",
+      "market": "US",
+      "name": "NextEra Energy Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 84.83,
+      "currentPrice": 84.83000183105469,
+      "highPrice": 84.83000183105469,
+      "target1": 90.7681,
+      "target2": 95.0096,
+      "stopLoss": 80.5885,
+      "bScore": 8.9,
+      "pScore": 6.2,
+      "eScore": 7.8,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "PM",
+      "market": "US",
+      "name": "Philip Morris International",
+      "entryDate": "2026-06-09",
+      "entryPrice": 178.49,
+      "currentPrice": 178.49000549316406,
+      "highPrice": 178.49000549316406,
+      "target1": 190.9843,
+      "target2": 199.9088,
+      "stopLoss": 169.5655,
+      "bScore": 7.5,
+      "pScore": 6.2,
+      "eScore": 6.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "GE",
+      "market": "US",
+      "name": "General Electric Co.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 330.44,
+      "currentPrice": 330.44000244140625,
+      "highPrice": 330.44000244140625,
+      "target1": 353.5708,
+      "target2": 370.0928,
+      "stopLoss": 313.918,
+      "bScore": 9.1,
+      "pScore": 7.4,
+      "eScore": 7.2,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "NKE",
+      "market": "US",
+      "name": "Nike Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 44.65,
+      "currentPrice": 44.650001525878906,
+      "highPrice": 44.650001525878906,
+      "target1": 47.7755,
+      "target2": 50.008,
+      "stopLoss": 42.4175,
+      "bScore": 8.6,
+      "pScore": 9.8,
+      "eScore": 7.3,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "DHR",
+      "market": "US",
+      "name": "Danaher Corp.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 188.41,
+      "currentPrice": 188.41000366210938,
+      "highPrice": 188.41000366210938,
+      "target1": 201.5987,
+      "target2": 211.0192,
+      "stopLoss": 178.9895,
+      "bScore": 8.2,
+      "pScore": 8.6,
+      "eScore": 7.5,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "AMGN",
+      "market": "US",
+      "name": "Amgen Inc.",
+      "entryDate": "2026-06-09",
+      "entryPrice": 344.565,
+      "currentPrice": 344.56500244140625,
+      "highPrice": 344.56500244140625,
+      "target1": 368.6846,
+      "target2": 385.9128,
+      "stopLoss": 327.3367,
+      "bScore": 10,
+      "pScore": 7.4,
+      "eScore": 7.2,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "KIB.KW",
+      "market": "KW",
+      "name": "بنك الكويت الدولي",
+      "entryDate": "2026-06-09",
+      "entryPrice": 259.0,
+      "currentPrice": 259.0,
+      "highPrice": 259.0,
+      "target1": 277.13,
+      "target2": 290.08,
+      "stopLoss": 246.05,
+      "bScore": 5.7,
+      "pScore": 6.2,
+      "eScore": 6.3,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "KINV.KW",
+      "market": "KW",
+      "name": "شركة الاستثمارات الكويتية",
+      "entryDate": "2026-06-09",
+      "entryPrice": 183.0,
+      "currentPrice": 183.0,
+      "highPrice": 183.0,
+      "target1": 195.81,
+      "target2": 204.96,
+      "stopLoss": 173.85,
+      "bScore": 10,
+      "pScore": 6.2,
+      "eScore": 7.5,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "IFA.KW",
+      "market": "KW",
+      "name": "المستشارون الماليون الدوليون",
+      "entryDate": "2026-06-09",
+      "entryPrice": 418.0,
+      "currentPrice": 418.0,
+      "highPrice": 418.0,
+      "target1": 447.26,
+      "target2": 468.16,
+      "stopLoss": 397.1,
+      "bScore": 7.9,
+      "pScore": 6.2,
+      "eScore": 6.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "NINV.KW",
+      "market": "KW",
+      "name": "الاستثمارات الوطنية",
+      "entryDate": "2026-06-09",
+      "entryPrice": 268.0,
+      "currentPrice": 268.0,
+      "highPrice": 268.0,
+      "target1": 286.76,
+      "target2": 300.16,
+      "stopLoss": 254.6,
+      "bScore": 9.3,
+      "pScore": 6.2,
+      "eScore": 7.2,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "ARZAN.KW",
+      "market": "KW",
+      "name": "مجموعة أرزان المالية",
+      "entryDate": "2026-06-09",
+      "entryPrice": 352.0,
+      "currentPrice": 352.0,
+      "highPrice": 352.0,
+      "target1": 376.64,
+      "target2": 394.24,
+      "stopLoss": 334.4,
+      "bScore": 8.9,
+      "pScore": 6.2,
+      "eScore": 7.5,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "AAYAN.KW",
+      "market": "KW",
+      "name": "عيان للإجارة والاستثمار",
+      "entryDate": "2026-06-09",
+      "entryPrice": 279.0,
+      "currentPrice": 279.0,
+      "highPrice": 279.0,
+      "target1": 298.53,
+      "target2": 312.48,
+      "stopLoss": 265.05,
+      "bScore": 8.3,
+      "pScore": 7.4,
+      "eScore": 6.9,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "ALTIJARIA.KW",
+      "market": "KW",
+      "name": "الشركة التجارية العقارية",
+      "entryDate": "2026-06-09",
+      "entryPrice": 200.0,
+      "currentPrice": 200.0,
+      "highPrice": 200.0,
+      "target1": 214.0,
+      "target2": 224.0,
+      "stopLoss": 190.0,
+      "bScore": 8.6,
+      "pScore": 7.4,
+      "eScore": 7.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "CABLE.KW",
+      "market": "KW",
+      "name": "الكابلات الكهربائية الكويتية",
+      "entryDate": "2026-06-09",
+      "entryPrice": 1960.0,
+      "currentPrice": 1960.0,
+      "highPrice": 1960.0,
+      "target1": 2097.2,
+      "target2": 2195.2,
+      "stopLoss": 1862.0,
+      "bScore": 6.8,
+      "pScore": 7.4,
+      "eScore": 6.5,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "SHIP.KW",
+      "market": "KW",
+      "name": "الهيئة الهندسية الثقيلة وبناء السفن",
+      "entryDate": "2026-06-09",
+      "entryPrice": 712.0,
+      "currentPrice": 712.0,
+      "highPrice": 712.0,
+      "target1": 761.84,
+      "target2": 797.44,
+      "stopLoss": 676.4,
+      "bScore": 7.7,
+      "pScore": 8.6,
+      "eScore": 6.8,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "IFAHR.KW",
+      "market": "KW",
+      "name": "فنادق ومنتجعات IFA",
+      "entryDate": "2026-06-09",
+      "entryPrice": 845.0,
+      "currentPrice": 845.0,
+      "highPrice": 845.0,
+      "target1": 904.15,
+      "target2": 946.4,
+      "stopLoss": 802.75,
+      "bScore": 9.3,
+      "pScore": 6.2,
+      "eScore": 6.6,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "CGC.KW",
+      "market": "KW",
+      "name": "مجموعة كوجين للمقاولات",
+      "entryDate": "2026-06-09",
+      "entryPrice": 928.0,
+      "currentPrice": 928.0,
+      "highPrice": 928.0,
+      "target1": 992.96,
+      "target2": 1039.36,
+      "stopLoss": 881.6,
+      "bScore": 9.7,
+      "pScore": 9.8,
+      "eScore": 8.4,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "OULAFUEL.KW",
+      "market": "KW",
+      "name": "مؤسسة أولى للوقود",
+      "entryDate": "2026-06-09",
+      "entryPrice": 225.0,
+      "currentPrice": 225.0,
+      "highPrice": 225.0,
+      "target1": 240.75,
+      "target2": 252.0,
+      "stopLoss": 213.75,
+      "bScore": 7.3,
+      "pScore": 8.6,
+      "eScore": 6.8,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "JAZEERA.KW",
+      "market": "KW",
+      "name": "طيران الجزيرة",
+      "entryDate": "2026-06-09",
+      "entryPrice": 1610.0,
+      "currentPrice": 1610.0,
+      "highPrice": 1610.0,
+      "target1": 1722.7,
+      "target2": 1803.2,
+      "stopLoss": 1529.5,
+      "bScore": 8.4,
+      "pScore": 7.4,
+      "eScore": 6.3,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "MEZZAN.KW",
+      "market": "KW",
+      "name": "مجموعة المزان القابضة",
+      "entryDate": "2026-06-09",
+      "entryPrice": 1200.0,
+      "currentPrice": 1200.0,
+      "highPrice": 1200.0,
+      "target1": 1284.0,
+      "target2": 1344.0,
+      "stopLoss": 1140.0,
+      "bScore": 8.1,
+      "pScore": 9.8,
+      "eScore": 7.0,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "INTEGRATED.KW",
+      "market": "KW",
+      "name": "الشركة المتكاملة القابضة",
+      "entryDate": "2026-06-09",
+      "entryPrice": 407.0,
+      "currentPrice": 407.0,
+      "highPrice": 407.0,
+      "target1": 435.49,
+      "target2": 455.84,
+      "stopLoss": 386.65,
+      "bScore": 7.8,
+      "pScore": 8.6,
+      "eScore": 6.9,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "BOURSA.KW",
+      "market": "KW",
+      "name": "بورصة الكويت للأوراق المالية",
+      "entryDate": "2026-06-09",
+      "entryPrice": 3025.0,
+      "currentPrice": 3025.0,
+      "highPrice": 3025.0,
+      "target1": 3236.75,
+      "target2": 3388.0,
+      "stopLoss": 2873.75,
+      "bScore": 10,
+      "pScore": 8.6,
+      "eScore": 7.4,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "ALG.KW",
+      "market": "KW",
+      "name": "علي الغانم وأولاده للسيارات",
+      "entryDate": "2026-06-09",
+      "entryPrice": 955.0,
+      "currentPrice": 955.0,
+      "highPrice": 955.0,
+      "target1": 1021.85,
+      "target2": 1069.6,
+      "stopLoss": 907.25,
+      "bScore": 9.8,
+      "pScore": 9.8,
+      "eScore": 7.8,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "BEYOUT.KW",
+      "market": "KW",
+      "name": "مجموعة بيوت القابضة",
+      "entryDate": "2026-06-09",
+      "entryPrice": 341.0,
+      "currentPrice": 341.0,
+      "highPrice": 341.0,
+      "target1": 364.87,
+      "target2": 381.92,
+      "stopLoss": 323.95,
+      "bScore": 8.6,
+      "pScore": 7.4,
+      "eScore": 6.7,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
+    },
+    {
+      "ticker": "ALFTAQA.KW",
+      "market": "KW",
+      "name": "شركة أفتاق للطاقة",
+      "entryDate": "2026-06-09",
+      "entryPrice": 270.0,
+      "currentPrice": 270.0,
+      "highPrice": 270.0,
+      "target1": 288.9,
+      "target2": 302.4,
+      "stopLoss": 256.5,
+      "bScore": 8.2,
+      "pScore": 7.4,
+      "eScore": 8.4,
+      "target1Hit": false,
+      "target2Hit": false,
+      "status": "OPEN"
     }
   ],
   "stocks": [
+    {
+      "ticker": "META",
+      "name": "Meta Platforms Inc.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 9.2,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 10
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 10
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "META_20260609"
+    },
     {
       "ticker": "GOOGL",
       "name": "Alphabet Inc.",
@@ -621,6 +1539,150 @@
       ],
       "classification": "ممتاز",
       "lastUpdated": "GOOGL_20260601"
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm Inc.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 9.0,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 10
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 9.0
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "QCOM_20260609"
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom Inc.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 8.9,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 10
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 10
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "AVGO_20260609"
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology Inc.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 8.9,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 10
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 10
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "MU_20260609"
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA Corp.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 8.9,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 10
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 10
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "NVDA_20260609"
     },
     {
       "ticker": "LLY",
@@ -695,10 +1757,118 @@
       "lastUpdated": "ALMANAR_KW_20260601"
     },
     {
-      "ticker": "BPCC",
-      "name": "BPCC",
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
       "market": "US",
-      "sector": "Other",
+      "sector": "Technology",
+      "overallScore": 8.6,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.3
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 10
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 10
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "AMD_20260609"
+    },
+    {
+      "ticker": "AMAT",
+      "name": "Applied Materials Inc.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 8.5,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 9.9
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.1
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 8.6
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "AMAT_20260609"
+    },
+    {
+      "ticker": "ADBE",
+      "name": "Adobe Inc.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 8.4,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.9
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "ADBE_20260609"
+    },
+    {
+      "ticker": "BPCC",
+      "name": "بوبيان للبتروكيماويات",
+      "market": "KW",
+      "sector": "بتروكيماويات",
       "overallScore": 8.4,
       "methods": [
         {
@@ -728,7 +1898,187 @@
         }
       ],
       "classification": "ممتاز",
-      "lastUpdated": "BPCC_KW_20260601"
+      "lastUpdated": "BPCC_KW_20260609"
+    },
+    {
+      "ticker": "INTU",
+      "name": "Intuit Inc.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 8.4,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.8
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "INTU_20260609"
+    },
+    {
+      "ticker": "TXN",
+      "name": "Texas Instruments Inc.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 8.4,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.4
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 8.8
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "TXN_20260609"
+    },
+    {
+      "ticker": "ALFTAQA",
+      "name": "شركة أفتاق للطاقة",
+      "market": "KW",
+      "sector": "طاقة",
+      "overallScore": 8.3,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.2
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 9.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 10
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "ALFTAQA_KW_20260609"
+    },
+    {
+      "ticker": "CGC",
+      "name": "مجموعة كوجين للمقاولات",
+      "market": "KW",
+      "sector": "مقاولات",
+      "overallScore": 8.3,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 9.7
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 8.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 7.1
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.8
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "CGC_KW_20260609"
+    },
+    {
+      "ticker": "CRM",
+      "name": "Salesforce Inc.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 8.3,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 9.7
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 10
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 9.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "CRM_20260609"
     },
     {
       "ticker": "ZAIN",
@@ -764,43 +2114,7 @@
         }
       ],
       "classification": "ممتاز",
-      "lastUpdated": "ZAIN_KW_20260601"
-    },
-    {
-      "ticker": "KRE",
-      "name": "KRE",
-      "market": "US",
-      "sector": "Other",
-      "overallScore": 8.2,
-      "methods": [
-        {
-          "method": "Buffett",
-          "label": "بوفيت",
-          "score": 8.7
-        },
-        {
-          "method": "Graham",
-          "label": "غراهام",
-          "score": 7.0
-        },
-        {
-          "method": "Lynch",
-          "label": "لينش",
-          "score": 8.1
-        },
-        {
-          "method": "ONeil",
-          "label": "أونيل",
-          "score": 10
-        },
-        {
-          "method": "Piotroski",
-          "label": "بيوتروسكي",
-          "score": 7.4
-        }
-      ],
-      "classification": "ممتاز",
-      "lastUpdated": "KRE_KW_20260601"
+      "lastUpdated": "ZAIN_KW_20260609"
     },
     {
       "ticker": "V",
@@ -837,6 +2151,42 @@
       ],
       "classification": "ممتاز",
       "lastUpdated": "V_20260601"
+    },
+    {
+      "ticker": "ACN",
+      "name": "Accenture plc",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 8.2,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 7.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.0
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "ACN_20260609"
     },
     {
       "ticker": "OOREDOO",
@@ -876,9 +2226,9 @@
     },
     {
       "ticker": "HUMANSOFT",
-      "name": "HUMANSOFT",
-      "market": "US",
-      "sector": "Other",
+      "name": "مجموعة Human Soft",
+      "market": "KW",
+      "sector": "تقنية",
       "overallScore": 8.1,
       "methods": [
         {
@@ -908,7 +2258,43 @@
         }
       ],
       "classification": "ممتاز",
-      "lastUpdated": "HUMANSOFT_KW_20260601"
+      "lastUpdated": "HUMANSOFT_KW_20260609"
+    },
+    {
+      "ticker": "KRE",
+      "name": "الشركة العقارية الكويتية",
+      "market": "KW",
+      "sector": "عقار",
+      "overallScore": 8.0,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.7
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.1
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 10
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "KRE_KW_20260609"
     },
     {
       "ticker": "AMZN",
@@ -983,10 +2369,118 @@
       "lastUpdated": "MSFT_20260601"
     },
     {
-      "ticker": "CAT",
-      "name": "Caterpillar Inc.",
+      "ticker": "CSCO",
+      "name": "Cisco Systems Inc.",
       "market": "US",
-      "sector": "Industrials",
+      "sector": "Technology",
+      "overallScore": 7.9,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.2
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 8.8
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "CSCO_20260609"
+    },
+    {
+      "ticker": "MA",
+      "name": "Mastercard Inc.",
+      "market": "US",
+      "sector": "Financials",
+      "overallScore": 7.9,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 7.9
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 8.2
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "MA_20260609"
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle Corp.",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 7.9,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.3
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 8.6
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "ORCL_20260609"
+    },
+    {
+      "ticker": "CAT",
+      "name": "CAT",
+      "market": "US",
+      "sector": "Other",
       "overallScore": 7.7,
       "methods": [
         {
@@ -1055,10 +2549,118 @@
       "lastUpdated": "AAPL_20260601"
     },
     {
-      "ticker": "GFH",
-      "name": "GFH",
+      "ticker": "COST",
+      "name": "Costco Wholesale Corp.",
       "market": "US",
-      "sector": "Other",
+      "sector": "Consumer Defensive",
+      "overallScore": 7.7,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.1
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 7.4
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 8.1
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "COST_20260609"
+    },
+    {
+      "ticker": "NEE",
+      "name": "NextEra Energy Inc.",
+      "market": "US",
+      "sector": "Utilities",
+      "overallScore": 7.7,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.9
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.9
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 9.3
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 6.2
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "NEE_20260609"
+    },
+    {
+      "ticker": "TMUS",
+      "name": "T-Mobile US Inc.",
+      "market": "US",
+      "sector": "Communication",
+      "overallScore": 7.7,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 9.9
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.5
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.9
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "TMUS_20260609"
+    },
+    {
+      "ticker": "GFH",
+      "name": "GFH المالية",
+      "market": "KW",
+      "sector": "استثمار",
       "overallScore": 7.6,
       "methods": [
         {
@@ -1088,13 +2690,373 @@
         }
       ],
       "classification": "ممتاز",
-      "lastUpdated": "GFH_KW_20260601"
+      "lastUpdated": "GFH_KW_20260609"
+    },
+    {
+      "ticker": "ALG",
+      "name": "علي الغانم وأولاده للسيارات",
+      "market": "KW",
+      "sector": "سيارات",
+      "overallScore": 7.6,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 9.8
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "ALG_KW_20260609"
+    },
+    {
+      "ticker": "ALTIJARIA",
+      "name": "الشركة التجارية العقارية",
+      "market": "KW",
+      "sector": "عقار",
+      "overallScore": 7.6,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.6
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 6.4
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 8.4
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "ALTIJARIA_KW_20260609"
+    },
+    {
+      "ticker": "SPGI",
+      "name": "S&P Global Inc.",
+      "market": "US",
+      "sector": "Financials",
+      "overallScore": 7.6,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.9
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 8.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "SPGI_20260609"
+    },
+    {
+      "ticker": "BAC",
+      "name": "Bank of America Corp.",
+      "market": "US",
+      "sector": "Financials",
+      "overallScore": 7.5,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 7.2
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 8.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 9.1
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 8.0
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 5.0
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "BAC_20260609"
+    },
+    {
+      "ticker": "KINV",
+      "name": "شركة الاستثمارات الكويتية",
+      "market": "KW",
+      "sector": "استثمار",
+      "overallScore": 7.5,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 10
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 6.2
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "KINV_KW_20260609"
+    },
+    {
+      "ticker": "TMO",
+      "name": "Thermo Fisher Scientific Inc.",
+      "market": "US",
+      "sector": "Healthcare",
+      "overallScore": 7.5,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.4
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 7.1
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.3
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "TMO_20260609"
+    },
+    {
+      "ticker": "ABT",
+      "name": "Abbott Laboratories",
+      "market": "US",
+      "sector": "Healthcare",
+      "overallScore": 7.4,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.7
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 6.9
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.8
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "ABT_20260609"
+    },
+    {
+      "ticker": "ARZAN",
+      "name": "مجموعة أرزان المالية",
+      "market": "KW",
+      "sector": "استثمار",
+      "overallScore": 7.4,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.9
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 8.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 6.3
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.7
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 6.2
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "ARZAN_KW_20260609"
+    },
+    {
+      "ticker": "DHR",
+      "name": "Danaher Corp.",
+      "market": "US",
+      "sector": "Healthcare",
+      "overallScore": 7.4,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.2
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 7.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.1
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "DHR_20260609"
+    },
+    {
+      "ticker": "PEP",
+      "name": "PepsiCo Inc.",
+      "market": "US",
+      "sector": "Consumer Defensive",
+      "overallScore": 7.4,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 7.8
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.7
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "PEP_20260609"
     },
     {
       "ticker": "SRE",
-      "name": "SRE",
-      "market": "US",
-      "sector": "Other",
+      "name": "مجموعة الصالحية العقارية",
+      "market": "KW",
+      "sector": "عقار",
       "overallScore": 7.4,
       "methods": [
         {
@@ -1124,7 +3086,7 @@
         }
       ],
       "classification": "ممتاز",
-      "lastUpdated": "SRE_KW_20260601"
+      "lastUpdated": "SRE_KW_20260609"
     },
     {
       "ticker": "CVX",
@@ -1164,7 +3126,7 @@
     },
     {
       "ticker": "PG",
-      "name": "Procter & Gamble",
+      "name": "Procter & Gamble Co.",
       "market": "US",
       "sector": "Consumer Defensive",
       "overallScore": 7.2,
@@ -1197,6 +3159,114 @@
       ],
       "classification": "ممتاز",
       "lastUpdated": "PG_20260601"
+    },
+    {
+      "ticker": "BOURSA",
+      "name": "بورصة الكويت للأوراق المالية",
+      "market": "KW",
+      "sector": "استثمار",
+      "overallScore": 7.2,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "BOURSA_KW_20260609"
+    },
+    {
+      "ticker": "NINV",
+      "name": "الاستثمارات الوطنية",
+      "market": "KW",
+      "sector": "استثمار",
+      "overallScore": 7.2,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 9.3
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 9.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 6.2
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "NINV_KW_20260609"
+    },
+    {
+      "ticker": "NKE",
+      "name": "Nike Inc.",
+      "market": "US",
+      "sector": "Consumer Cyclical",
+      "overallScore": 7.2,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.6
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 6.5
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 5.0
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "NKE_20260609"
     },
     {
       "ticker": "DIS",
@@ -1343,10 +3413,118 @@
       "lastUpdated": "JNJ_20260601"
     },
     {
-      "ticker": "ABK",
-      "name": "ABK",
+      "ticker": "AMGN",
+      "name": "Amgen Inc.",
       "market": "US",
-      "sector": "Other",
+      "sector": "Healthcare",
+      "overallScore": 7.0,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.4
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.0
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "AMGN_20260609"
+    },
+    {
+      "ticker": "GE",
+      "name": "General Electric Co.",
+      "market": "US",
+      "sector": "Industrials",
+      "overallScore": 7.0,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 9.1
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 6.2
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "GE_20260609"
+    },
+    {
+      "ticker": "LIN",
+      "name": "Linde plc",
+      "market": "US",
+      "sector": "Basic Materials",
+      "overallScore": 7.0,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 9.3
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.8
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "ممتاز",
+      "lastUpdated": "LIN_20260609"
+    },
+    {
+      "ticker": "ABK",
+      "name": "البنك الأهلي المتحد",
+      "market": "KW",
+      "sector": "بنوك",
       "overallScore": 6.9,
       "methods": [
         {
@@ -1376,13 +3554,13 @@
         }
       ],
       "classification": "جيد جداً",
-      "lastUpdated": "ABK_KW_20260601"
+      "lastUpdated": "ABK_KW_20260609"
     },
     {
       "ticker": "NIND",
-      "name": "العقارات الوطنية",
+      "name": "مجموعة الصناعات الوطنية",
       "market": "KW",
-      "sector": "عقار",
+      "sector": "استثمار",
       "overallScore": 6.9,
       "methods": [
         {
@@ -1412,7 +3590,7 @@
         }
       ],
       "classification": "جيد جداً",
-      "lastUpdated": "NIND_KW_20260601"
+      "lastUpdated": "NIND_KW_20260609"
     },
     {
       "ticker": "WMT",
@@ -1449,6 +3627,78 @@
       ],
       "classification": "جيد جداً",
       "lastUpdated": "WMT_20260601"
+    },
+    {
+      "ticker": "IBM",
+      "name": "International Business Machines",
+      "market": "US",
+      "sector": "Technology",
+      "overallScore": 6.9,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 10
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.9
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.6
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 6.2
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "IBM_20260609"
+    },
+    {
+      "ticker": "SHIP",
+      "name": "الهيئة الهندسية الثقيلة وبناء السفن",
+      "market": "KW",
+      "sector": "صناعة",
+      "overallScore": 6.9,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 7.7
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 8.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 5.0
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "SHIP_KW_20260609"
     },
     {
       "ticker": "JPM",
@@ -1524,9 +3774,9 @@
     },
     {
       "ticker": "STC",
-      "name": "STC",
-      "market": "US",
-      "sector": "Other",
+      "name": "الشركة الكويتية للاتصالات",
+      "market": "KW",
+      "sector": "اتصالات",
       "overallScore": 6.8,
       "methods": [
         {
@@ -1556,7 +3806,7 @@
         }
       ],
       "classification": "جيد جداً",
-      "lastUpdated": "STC_KW_20260601"
+      "lastUpdated": "STC_KW_20260609"
     },
     {
       "ticker": "XOM",
@@ -1595,10 +3845,154 @@
       "lastUpdated": "XOM_20260601"
     },
     {
+      "ticker": "AAYAN",
+      "name": "عيان للإجارة والاستثمار",
+      "market": "KW",
+      "sector": "استثمار",
+      "overallScore": 6.8,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.3
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "AAYAN_KW_20260609"
+    },
+    {
+      "ticker": "INTEGRATED",
+      "name": "الشركة المتكاملة القابضة",
+      "market": "KW",
+      "sector": "صناعة",
+      "overallScore": 6.8,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 7.8
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.1
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "INTEGRATED_KW_20260609"
+    },
+    {
+      "ticker": "MEZZAN",
+      "name": "مجموعة المزان القابضة",
+      "market": "KW",
+      "sector": "غذاء",
+      "overallScore": 6.8,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.1
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.5
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 5.8
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 9.8
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "MEZZAN_KW_20260609"
+    },
+    {
+      "ticker": "OULAFUEL",
+      "name": "مؤسسة أولى للوقود",
+      "market": "KW",
+      "sector": "وقود",
+      "overallScore": 6.8,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 7.3
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 8.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 5.0
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 8.6
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "OULAFUEL_KW_20260609"
+    },
+    {
       "ticker": "TSLA",
-      "name": "TSLA",
+      "name": "Tesla Inc.",
       "market": "US",
-      "sector": "Other",
+      "sector": "Consumer Cyclical",
       "overallScore": 6.8,
       "methods": [
         {
@@ -1629,6 +4023,78 @@
       ],
       "classification": "جيد جداً",
       "lastUpdated": "TSLA_20260601"
+    },
+    {
+      "ticker": "ABBV",
+      "name": "AbbVie Inc.",
+      "market": "US",
+      "sector": "Healthcare",
+      "overallScore": 6.7,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 7.5
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 8.6
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 5.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 5.0
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "ABBV_20260609"
+    },
+    {
+      "ticker": "MRK",
+      "name": "Merck & Co.",
+      "market": "US",
+      "sector": "Healthcare",
+      "overallScore": 6.7,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 9.4
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.2
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.7
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "MRK_20260609"
     },
     {
       "ticker": "NBK",
@@ -1664,13 +4130,85 @@
         }
       ],
       "classification": "جيد جداً",
-      "lastUpdated": "NBK_KW_20260601"
+      "lastUpdated": "NBK_KW_20260609"
+    },
+    {
+      "ticker": "BEYOUT",
+      "name": "مجموعة بيوت القابضة",
+      "market": "KW",
+      "sector": "استثمار",
+      "overallScore": 6.6,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.6
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.1
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 5.1
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "BEYOUT_KW_20260609"
+    },
+    {
+      "ticker": "PM",
+      "name": "Philip Morris International",
+      "market": "US",
+      "sector": "Consumer Defensive",
+      "overallScore": 6.6,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 7.5
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.5
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.9
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 6.2
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "PM_20260609"
     },
     {
       "ticker": "BA",
-      "name": "Boeing Co.",
+      "name": "BA",
       "market": "US",
-      "sector": "Industrials",
+      "sector": "Other",
       "overallScore": 6.5,
       "methods": [
         {
@@ -1740,7 +4278,7 @@
     },
     {
       "ticker": "UNH",
-      "name": "UnitedHealth Group",
+      "name": "UnitedHealth Group Inc.",
       "market": "US",
       "sector": "Healthcare",
       "overallScore": 6.5,
@@ -1775,10 +4313,190 @@
       "lastUpdated": "UNH_20260601"
     },
     {
-      "ticker": "BURG",
-      "name": "برغرايززر",
+      "ticker": "CABLE",
+      "name": "الكابلات الكهربائية الكويتية",
       "market": "KW",
-      "sector": "غذاء",
+      "sector": "صناعة",
+      "overallScore": 6.5,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 6.8
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "CABLE_KW_20260609"
+    },
+    {
+      "ticker": "IFA",
+      "name": "المستشارون الماليون الدوليون",
+      "market": "KW",
+      "sector": "استثمار",
+      "overallScore": 6.5,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 7.9
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 7.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 6.2
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "IFA_KW_20260609"
+    },
+    {
+      "ticker": "IFAHR",
+      "name": "فنادق ومنتجعات IFA",
+      "market": "KW",
+      "sector": "سياحة وفنادق",
+      "overallScore": 6.4,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 9.3
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.5
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 6.2
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "IFAHR_KW_20260609"
+    },
+    {
+      "ticker": "KIB",
+      "name": "بنك الكويت الدولي",
+      "market": "KW",
+      "sector": "بنوك",
+      "overallScore": 6.3,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 5.7
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 6.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 7.6
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 6.2
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "KIB_KW_20260609"
+    },
+    {
+      "ticker": "JAZEERA",
+      "name": "طيران الجزيرة",
+      "market": "KW",
+      "sector": "طيران",
+      "overallScore": 6.2,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 8.4
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 5.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 5.0
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 7.4
+        }
+      ],
+      "classification": "جيد جداً",
+      "lastUpdated": "JAZEERA_KW_20260609"
+    },
+    {
+      "ticker": "BURG",
+      "name": "بنك برقان",
+      "market": "KW",
+      "sector": "بنوك",
       "overallScore": 6.1,
       "methods": [
         {
@@ -1808,7 +4526,7 @@
         }
       ],
       "classification": "جيد جداً",
-      "lastUpdated": "BURG_KW_20260601"
+      "lastUpdated": "BURG_KW_20260609"
     },
     {
       "ticker": "KFH",
@@ -1844,13 +4562,13 @@
         }
       ],
       "classification": "جيد جداً",
-      "lastUpdated": "KFH_KW_20260601"
+      "lastUpdated": "KFH_KW_20260609"
     },
     {
       "ticker": "MABANEE",
       "name": "مجموعة مباني",
       "market": "KW",
-      "sector": "استثمار",
+      "sector": "عقار",
       "overallScore": 6.0,
       "methods": [
         {
@@ -1880,13 +4598,85 @@
         }
       ],
       "classification": "جيد جداً",
-      "lastUpdated": "MABANEE_KW_20260601"
+      "lastUpdated": "MABANEE_KW_20260609"
+    },
+    {
+      "ticker": "MKHZN",
+      "name": "أجيليتي (المخازن)",
+      "market": "KW",
+      "sector": "خدمات لوجستية",
+      "overallScore": 5.7,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 7.5
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.0
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 5.0
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 5.0
+        }
+      ],
+      "classification": "جيد",
+      "lastUpdated": "MKHZN_KW_20260609"
+    },
+    {
+      "ticker": "WARBABANK",
+      "name": "بنك وربة",
+      "market": "KW",
+      "sector": "بنوك إسلامية",
+      "overallScore": 5.6,
+      "methods": [
+        {
+          "method": "Buffett",
+          "label": "بوفيت",
+          "score": 5.7
+        },
+        {
+          "method": "Graham",
+          "label": "غراهام",
+          "score": 6.0
+        },
+        {
+          "method": "Lynch",
+          "label": "لينش",
+          "score": 5.5
+        },
+        {
+          "method": "ONeil",
+          "label": "أونيل",
+          "score": 6.9
+        },
+        {
+          "method": "Piotroski",
+          "label": "بيوتروسكي",
+          "score": 3.8
+        }
+      ],
+      "classification": "جيد",
+      "lastUpdated": "WARBABANK_KW_20260609"
     },
     {
       "ticker": "COAST",
-      "name": "كوست",
-      "market": "KW",
-      "sector": "استثمار",
+      "name": "COAST",
+      "market": "US",
+      "sector": "Other",
       "overallScore": 5.4,
       "methods": [
         {
@@ -1952,13 +4742,13 @@
         }
       ],
       "classification": "جيد",
-      "lastUpdated": "GBK_KW_20260601"
+      "lastUpdated": "GBK_KW_20260609"
     },
     {
       "ticker": "BOUBYAN",
-      "name": "BOUBYAN",
-      "market": "US",
-      "sector": "Other",
+      "name": "بنك بوبيان",
+      "market": "KW",
+      "sector": "بنوك إسلامية",
       "overallScore": 5.4,
       "methods": [
         {
@@ -1988,7 +4778,7 @@
         }
       ],
       "classification": "جيد",
-      "lastUpdated": "BOUBYAN_KW_20260601"
+      "lastUpdated": "BOUBYAN_KW_20260609"
     }
   ],
   "scoreDistribution": [
@@ -2016,17 +4806,17 @@
   "scoreBreakdown": [
     {
       "method": "Buffett",
-      "average": 8.4,
+      "average": 8.7,
       "color": "#22c55e"
     },
     {
       "method": "Graham",
-      "average": 6.4,
+      "average": 6.3,
       "color": "#3b82f6"
     },
     {
       "method": "Lynch",
-      "average": 6.5,
+      "average": 6.8,
       "color": "#f59e0b"
     },
     {
@@ -2036,7 +4826,7 @@
     },
     {
       "method": "Piotroski",
-      "average": 7.2,
+      "average": 7.5,
       "color": "#06b6d4"
     }
   ],
