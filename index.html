@@ -1,1547 +1,772 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>أصول — نظام التداول الورقي</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg-primary:#070b14;
-  --bg-secondary:#0f1629;
-  --bg-card:#131c33;
-  --bg-card-hover:#182240;
-  --border:#1e2a45;
-  --border-accent:#2a3a5c;
-  --text-primary:#f1f5f9;
-  --text-secondary:#94a3b8;
-  --text-muted:#64748b;
-  --accent:#f59e0b;
-  --accent-glow:rgba(245,158,11,0.15);
-  --green:#22c55e;
-  --green-bg:rgba(34,197,94,0.12);
-  --red:#ef4444;
-  --red-bg:rgba(239,68,68,0.12);
-  --blue:#3b82f6;
-  --blue-bg:rgba(59,130,246,0.12);
-  --radius:12px;
-  --radius-sm:8px;
-  --shadow:0 1px 3px rgba(0,0,0,0.3),0 1px 2px rgba(0,0,0,0.2);
-  --shadow-lg:0 10px 25px rgba(0,0,0,0.4),0 4px 10px rgba(0,0,0,0.3);
-  --font-arabic:'IBM Plex Sans Arabic',system-ui,-apple-system,sans-serif;
-  --font-english:'Inter',system-ui,-apple-system,sans-serif;
-}
-html{scroll-behavior:smooth}
-body{
-  font-family:var(--font-arabic);
-  background:var(--bg-primary);
-  color:var(--text-primary);
-  line-height:1.6;
-  min-height:100vh;
-  overflow-x:hidden;
-}
-body.en{font-family:var(--font-english)}
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg-primary)}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
-::-webkit-scrollbar-thumb:hover{background:var(--border-accent)}
-.app{max-width:1440px;margin:0 auto;padding:20px 24px 40px}
-/* Header */
-.header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 0;border-bottom:1px solid var(--border);margin-bottom:20px;
-  flex-wrap:wrap;gap:12px;
-}
-.header-left{display:flex;align-items:center;gap:16px}
-.logo{
-  display:flex;align-items:center;gap:10px;text-decoration:none;
-  font-size:22px;font-weight:700;color:var(--text-primary);
-}
-.logo-icon{
-  width:38px;height:38px;border-radius:10px;
-  background:linear-gradient(135deg,var(--accent),#d97706);
-  display:flex;align-items:center;justify-content:center;
-  font-size:18px;font-weight:800;color:#0a0e17;
-}
-.logo span{background:linear-gradient(135deg,var(--accent),#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.badge{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:4px 12px;border-radius:20px;font-size:12px;font-weight:500;
-}
-.badge-live{background:var(--green-bg);color:var(--green)}
-.badge-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.header-right{display:flex;align-items:center;gap:12px}
-.update-time{font-size:13px;color:var(--text-muted);direction:ltr}
-.lang-toggle{
-  background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);
-  padding:6px 12px;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit;
-  transition:all 0.2s;
-}
-.lang-toggle:hover{background:var(--bg-card-hover);color:var(--text-primary)}
-/* Navigation Tabs */
-.nav-tabs{
-  display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;
-}
-.nav-tab{
-  padding:10px 20px;border-radius:24px;border:1px solid var(--border);
-  background:var(--bg-card);color:var(--text-secondary);font-size:14px;font-weight:500;
-  cursor:pointer;transition:all 0.25s;font-family:inherit;
-  display:flex;align-items:center;gap:8px;
-}
-.nav-tab:hover{background:var(--bg-card-hover);color:var(--text-primary);border-color:var(--border-accent)}
-.nav-tab.active{background:var(--accent-glow);color:var(--accent);border-color:var(--accent);box-shadow:0 0 20px rgba(245,158,11,0.1)}
-.nav-tab .tab-icon{font-size:16px}
-/* KPI Grid */
-.kpi-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:16px;margin-bottom:24px;
-}
-.kpi-grid-5{grid-template-columns:repeat(5,1fr)}
-.kpi-card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:20px;
-  transition:all 0.2s;position:relative;overflow:hidden;
-}
-.kpi-card:hover{background:var(--bg-card-hover);border-color:var(--border-accent);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
-.kpi-label{font-size:13px;color:var(--text-muted);margin-bottom:6px;font-weight:500}
-.kpi-value{font-size:28px;font-weight:700;letter-spacing:-0.5px;line-height:1.2}
-.kpi-sub{font-size:12px;color:var(--text-muted);margin-top:2px}
-.text-green{color:var(--green)}
-.text-red{color:var(--red)}
-.text-accent{color:var(--accent)}
-.text-blue{color:var(--blue)}
-.kpi-icon{
-  position:absolute;top:16px;left:16px;font-size:24px;opacity:0.15;
-}
-/* Section */
-.section{margin-bottom:24px}
-.section-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:16px;flex-wrap:wrap;gap:8px;
-}
-.section-title{font-size:18px;font-weight:600;color:var(--text-primary)}
-.section-subtitle{font-size:13px;color:var(--text-muted)}
-/* Grid */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:20px;
-}
-.card-full{grid-column:1/-1}
-.card-chart{padding:16px;position:relative}
-.chart-container{position:relative;width:100%;height:260px}
-.chart-container-sm{height:200px}
-.chart-container-lg{height:320px}
-/* Table */
-.table-wrap{overflow-x:auto;border-radius:var(--radius-sm)}
-table{width:100%;border-collapse:collapse;font-size:14px}
-thead th{
-  text-align:right;padding:10px 14px;
-  color:var(--text-muted);font-weight:500;font-size:12px;
-  border-bottom:1px solid var(--border);white-space:nowrap;
-  text-transform:uppercase;letter-spacing:0.5px;
-}
-tbody td{
-  padding:12px 14px;border-bottom:1px solid rgba(30,42,69,0.5);
-  white-space:nowrap;font-size:13px;
-}
-tbody tr:hover{background:rgba(255,255,255,0.02)}
-tbody tr:last-child td{border-bottom:none}
-.ticker-badge{
-  display:inline-flex;align-items:center;gap:4px;
-  padding:2px 10px;border-radius:4px;font-size:12px;font-weight:600;
-}
-.ticker-us{background:var(--blue-bg);color:var(--blue)}
-.ticker-kw{background:var(--accent-glow);color:var(--accent)}
-/* Progress Bar */
-.progress-bar{
-  width:80px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;display:inline-block;vertical-align:middle;
-}
-.progress-fill{
-  height:100%;border-radius:2px;transition:width 0.3s;
-}
-.progress-fill.green{background:var(--green)}
-.progress-fill.accent{background:var(--accent)}
-.status-badge{
-  display:inline-flex;align-items:center;gap:4px;
-  padding:2px 10px;border-radius:10px;font-size:11px;font-weight:500;
-}
-.status-active{background:var(--green-bg);color:var(--green)}
-.status-warning{background:var(--accent-glow);color:var(--accent)}
-.status-closed{background:rgba(148,163,184,0.1);color:var(--text-muted)}
-/* Market Compare */
-.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.compare-card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:20px;
-}
-.compare-card-header{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.compare-card-title{font-size:15px;font-weight:600}
-.compare-metric{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(30,42,69,0.3);font-size:13px}
-.compare-metric:last-child{border-bottom:none}
-.compare-label{color:var(--text-secondary)}
-.compare-value{font-weight:600}
-/* Score Categories */
-.score-list{display:flex;flex-direction:column;gap:8px}
-.score-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.02)}
-.score-item:hover{background:rgba(255,255,255,0.04)}
-.score-cat{font-size:12px;color:var(--text-muted);width:70px;font-weight:500}
-.score-bar-wrap{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
-.score-bar-fill{height:100%;border-radius:3px;transition:width 0.6s ease}
-.score-num{font-size:13px;font-weight:600;width:36px;text-align:left;direction:ltr}
-/* Activity */
-.activity-list{display:flex;flex-direction:column;gap:2px}
-.activity-item{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 12px;border-radius:var(--radius-sm);
-  font-size:13px;border-bottom:1px solid rgba(30,42,69,0.3);
-}
-.activity-item:last-child{border-bottom:none}
-.activity-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.activity-dot.buy{background:var(--green)}
-.activity-dot.sell{background:var(--red)}
-.activity-dot.scan{background:var(--blue)}
-.activity-dot.info{background:var(--accent)}
-.activity-text{flex:1}
-.activity-time{font-size:11px;color:var(--text-muted);white-space:nowrap;direction:ltr}
-/* Status Bar */
-.status-bar{
-  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
-  padding:12px 16px;background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius-sm);margin-bottom:24px;font-size:13px;
-}
-.status-item{display:flex;align-items:center;gap:6px}
-.status-dot{width:8px;height:8px;border-radius:50%}
-.status-dot.green{background:var(--green)}
-.status-dot.yellow{background:var(--accent)}
-/* Footer */
-.footer{
-  margin-top:40px;padding-top:20px;border-top:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-  font-size:12px;color:var(--text-muted);
-}
-.footer-links{display:flex;gap:16px}
-.footer-links a{color:var(--text-muted);text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:var(--text-secondary)}
-/* Page visibility */
-.page{display:none}
-.page.active{display:block}
-/* Loading */
-.loading{
-  text-align:center;padding:60px 20px;color:var(--text-muted);
-}
-.loading-spinner{
-  width:40px;height:40px;border:3px solid var(--border);
-  border-top-color:var(--accent);border-radius:50%;
-  animation:spin 0.8s linear infinite;margin:0 auto 16px;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-/* Tooltip */
-[data-tooltip]{position:relative}
-[data-tooltip]:hover::after{
-  content:attr(data-tooltip);position:absolute;bottom:calc(100% + 6px);
-  right:50%;transform:translateX(50%);
-  background:#1e293b;color:var(--text-primary);padding:4px 10px;
-  border-radius:4px;font-size:11px;white-space:nowrap;z-index:10;
-  border:1px solid var(--border);
-}
-/* Error state */
-.error-state{text-align:center;padding:80px 20px}
-.error-state .error-icon{font-size:64px;margin-bottom:16px;opacity:0.5}
-.error-state h2{font-size:24px;margin-bottom:8px;color:var(--text-primary)}
-.error-state p{color:var(--text-muted);margin-bottom:24px}
-.error-state .retry-btn{
-  background:var(--accent);color:#0a0e17;border:none;padding:10px 28px;
-  border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;
-  transition:all 0.2s;
-}
-.error-state .retry-btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(245,158,11,0.3)}
-/* Stock Cards Grid */
-.stock-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-}
-.stock-card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius);padding:18px;
-  cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden;
-}
-.stock-card:hover{background:var(--bg-card-hover);border-color:var(--border-accent);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-.stock-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.stock-ticker{font-size:16px;font-weight:700}
-.stock-market{font-size:14px}
-.stock-name{font-size:12px;color:var(--text-secondary);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.stock-sector{font-size:11px;color:var(--text-muted);margin-bottom:12px}
-.stock-score-row{display:flex;align-items:center;justify-content:space-between}
-.stock-score{font-size:28px;font-weight:700;line-height:1}
-.stock-class{font-size:11px;padding:3px 8px;border-radius:6px;font-weight:500}
-/* Score colors */
-.score-green{color:var(--green)}
-.score-blue{color:var(--blue)}
-.score-amber{color:var(--accent)}
-.score-red{color:var(--red)}
-.class-green{background:var(--green-bg);color:var(--green)}
-.class-blue{background:var(--blue-bg);color:var(--blue)}
-.class-amber{background:var(--accent-glow);color:var(--accent)}
-.class-red{background:var(--red-bg);color:var(--red)}
-/* Stock Detail */
-.stock-detail{display:none}
-.stock-detail.active{display:block}
-.back-btn{
-  background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);
-  padding:8px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:inherit;
-  transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;margin-bottom:20px;
-}
-.back-btn:hover{background:var(--bg-card-hover);color:var(--text-primary)}
-.stock-detail-header{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:24px}
-.stock-detail-ticker{font-size:28px;font-weight:700}
-.stock-detail-name{font-size:16px;color:var(--text-secondary)}
-.stock-detail-sector{font-size:13px;color:var(--text-muted);padding:4px 10px;background:rgba(255,255,255,0.04);border-radius:6px}
-.stock-detail-class{padding:4px 12px;border-radius:8px;font-size:13px;font-weight:500}
-.stock-detail-body{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.stock-detail-left{display:flex;flex-direction:column;gap:16px}
-.stock-detail-right{display:flex;flex-direction:column;gap:16px}
-.score-gauge{
-  text-align:center;padding:24px;background:var(--bg-card);border:1px solid var(--border);
-  border-radius:var(--radius);
-}
-.score-gauge-number{font-size:64px;font-weight:800;line-height:1}
-.score-gauge-label{font-size:14px;color:var(--text-secondary);margin-top:8px}
-.score-gauge-sub{font-size:12px;color:var(--text-muted)}
-.method-bars{display:flex;flex-direction:column;gap:10px}
-.method-bar-item{display:flex;align-items:center;gap:10px}
-.method-label{font-size:12px;color:var(--text-secondary);width:80px;flex-shrink:0;font-weight:500}
-.method-bar-wrap{flex:1;height:10px;background:var(--border);border-radius:5px;overflow:hidden}
-.method-bar-fill{height:100%;border-radius:5px;transition:width 0.6s ease}
-.method-score{font-size:13px;font-weight:600;width:30px;text-align:left;direction:ltr}
-.classification-box{
-  padding:16px;background:rgba(255,255,255,0.02);border:1px solid var(--border);
-  border-radius:var(--radius);text-align:center;
-}
-.classification-box .class-title{font-size:16px;font-weight:600;margin-bottom:6px}
-.classification-box .class-desc{font-size:13px;color:var(--text-secondary);line-height:1.7}
-/* Score Distribution labels */
-.score-dist-labels{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:12px}
-.score-dist-label{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary)}
-.score-dist-dot{width:10px;height:10px;border-radius:50%}
-/* Compact KPI for Lite */
-.kpi-compact .kpi-card{padding:14px 16px}
-.kpi-compact .kpi-value{font-size:22px}
-.kpi-compact .kpi-label{font-size:11px;margin-bottom:4px}
-/* Error */
-.error-message{color:var(--red);font-size:13px;padding:12px;background:var(--red-bg);border-radius:var(--radius-sm);margin-bottom:16px;display:none}
-/* Responsive */
-@media(max-width:1024px){
-  .stock-grid{grid-template-columns:repeat(2,1fr)}
-  .kpi-grid-5{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:768px){
-  .app{padding:12px 14px 30px}
-  .kpi-grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .kpi-grid-5{grid-template-columns:repeat(2,1fr)}
-  .kpi-card{padding:14px}
-  .kpi-value{font-size:22px}
-  .grid-2,.grid-3,.compare-grid{grid-template-columns:1fr}
-  .header{flex-direction:column;align-items:flex-start}
-  .header-right{width:100%;justify-content:space-between}
-  .chart-container{height:200px}
-  .chart-container-lg{height:240px}
-  .card{padding:14px}
-  table{font-size:12px}
-  thead th, tbody td{padding:8px 10px}
-  .progress-bar{width:60px}
-  .stock-grid{grid-template-columns:repeat(2,1fr)}
-  .stock-detail-body{grid-template-columns:1fr}
-  .nav-tab{padding:8px 14px;font-size:13px}
-}
-@media(max-width:480px){
-  .kpi-grid{grid-template-columns:1fr 1fr;gap:8px}
-  .kpi-grid-5{grid-template-columns:1fr 1fr}
-  .kpi-card{padding:12px}
-  .kpi-value{font-size:18px}
-  .kpi-label{font-size:11px}
-  .section-title{font-size:16px}
-  .stock-grid{grid-template-columns:1fr}
-}
-/* Compact tables for Lite */
-.table-compact tbody td{padding:8px 10px;font-size:12px}
-.table-compact thead th{padding:6px 10px;font-size:10px}
-/* Hint for chart */
-.chart-empty{display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-muted);font-size:14px}
-/* Radial score ring */
-.radial-score{position:relative;width:140px;height:140px;margin:0 auto}
-.radial-score svg{transform:rotate(-90deg)}
-.radial-score .bg-circle{fill:none;stroke:var(--border);stroke-width:6}
-.radial-score .progress-circle{fill:none;stroke-width:6;stroke-linecap:round;transition:stroke-dashoffset 0.8s ease}
-.radial-score .score-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:38px;font-weight:800;text-align:center;line-height:1}
-.radial-score .score-text .score-label{display:block;font-size:11px;font-weight:400;color:var(--text-muted);margin-top:2px}
-/* Page transition */
-.page{animation:fadeIn 0.3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Osoul — تحليل أسهم متوافق مع الشريعة</title>
+
+  <!-- Google Fonts: Inter + Tajawal for Arabic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Inter', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0B1120;
+      color: #E2E8F0;
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0B1120; }
+    ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 3px; }
+
+    /* ============================================================
+       TYPOGRAPHY
+       ============================================================ */
+    h1, h2, h3 { font-family: 'Inter', 'Tajawal', sans-serif; font-weight: 600; line-height: 1.3; }
+    .heading-xl { font-size: 2.25rem; letter-spacing: -0.03em; }
+    .heading-lg { font-size: 1.75rem; letter-spacing: -0.02em; }
+    .heading-md { font-size: 1.25rem; letter-spacing: -0.01em; }
+    .heading-sm { font-size: 1rem; font-weight: 500; }
+
+    .text-muted { color: #64748B; }
+    .text-gold { color: #D4A853; }
+    .text-green { color: #10B981; }
+    .text-red { color: #EF4444; }
+    .text-blue { color: #3B82F6; }
+
+    .mono { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; }
+
+    /* ============================================================
+       LAYOUT
+       ============================================================ */
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+
+    /* ============================================================
+       NAVIGATION
+       ============================================================ */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11, 17, 32, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid #1E293B;
+      padding: 0 24px;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1400px; margin: 0 auto;
+      height: 64px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.25rem; font-weight: 700; color: #D4A853;
+      text-decoration: none;
+    }
+    .nav-logo svg { width: 28px; height: 28px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 8px 16px; border-radius: 6px;
+      font-size: 0.875rem; font-weight: 500; color: #94A3B8;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .nav-links a:hover { color: #E2E8F0; background: rgba(255,255,255,0.04); }
+    .nav-links a.active { color: #D4A853; background: rgba(212,168,83,0.08); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-actions .theme-btn {
+      background: none; border: 1px solid #1E293B; border-radius: 8px;
+      width: 36px; height: 36px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: #94A3B8; transition: all 0.2s;
+    }
+    .nav-actions .theme-btn:hover { border-color: #D4A853; color: #D4A853; }
+    .btn-gold {
+      background: #D4A853; color: #0B1120;
+      padding: 8px 20px; border-radius: 8px; border: none;
+      font-family: 'Inter', 'Tajawal', sans-serif;
+      font-size: 0.813rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-gold:hover { background: #C49A3F; transform: translateY(-1px); }
+
+    /* ============================================================
+       HERO HEADER
+       ============================================================ */
+    .hero {
+      padding: 40px 0 24px;
+      display: flex; align-items: flex-start; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .hero-left h1 {
+      font-size: 2.25rem; font-weight: 700; color: #F1F5F9;
+      letter-spacing: -0.03em; margin-bottom: 4px;
+    }
+    .hero-left h1 span { color: #D4A853; }
+    .hero-left .subtitle { color: #64748B; font-size: 0.938rem; }
+    .hero-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .status-badge {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 20px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      font-size: 0.813rem; font-weight: 500; color: #10B981;
+    }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #10B981; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .shariah-badge {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 20px;
+      background: rgba(212, 168, 83, 0.08);
+      border: 1px solid rgba(212, 168, 83, 0.2);
+      font-size: 0.75rem; font-weight: 500; color: #D4A853;
+    }
+
+    /* ============================================================
+       KPI GRID
+       ============================================================ */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: #111827; border: 1px solid #1E293B;
+      border-radius: 12px; padding: 16px 18px;
+      transition: all 0.25s; cursor: default;
+    }
+    .kpi-card:hover {
+      border-color: #D4A85344; transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212,168,83,0.06);
+    }
+    .kpi-label {
+      font-size: 0.75rem; font-weight: 500; color: #64748B;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+    .kpi-value {
+      font-size: 1.75rem; font-weight: 700; color: #F1F5F9;
+      letter-spacing: -0.03em; line-height: 1.1;
+      font-family: 'Inter', 'Tajawal', sans-serif;
+    }
+    .kpi-value.gold { color: #D4A853; }
+    .kpi-value.green { color: #10B981; }
+    .kpi-change {
+      font-size: 0.75rem; font-weight: 500; margin-top: 2px;
+    }
+
+    /* ============================================================
+       MARKET OVERVIEW
+       ============================================================ */
+    .market-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .market-card {
+      background: #111827; border: 1px solid #1E293B;
+      border-radius: 12px; padding: 20px;
+      transition: all 0.25s;
+    }
+    .market-card:hover { border-color: #D4A85344; }
+    .market-card.us { border-top: 2px solid #3B82F6; }
+    .market-card.kw { border-top: 2px solid #10B981; }
+    .market-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px;
+    }
+    .market-name {
+      font-size: 1rem; font-weight: 600; color: #F1F5F9;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .market-name .flag { font-size: 1.125rem; }
+    .market-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .market-stat .stat-label {
+      font-size: 0.688rem; font-weight: 500; color: #64748B;
+      text-transform: uppercase; letter-spacing: 0.03em;
+    }
+    .market-stat .stat-value {
+      font-size: 1rem; font-weight: 600; color: #E2E8F0;
+      margin-top: 2px;
+    }
+    .market-stat .stat-value .small { font-size: 0.75rem; font-weight: 400; color: #64748B; }
+
+    /* ============================================================
+       TABLE
+       ============================================================ */
+    .table-section {
+      background: #111827; border: 1px solid #1E293B;
+      border-radius: 12px; overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .table-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 20px; border-bottom: 1px solid #1E293B;
+    }
+    .table-header h3 { font-size: 1rem; font-weight: 600; color: #F1F5F9; }
+    .table-header .count {
+      font-size: 0.75rem; color: #64748B;
+      background: #1E293B; padding: 2px 10px; border-radius: 12px;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      padding: 10px 20px; text-align: right;
+      font-size: 0.688rem; font-weight: 600; color: #64748B;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      background: #0F172A; border-bottom: 1px solid #1E293B;
+    }
+    tbody tr {
+      border-bottom: 1px solid #1E293B;
+      transition: background 0.15s;
+    }
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: rgba(212,168,83,0.03); }
+    tbody td {
+      padding: 12px 20px; font-size: 0.875rem; color: #E2E8F0;
+    }
+    .ticker { font-family: 'JetBrains Mono', monospace; font-weight: 500; color: #D4A853; }
+    .company-name { color: #F1F5F9; font-weight: 500; }
+    .sector-tag {
+      font-size: 0.688rem; color: #64748B;
+      background: #1E293B; padding: 2px 10px; border-radius: 12px;
+    }
+    .score-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.813rem; font-weight: 600;
+    }
+    .score-high { background: rgba(16, 185, 129, 0.12); color: #10B981; }
+    .score-mid { background: rgba(212, 168, 83, 0.12); color: #D4A853; }
+    .score-low { background: rgba(239, 68, 68, 0.12); color: #EF4444; }
+    .signal-pill {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 12px; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+    .signal-buy { background: rgba(16, 185, 129, 0.1); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.2); }
+    .signal-hold { background: rgba(212, 168, 83, 0.1); color: #D4A853; border: 1px solid rgba(212, 168, 83, 0.2); }
+    .signal-sell { background: rgba(239, 68, 68, 0.1); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.2); }
+    .change-up { color: #10B981; font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+    .change-down { color: #EF4444; font-family: 'JetBrains Mono', monospace; font-weight: 500; }
+
+    /* ============================================================
+       BOTTOM GRID
+       ============================================================ */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .bottom-card {
+      background: #111827; border: 1px solid #1E293B;
+      border-radius: 12px; padding: 20px;
+      transition: border-color 0.25s;
+    }
+    .bottom-card:hover { border-color: #D4A85344; }
+    .bottom-card h3 {
+      font-size: 1rem; font-weight: 600; color: #F1F5F9;
+      margin-bottom: 16px;
+    }
+
+    /* Top Picks */
+    .pick-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0; border-bottom: 1px solid #1E293B;
+    }
+    .pick-item:last-child { border-bottom: none; }
+    .pick-rank {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #D4A853; color: #0B1120;
+      font-size: 0.75rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .pick-info { flex: 1; margin: 0 12px; }
+    .pick-name { font-size: 0.875rem; font-weight: 600; color: #F1F5F9; }
+    .pick-desc { font-size: 0.75rem; color: #64748B; }
+    .pick-return { font-size: 0.875rem; font-weight: 600; }
+    .halal-badge {
+      font-size: 0.625rem; padding: 1px 8px; border-radius: 10px;
+      background: rgba(16, 185, 129, 0.1); color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.2); margin-right: 8px;
+    }
+
+    /* Chart */
+    .chart-bars {
+      display: flex; align-items: flex-end; gap: 8px;
+      height: 120px; padding: 16px 0 0;
+    }
+    .chart-bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .chart-bar {
+      width: 100%; min-height: 4px; border-radius: 4px 4px 0 0;
+      transition: height 0.5s ease;
+    }
+    .chart-bar.pos { background: linear-gradient(to top, #10B98133, #10B981); }
+    .chart-bar.neg { background: linear-gradient(to top, #EF444433, #EF4444); }
+    .chart-label { font-size: 0.625rem; color: #64748B; font-weight: 500; }
+    .chart-value {
+      font-size: 0.625rem; font-family: 'JetBrains Mono', monospace;
+      color: #64748B;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer {
+      text-align: center; padding: 24px 0 40px;
+      border-top: 1px solid #1E293B;
+    }
+    footer p {
+      font-size: 0.813rem; color: #475569; line-height: 1.8;
+    }
+    footer .gold { color: #D4A853; }
+    footer .links { display: flex; justify-content: center; gap: 16px; margin-top: 8px; }
+    footer .links a {
+      font-size: 0.75rem; color: #64748B; text-decoration: none; transition: color 0.2s;
+    }
+    footer .links a:hover { color: #D4A853; }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1024px) {
+      .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .market-grid { grid-template-columns: 1fr; }
+      .bottom-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-left h1 { font-size: 1.75rem; }
+    }
+    @media (max-width: 480px) {
+      .kpi-grid { grid-template-columns: 1fr 1fr; }
+      .market-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ============================================================
+       DARK/LIGHT THEME
+       ============================================================ */
+    [data-theme="light"] {
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-hover: #F1F5F9;
+      --border: #E2E8F0;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #94A3B8;
+    }
+    [data-theme="light"] body { background: #F8FAFC; color: #0F172A; }
+    [data-theme="light"] nav { background: rgba(255,255,255,0.92); border-color: #E2E8F0; }
+    [data-theme="light"] .kpi-card { background: #FFFFFF; border-color: #E2E8F0; }
+    [data-theme="light"] .kpi-value { color: #0F172A; }
+    [data-theme="light"] .market-card { background: #FFFFFF; border-color: #E2E8F0; }
+    [data-theme="light"] .table-section { background: #FFFFFF; border-color: #E2E8F0; }
+    [data-theme="light"] .table-header { border-color: #E2E8F0; }
+    [data-theme="light"] thead th { background: #F8FAFC; border-color: #E2E8F0; color: #64748B; }
+    [data-theme="light"] tbody tr { border-color: #F1F5F9; }
+    [data-theme="light"] .bottom-card { background: #FFFFFF; border-color: #E2E8F0; }
+    [data-theme="light"] .pick-item { border-color: #F1F5F9; }
+    [data-theme="light"] .sector-tag { background: #F1F5F9; color: #64748B; }
+    [data-theme="light"] .nav-links a { color: #64748B; }
+    [data-theme="light"] .nav-links a:hover { background: #F1F5F9; color: #0F172A; }
+    [data-theme="light"] footer { border-color: #E2E8F0; }
+    [data-theme="light"] .hero-left h1 { color: #0F172A; }
+    [data-theme="light"] .table-header h3 { color: #0F172A; }
+    [data-theme="light"] .status-badge { background: rgba(16,185,129,0.05); }
+    [data-theme="light"] .shariah-badge { background: rgba(212,168,83,0.05); }
+    [data-theme="light"] .market-name { color: #0F172A; }
+    [data-theme="light"] tbody td { color: #475569; }
+    [data-theme="light"] .company-name { color: #0F172A; }
+    [data-theme="light"] .bottom-card h3 { color: #0F172A; }
+    [data-theme="light"] .pick-name { color: #0F172A; }
+    [data-theme="light"] .text-muted { color: #94A3B8; }
+    [data-theme="light"] .nav-logo { color: #C49A3F; }
+    [data-theme="light"] .nav-links a.active { color: #C49A3F; background: rgba(196,154,63,0.08); }
+  </style>
 </head>
 <body>
-<div class="app" id="app">
-  <!-- Loading State -->
-  <div class="loading" id="loading">
-    <div class="loading-spinner"></div>
-    <div>جاري تحميل البيانات...</div>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <svg viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="13" stroke="#D4A853" stroke-width="1.5" fill="none"/>
+          <path d="M9 14 L13 18 L19 10" stroke="#D4A853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        أصول
+      </a>
+      <div class="nav-links">
+        <a href="#" class="active">لوحة البيانات</a>
+        <a href="#">الأسهم</a>
+        <a href="#">التحليل</a>
+        <a href="#">المحفظة</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+        <button class="btn-gold">بدء التحليل</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <div class="hero">
+      <div class="hero-left">
+        <h1>لوحة <span>أصول</span></h1>
+        <p class="subtitle">تحليل أسهم متوافق مع الشريعة الإسلامية — 11 ذو الحجة 1447</p>
+      </div>
+      <div class="hero-right">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          السوق مفتوح
+        </div>
+        <div class="shariah-badge">
+          ✓ متوافق مع الشريعة
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         KPI GRID
+         ============================================================ -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">الأسهم US</div>
+        <div class="kpi-value gold">247</div>
+        <div class="kpi-change text-green">▲ 12 هذا الشهر</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">الأسهم KW</div>
+        <div class="kpi-value gold">89</div>
+        <div class="kpi-change text-green">▲ 5 هذا الشهر</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">صفقات نشطة</div>
+        <div class="kpi-value">34</div>
+        <div class="kpi-change text-muted">US: 18 · KW: 16</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">نسبة نجاح</div>
+        <div class="kpi-value green">72.4%</div>
+        <div class="kpi-change text-green">▲ 2.1% هذا الشهر</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">العائد الإجمالي</div>
+        <div class="kpi-value green">+14.8%</div>
+        <div class="kpi-change text-muted">US: +16.2% · KW: +12.1%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Sharpe Ratio</div>
+        <div class="kpi-value gold">1.86</div>
+        <div class="kpi-change text-muted">متوسط المخاطرة</div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         MARKET OVERVIEW
+         ============================================================ -->
+    <div class="market-grid">
+      <div class="market-card us">
+        <div class="market-header">
+          <div class="market-name"><span class="flag">🇺🇸</span> السوق الأمريكي</div>
+          <span style="color:#3B82F6;font-size:0.813rem;font-weight:500;">S&P 500 ▲ 1.2%</span>
+        </div>
+        <div class="market-stats">
+          <div class="market-stat"><div class="stat-label">صفقات مفتوحة</div><div class="stat-value">18</div></div>
+          <div class="market-stat"><div class="stat-label">نسبة نجاح</div><div class="stat-value">68.9%</div></div>
+          <div class="market-stat"><div class="stat-label">العائد</div><div class="stat-value text-green">+16.2%</div></div>
+          <div class="market-stat"><div class="stat-label">Max DD</div><div class="stat-value">1.70% <span class="small">(2026)</span></div></div>
+        </div>
+      </div>
+      <div class="market-card kw">
+        <div class="market-header">
+          <div class="market-name"><span class="flag">🇰🇼</span> السوق الكويتي</div>
+          <span style="color:#10B981;font-size:0.813rem;font-weight:500;">B Premier ▲ 0.8%</span>
+        </div>
+        <div class="market-stats">
+          <div class="market-stat"><div class="stat-label">صفقات مفتوحة</div><div class="stat-value">16</div></div>
+          <div class="market-stat"><div class="stat-label">نسبة نجاح</div><div class="stat-value">76.2%</div></div>
+          <div class="market-stat"><div class="stat-label">العائد</div><div class="stat-value text-green">+12.1%</div></div>
+          <div class="market-stat"><div class="stat-label">Max DD</div><div class="stat-value">3.94% <span class="small">(2026)</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         STOCK TABLE
+         ============================================================ -->
+    <div class="table-section">
+      <div class="table-header">
+        <h3>قائمة الأسهم — أعلى تقييم</h3>
+        <span class="count">36 سهم</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>التقييم</th>
+              <th>السهم</th>
+              <th>الشركة</th>
+              <th>القطاع</th>
+              <th>B/P/E</th>
+              <th>الإشارة</th>
+              <th>التغير</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="score-badge score-high">9.2</span></td>
+              <td class="ticker">KFH</td>
+              <td class="company-name">بيت التمويل الكويتي</td>
+              <td><span class="sector-tag">بنوك</span></td>
+              <td class="mono">6.8 / 8.2 / 7.1</td>
+              <td><span class="signal-pill signal-buy">▲ شراء</span></td>
+              <td class="change-up">+3.2%</td>
+            </tr>
+            <tr>
+              <td><span class="score-badge score-high">8.9</span></td>
+              <td class="ticker">AAPL</td>
+              <td class="company-name">Apple Inc.</td>
+              <td><span class="sector-tag">تكنولوجيا</span></td>
+              <td class="mono">7.2 / 8.5 / 7.8</td>
+              <td><span class="signal-pill signal-buy">▲ شراء</span></td>
+              <td class="change-up">+1.8%</td>
+            </tr>
+            <tr>
+              <td><span class="score-badge score-high">8.7</span></td>
+              <td class="ticker">NBK</td>
+              <td class="company-name">بنك الكويت الوطني</td>
+              <td><span class="sector-tag">بنوك</span></td>
+              <td class="mono">6.5 / 7.9 / 6.8</td>
+              <td><span class="signal-pill signal-buy">▲ شراء</span></td>
+              <td class="change-up">+2.1%</td>
+            </tr>
+            <tr>
+              <td><span class="score-badge score-mid">7.4</span></td>
+              <td class="ticker">MSFT</td>
+              <td class="company-name">Microsoft Corp.</td>
+              <td><span class="sector-tag">تكنولوجيا</span></td>
+              <td class="mono">6.1 / 7.0 / 6.5</td>
+              <td><span class="signal-pill signal-hold">● انتظار</span></td>
+              <td class="change-up">+0.5%</td>
+            </tr>
+            <tr>
+              <td><span class="score-badge score-mid">7.1</span></td>
+              <td class="ticker">ZAIN</td>
+              <td class="company-name">مجموعة زين للاتصالات</td>
+              <td><span class="sector-tag">اتصالات</span></td>
+              <td class="mono">5.8 / 7.2 / 6.3</td>
+              <td><span class="signal-pill signal-hold">● انتظار</span></td>
+              <td class="change-down">-0.8%</td>
+            </tr>
+            <tr>
+              <td><span class="score-badge score-low">5.2</span></td>
+              <td class="ticker">MABANEE</td>
+              <td class="company-name">مجموعة مبانے القابضة</td>
+              <td><span class="sector-tag">عقار</span></td>
+              <td class="mono">4.1 / 5.5 / 4.8</td>
+              <td><span class="signal-pill signal-sell">▼ بيع</span></td>
+              <td class="change-down">-2.3%</td>
+            </tr>
+            <tr>
+              <td><span class="score-badge score-high">8.1</span></td>
+              <td class="ticker">MSFT</td>
+              <td class="company-name">Microsoft Corp.</td>
+              <td><span class="sector-tag">تكنولوجيا</span></td>
+              <td class="mono">6.8 / 7.8 / 7.2</td>
+              <td><span class="signal-pill signal-buy">▲ شراء</span></td>
+              <td class="change-up">+1.2%</td>
+            </tr>
+            <tr>
+              <td><span class="score-badge score-mid">6.8</span></td>
+              <td class="ticker">AGLT</td>
+              <td class="company-name">مجموعة أجيليتي</td>
+              <td><span class="sector-tag">خدمات لوجستية</span></td>
+              <td class="mono">5.6 / 7.0 / 6.1</td>
+              <td><span class="signal-pill signal-hold">● انتظار</span></td>
+              <td class="change-up">+0.3%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         BOTTOM GRID: Top Picks + Chart
+         ============================================================ -->
+    <div class="bottom-grid">
+      <!-- Top Picks -->
+      <div class="bottom-card">
+        <h3>⭐ أفضل التوصيات</h3>
+        <div class="pick-item">
+          <span class="pick-rank">1</span>
+          <div class="pick-info">
+            <div class="pick-name">KFH <span class="halal-badge">✓ حلال</span></div>
+            <div class="pick-desc">بيت التمويل الكويتي — تقييم 9.2</div>
+          </div>
+          <span class="pick-return text-green">+3.2%</span>
+        </div>
+        <div class="pick-item">
+          <span class="pick-rank">2</span>
+          <div class="pick-info">
+            <div class="pick-name">AAPL <span class="halal-badge">✓ حلال</span></div>
+            <div class="pick-desc">Apple Inc. — تقييم 8.9</div>
+          </div>
+          <span class="pick-return text-green">+1.8%</span>
+        </div>
+        <div class="pick-item">
+          <span class="pick-rank">3</span>
+          <div class="pick-info">
+            <div class="pick-name">NBK <span class="halal-badge">✓ حلال</span></div>
+            <div class="pick-desc">بنك الكويت الوطني — تقييم 8.7</div>
+          </div>
+          <span class="pick-return text-green">+2.1%</span>
+        </div>
+      </div>
+
+      <!-- Performance Chart -->
+      <div class="bottom-card">
+        <h3>📈 الأداء الشهري (2026)</h3>
+        <div style="display:flex;justify-content:space-between;font-size:0.75rem;color:#64748B;margin-bottom:8px;">
+          <span>العائد التراكمي: <span class="text-green">+14.8%</span></span>
+          <span>YTD</span>
+        </div>
+        <div class="chart-bars">
+          <div class="chart-bar-group">
+            <div class="chart-value">+2.1%</div>
+            <div class="chart-bar pos" style="height:42px"></div>
+            <div class="chart-label">يناير</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">+1.5%</div>
+            <div class="chart-bar pos" style="height:30px"></div>
+            <div class="chart-label">فبراير</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">-0.8%</div>
+            <div class="chart-bar neg" style="height:16px"></div>
+            <div class="chart-label">مارس</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">+3.2%</div>
+            <div class="chart-bar pos" style="height:64px"></div>
+            <div class="chart-label">أبريل</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">+2.8%</div>
+            <div class="chart-bar pos" style="height:56px"></div>
+            <div class="chart-label">ماي</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">+1.9%</div>
+            <div class="chart-bar pos" style="height:38px"></div>
+            <div class="chart-label">يونيو</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">+4.1%</div>
+            <div class="chart-bar pos" style="height:82px"></div>
+            <div class="chart-label">يوليو</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">+1.2%</div>
+            <div class="chart-bar pos" style="height:24px"></div>
+            <div class="chart-label">أغسطس</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">-1.5%</div>
+            <div class="chart-bar neg" style="height:30px"></div>
+            <div class="chart-label">سبتمبر</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">+0.5%</div>
+            <div class="chart-bar pos" style="height:10px"></div>
+            <div class="chart-label">أكتوبر</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">+1.8%</div>
+            <div class="chart-bar pos" style="height:36px"></div>
+            <div class="chart-label">نوفمبر</div>
+          </div>
+          <div class="chart-bar-group">
+            <div class="chart-value">+2.3%</div>
+            <div class="chart-bar pos" style="height:46px"></div>
+            <div class="chart-label">ديسمبر</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
 
-<script>
-// ============================================================
-// LANGUAGE
-// ============================================================
-let currentLang = localStorage.getItem('osoul-lang') || 'ar';
-
-function t(ar, en) {
-  return currentLang === 'ar' ? ar : (en || ar);
-}
-
-// ============================================================
-// HELPERS
-// ============================================================
-function formatCurrency(val, market) {
-  if (market === 'KW') return val.toFixed(3) + ' د.ك';
-  return '$' + val.toFixed(2);
-}
-
-function formatPercent(val) {
-  const sign = val >= 0 ? '+' : '';
-  return sign + val.toFixed(2) + '%';
-}
-
-function formatDate(dateStr) {
-  if (!dateStr) return '—';
-  const d = new Date(dateStr);
-  return d.toLocaleDateString(currentLang === 'ar' ? 'ar-KW' : 'en-US', {
-    month: 'short', day: 'numeric', year: 'numeric'
-  });
-}
-
-function timeSince(dateStr) {
-  const now = new Date();
-  const d = new Date(dateStr);
-  if (isNaN(d.getTime())) return t('غير معروف', 'Unknown');
-  const diff = Math.abs(Math.floor((now - d) / 60000));
-  if (diff < 60) return t(`منذ ${diff} دقيقة`, `${diff}m ago`);
-  const hrs = Math.floor(diff / 60);
-  if (hrs < 24) return t(`منذ ${hrs} ساعة`, `${hrs}h ago`);
-  const days = Math.floor(hrs / 24);
-  if (days < 30) return t(`منذ ${days} يوم`, `${days}d ago`);
-  return formatDate(dateStr);
-}
-
-function getScoreColor(score) {
-  if (score >= 8) return 'score-green';
-  if (score >= 6) return 'score-blue';
-  if (score >= 4) return 'score-amber';
-  return 'score-red';
-}
-
-function getScoreHex(score) {
-  if (score >= 8) return '#22c55e';
-  if (score >= 6) return '#3b82f6';
-  if (score >= 4) return '#f59e0b';
-  return '#ef4444';
-}
-
-function getClassClass(classification) {
-  const c = classification || '';
-  if (c.includes('ممتاز') || c === 'Excellent') return 'class-green';
-  if (c.includes('جيد') || c.includes('Good')) return 'class-blue';
-  if (c.includes('متوسط') || c.includes('Average')) return 'class-amber';
-  return 'class-red';
-}
-
-function getClassColor(classification) {
-  const c = classification || '';
-  if (c.includes('ممتاز') || c === 'Excellent') return '#22c55e';
-  if (c.includes('جيد') || c.includes('Good')) return '#3b82f6';
-  if (c.includes('متوسط') || c.includes('Average')) return '#f59e0b';
-  return '#ef4444';
-}
-
-// ============================================================
-// CHART MANAGER
-// ============================================================
-let chartInstances = {};
-
-function destroyCharts() {
-  Object.values(chartInstances).forEach(c => { try { c.destroy(); } catch(e) {} });
-  chartInstances = {};
-}
-
-// ============================================================
-// ROUTER
-// ============================================================
-function getRoute() {
-  const hash = window.location.hash || '#dashboard';
-  if (hash.startsWith('#stock=')) return { page: 'stock', ticker: hash.replace('#stock=', '') };
-  if (hash === '#lite') return { page: 'lite' };
-  if (hash === '#stocks') return { page: 'stocks' };
-  return { page: 'dashboard' };
-}
-
-function navigateTo(hash) {
-  window.location.hash = hash;
-}
-
-window.addEventListener('hashchange', () => {
-  const data = window._d;
-  if (data) render(data);
-});
-
-// ============================================================
-// RENDER ENGINE
-// ============================================================
-function render(data) {
-  const app = document.getElementById('app');
-  if (!data) {
-    app.innerHTML = `<div class="loading"><div class="loading-spinner"></div><div>${t('جاري تحميل البيانات...', 'Loading data...')}</div></div>`;
-    return;
-  }
-  const d = data;
-  const route = getRoute();
-  const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-  const langAttr = currentLang === 'ar' ? 'ar' : 'en';
-  const m = d.markets;
-  const s = d.summary;
-
-  // Destroy all charts before re-rendering
-  destroyCharts();
-
-  app.innerHTML = `
-    <!-- Header -->
-    <header class="header" dir="${dir}">
-      <div class="header-left">
-        <a href="#" class="logo" onclick="navigateTo('#dashboard');return false">
-          <div class="logo-icon">أ</div>
-          <span>${t('أصول', 'Osoul')} <span style="font-weight:400;background:linear-gradient(135deg,var(--text-secondary),var(--text-muted));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:16px">${t('تداول ورقي', 'Paper Trading')}</span></span>
-        </a>
-        <span class="badge badge-live">${t('مباشر', 'LIVE')}</span>
-      </div>
-      <div class="header-right">
-        <span class="update-time">🔄 ${t('آخر تحديث', 'Updated')}: ${timeSince(d.lastUpdated)}</span>
-        <button class="lang-toggle" onclick="toggleLang()" id="langBtn">
-          ${currentLang === 'ar' ? 'EN' : 'AR'}
-        </button>
-      </div>
-    </header>
-
-    <!-- Navigation Tabs -->
-    <nav class="nav-tabs" dir="${dir}">
-      <button class="nav-tab ${route.page === 'dashboard' ? 'active' : ''}" onclick="navigateTo('#dashboard')">
-        <span class="tab-icon">📊</span> ${t('لوحة البيانات', 'Dashboard')}
-      </button>
-      <button class="nav-tab ${route.page === 'lite' ? 'active' : ''}" onclick="navigateTo('#lite')">
-        <span class="tab-icon">📋</span> ${t('الموجز', 'Lite')}
-      </button>
-      <button class="nav-tab ${route.page === 'stocks' || route.page === 'stock' ? 'active' : ''}" onclick="navigateTo('#stocks')">
-        <span class="tab-icon">📈</span> ${t('تحليل الأسهم', 'Stocks')}
-      </button>
-    </nav>
-
-    <!-- Loading indicator for page transitions -->
-    <div id="pageContainer">
-      ${renderPage(d, route)}
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <p>
+      <span class="gold">أصول</span> — تحليل أسهم متوافق مع الشريعة الإسلامية
+    </p>
+    <p style="font-size:0.75rem;color:#475569;margin-top:4px;">
+      للاستشارات الشرعية: هيئة الرقابة الشرعية لأصول
+    </p>
+    <div class="links">
+      <a href="#">الخصوصية</a>
+      <a href="#">هيئة الشريعة</a>
+      <a href="#">اتصل بنا</a>
     </div>
+  </footer>
 
-    <!-- Footer -->
-    <footer class="footer" dir="${dir}">
-      <span>Osoul ${t('نظام التداول الورقي', 'Paper Trading System')} v2.5.0 • ${t('جميع البيانات ورقية وغير مالية', 'All data is paper trading, not financial advice')}</span>
-      <div class="footer-links">
-        <a href="#" onclick="navigateTo('#dashboard');return false">${t('عن النظام', 'About')}</a>
-        <a href="#" onclick="navigateTo('#stocks');return false">${t('الأسهم', 'Stocks')}</a>
-        <a href="#" onclick="navigateTo('#lite');return false">${t('موجز', 'Lite')}</a>
-      </div>
-    </footer>
-  `;
-
-  // Render charts after DOM update (only for dashboard page)
-  if (route.page === 'dashboard') {
-    setTimeout(() => renderDashboardCharts(d), 100);
-  } else if (route.page === 'stock') {
-    setTimeout(() => renderStockCharts(d, route.ticker), 100);
-  }
-}
-
-// ============================================================
-// PAGE RENDERERS
-// ============================================================
-function renderPage(d, route) {
-  switch(route.page) {
-    case 'lite': return renderLite(d);
-    case 'stocks': return renderStocksList(d);
-    case 'stock': return renderStockDetail(d, route.ticker);
-    default: return renderDashboard(d);
-  }
-}
-
-// ============================================================
-// PAGE 1 — DASHBOARD (full)
-// ============================================================
-function renderDashboard(d) {
-  const s = d.summary;
-  const m = d.markets;
-  const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-
-  return `
-    <!-- Status Bar -->
-    <div class="status-bar" dir="${dir}">
-      <div class="status-item">
-        <span class="status-dot green"></span>
-        <span>${t('النظام', 'System')}: <strong>${t('فعال', 'Active')}</strong></span>
-      </div>
-      <div class="status-item">
-        <span>📡</span>
-        <span>${t('المسح القادم', 'Next Scan')}: <strong dir="ltr">${formatDate(d.system.nextScan)}</strong></span>
-      </div>
-      <div class="status-item">
-        <span>⏱</span>
-        <span>${t('وقت التشغيل', 'Uptime')}: <strong>${d.system.uptime}</strong></span>
-      </div>
-      <div class="status-item" style="margin-right:auto">
-        <span>📊</span>
-        <span>${m.US.activeTickers + m.KW.activeTickers} ${t('سهم تحت المراقبة', 'stocks monitored')}</span>
-      </div>
-    </div>
-
-    <!-- KPI Cards -->
-    <div class="kpi-grid" dir="${dir}">
-      <div class="kpi-card" data-tooltip="${t('إجمالي الصفقات المفتوحة حالياً', 'Currently open positions')}">
-        <div class="kpi-icon">📋</div>
-        <div class="kpi-label">${t('الصفقات المفتوحة', 'Open Trades')}</div>
-        <div class="kpi-value">${s.openTrades}</div>
-        <div class="kpi-sub">${t('قيد التنفيذ', 'In progress')}</div>
-      </div>
-      <div class="kpi-card" data-tooltip="${t('إجمالي الصفقات المنفذة', 'Total executed trades')}">
-        <div class="kpi-icon">📊</div>
-        <div class="kpi-label">${t('إجمالي الصفقات', 'Total Trades')}</div>
-        <div class="kpi-value">${s.totalTrades}</div>
-        <div class="kpi-sub">${s.winCount}W / ${s.lossCount}L</div>
-      </div>
-      <div class="kpi-card" data-tooltip="${t('نسبة الصفقات الرابحة', 'Winning trade ratio')}">
-        <div class="kpi-icon">🎯</div>
-        <div class="kpi-label">${t('نسبة النجاح', 'Win Rate')}</div>
-        <div class="kpi-value text-green">${s.winRate}%</div>
-        <div class="kpi-sub">${s.totalTrades} ${t('صفقة', 'trades')}</div>
-      </div>
-      <div class="kpi-card" data-tooltip="${t('نسبة شارب - السوق الأمريكي', 'Sharpe Ratio - US Market')}">
-        <div class="kpi-icon">🇺🇸</div>
-        <div class="kpi-label">Sharpe US</div>
-        <div class="kpi-value text-blue">${s.sharpeUS.toFixed(2)}</div>
-        <div class="kpi-sub">${t('السوق الأمريكي', 'US Market')}</div>
-      </div>
-      <div class="kpi-card" data-tooltip="${t('نسبة شارب - السوق الكويتي', 'Sharpe Ratio - Kuwait Market')}">
-        <div class="kpi-icon">🇰🇼</div>
-        <div class="kpi-label">Sharpe KW</div>
-        <div class="kpi-value text-accent">${s.sharpeKW.toFixed(2)}</div>
-        <div class="kpi-sub">${t('السوق الكويتي', 'KW Market')}</div>
-      </div>
-    </div>
-
-    <!-- Open Positions -->
-    <div class="section">
-      <div class="card">
-        <div class="section-header">
-          <div>
-            <div class="section-title">${t('الصفقات المفتوحة', 'Open Positions')}</div>
-            <div class="section-subtitle">${t('آخر تحديث', 'Updated')}: ${timeSince(d.lastUpdated)}</div>
-          </div>
-        </div>
-        <div class="table-wrap">
-          <table dir="${dir}">
-            <thead>
-              <tr>
-                <th>${t('السهم', 'Ticker')}</th>
-                <th>${t('السوق', 'Mkt')}</th>
-                <th>${t('تاريخ الدخول', 'Entry')}</th>
-                <th>${t('سعر الدخول', 'Entry $')}</th>
-                <th>${t('السعر الحالي', 'Current')}</th>
-                <th>${t('الربح/الخسارة', 'P&L')}</th>
-                <th>${t('T1 (7%)', 'T1 (7%)')}</th>
-                <th>${t('T2 (12%)', 'T2 (12%)')}</th>
-                <th>${t('التقدم', 'Progress')}</th>
-                <th>${t('الحالة', 'Status')}</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${d.openPositions.map(p => {
-                const pnl = ((p.currentPrice - p.entryPrice) / p.entryPrice) * 100;
-                const progress = Math.min(100, Math.max(0, (pnl / 12) * 100));
-                const hits = [p.target1Hit, p.target2Hit].filter(Boolean).length;
-                return `<tr>
-                  <td><strong>${p.ticker}</strong>${p.name ? `<br><span style="font-size:11px;color:var(--text-muted)">${p.name}</span>` : ''}</td>
-                  <td><span class="ticker-badge ${p.market === 'US' ? 'ticker-us' : 'ticker-kw'}">${p.market === 'US' ? '🇺🇸' : '🇰🇼'} ${p.market}</span></td>
-                  <td dir="ltr">${formatDate(p.entryDate)}</td>
-                  <td dir="ltr">${formatCurrency(p.entryPrice, p.market)}</td>
-                  <td dir="ltr">${formatCurrency(p.currentPrice, p.market)}</td>
-                  <td class="${pnl >= 0 ? 'text-green' : 'text-red'}" dir="ltr"><strong>${formatPercent(pnl)}</strong></td>
-                  <td style="color:${p.target1Hit ? 'var(--green)' : 'var(--text-muted)'}">${p.target1Hit ? '✅' : '🎯'} ${formatPercent(7)}</td>
-                  <td style="color:${p.target2Hit ? 'var(--green)' : 'var(--text-muted)'}">${p.target2Hit ? '✅' : '🎯'} ${formatPercent(12)}</td>
-                  <td>
-                    <div style="display:flex;align-items:center;gap:6px">
-                      <span class="progress-bar"><span class="progress-fill ${hits > 0 ? 'green' : 'accent'}" style="width:${progress}%"></span></span>
-                      <span style="font-size:11px;color:var(--text-muted)">${Math.round(progress)}%</span>
-                    </div>
-                  </td>
-                  <td><span class="status-badge ${p.status === 'OPEN' || p.status === 'active' ? 'status-active' : 'status-closed'}">${p.status === 'OPEN' || p.status === 'active' ? t('مفتوح', 'Open') : p.status}</span></td>
-                </tr>`
-              }).join('')}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- Charts Row -->
-    <div class="grid-2">
-      <!-- Equity Curve -->
-      <div class="card card-chart">
-        <div class="section-header">
-          <div>
-            <div class="section-title">${t('منحنى رأس المال', 'Equity Curve')}</div>
-            <div class="section-subtitle">${t('تطور المحفظة الورقية', 'Paper portfolio growth')}</div>
-          </div>
-        </div>
-        <div class="chart-container chart-container-lg">
-          <canvas id="equityChart"></canvas>
-        </div>
-      </div>
-      <!-- Monthly Returns -->
-      <div class="card card-chart">
-        <div class="section-header">
-          <div>
-            <div class="section-title">${t('العوائد الشهرية', 'Monthly Returns')}</div>
-            <div class="section-subtitle">${t('نسبة الربح/الخسارة شهرياً', 'Monthly P&L %')}</div>
-          </div>
-        </div>
-        <div class="chart-container chart-container-lg">
-          <canvas id="returnsChart"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <!-- Market Comparison + Scores -->
-    <div class="grid-2" style="margin-top:16px">
-      <!-- Market Compare -->
-      <div class="card">
-        <div class="section-header">
-          <div>
-            <div class="section-title">${t('مقارنة الأسواق', 'Market Comparison')}</div>
-            <div class="section-subtitle">${t('US vs الكويت — نتائج الـ Walk-Forward', 'Walk-Forward results')}</div>
-          </div>
-        </div>
-        <div class="compare-grid">
-          ${['US', 'KW'].map(k => {
-            const mi = m[k];
-            const isUS = k === 'US';
-            return `<div class="compare-card" style="background:${isUS ? 'rgba(59,130,246,0.04)' : 'rgba(245,158,11,0.04)'}">
-              <div class="compare-card-header">
-                <span style="font-size:22px">${mi.flag}</span>
-                <span class="compare-card-title">${isUS ? 'US Market' : t('سوق الكويت', 'Kuwait Market')}</span>
-              </div>
-              <div class="compare-metric">
-                <span class="compare-label">${t('عدد الأسهم', 'Tickers')}</span>
-                <span class="compare-value">${mi.activeTickers}</span>
-              </div>
-              <div class="compare-metric">
-                <span class="compare-label">${t('الصفقات', 'Trades')}</span>
-                <span class="compare-value">${mi.totalTrades} (${mi.winRate}% WR)</span>
-              </div>
-              <div class="compare-metric">
-                <span class="compare-label">${t('العائد السنوي', 'Annual Return')}</span>
-                <span class="compare-value ${mi.annualReturn >= 0 ? 'text-green' : 'text-red'}">${formatPercent(mi.annualReturn)}</span>
-              </div>
-              <div class="compare-metric">
-                <span class="compare-label">${t('المؤشر', 'vs Benchmark')} (${mi.benchmarkName})</span>
-                <span class="compare-value ${mi.annualReturn >= mi.benchmarkReturn ? 'text-green' : 'text-red'}">${formatPercent(mi.annualReturn - mi.benchmarkReturn)}</span>
-              </div>
-              <div class="compare-metric">
-                <span class="compare-label">Sharpe Ratio</span>
-                <span class="compare-value ${mi.sharpe >= 2 ? 'text-green' : 'text-accent'}">${mi.sharpe.toFixed(2)}</span>
-              </div>
-              <div class="compare-metric">
-                <span class="compare-label">Max Drawdown</span>
-                <span class="compare-value text-red">${mi.maxDrawdown.toFixed(2)}%</span>
-              </div>
-            </div>`
-          }).join('')}
-        </div>
-      </div>
-
-      <!-- Score Distribution + Breakdown -->
-      <div>
-        <!-- Score Breakdown (Horizontal Bars) -->
-        <div class="card" style="margin-bottom:12px">
-          <div class="section-header">
-            <div>
-              <div class="section-title">${t('تحليل التصنيف', 'Score Breakdown')}</div>
-              <div class="section-subtitle">${t('متوسط Scores طرق التحليل', 'Avg scores by method')}</div>
-            </div>
-          </div>
-          <div class="chart-container chart-container-sm" style="height:180px">
-            <canvas id="breakdownChart"></canvas>
-          </div>
-        </div>
-
-        <!-- Score Distribution -->
-        <div class="card">
-          <div class="section-header">
-            <div>
-              <div class="section-title">${t('توزيع التصنيف', 'Score Distribution')}</div>
-              <div class="section-subtitle">${t('توزيع الـ 39 سهم', 'Distribution of 39 stocks')}</div>
-            </div>
-          </div>
-          <div class="chart-container chart-container-sm" style="height:180px">
-            <canvas id="categoryChart"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Recent Activity + Last Closed Trades -->
-    <div class="grid-2" style="margin-top:16px">
-      <!-- Activity -->
-      <div class="card">
-        <div class="section-header">
-          <div>
-            <div class="section-title">${t('آخر النشاطات', 'Recent Activity')}</div>
-            <div class="section-subtitle">${t('آخر الأحداث', 'Last events')}</div>
-          </div>
-        </div>
-        <div class="activity-list">
-          ${d.activity.slice(0, 8).map(a => `
-            <div class="activity-item">
-              <span class="activity-dot ${a.type}"></span>
-              <span class="activity-text">${a.text}</span>
-              <span class="activity-time" dir="ltr">${a.time}</span>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-
-      <!-- Closed Trades -->
-      <div class="card">
-        <div class="section-header">
-          <div>
-            <div class="section-title">${t('آخر الصفقات المغلقة', 'Last Closed Trades')}</div>
-            <div class="section-subtitle">${t('آخر الصفقات', 'Last trades')}</div>
-          </div>
-        </div>
-        <div class="table-wrap">
-          <table dir="${dir}">
-            <thead>
-              <tr>
-                <th>${t('السهم', 'Ticker')}</th>
-                <th>${t('السوق', 'Mkt')}</th>
-                <th>${t('تاريخ الخروج', 'Exit')}</th>
-                <th>${t('الربح', 'P&L')}</th>
-                <th>${t('المدة', 'Days')}</th>
-                <th>${t('النتيجة', 'Result')}</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${d.lastTrades.map(tr => `
-                <tr>
-                  <td><strong>${tr.ticker}</strong></td>
-                  <td><span class="ticker-badge ${tr.market === 'US' ? 'ticker-us' : 'ticker-kw'}">${tr.market === 'US' ? '🇺🇸' : '🇰🇼'}</span></td>
-                  <td dir="ltr">${formatDate(tr.exitDate)}</td>
-                  <td class="${tr.pnl >= 0 ? 'text-green' : 'text-red'}" dir="ltr">${formatPercent(tr.pnl)}</td>
-                  <td dir="ltr">${tr.days}</td>
-                  <td><span class="status-badge ${tr.result === 'win' ? 'status-active' : 'status-closed'}">${tr.result === 'win' ? t('ربح ✅', 'Win ✅') : t('خسارة ❌', 'Loss ❌')}</span></td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-// ============================================================
-// PAGE 2 — LITE (مبسط)
-// ============================================================
-function renderLite(d) {
-  const s = d.summary;
-  const m = d.markets;
-  const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-
-  // Status
-  const nextScanDate = d.system.nextScan ? formatDate(d.system.nextScan) : '—';
-  const systemStatus = d.system.status === 'active' ? t('فعال', 'Active') : t('معطل', 'Inactive');
-  const statusDotClass = d.system.status === 'active' ? 'green' : 'yellow';
-
-  // Compute days in trade for open positions
-  function daysInTrade(entryDate) {
-    if (!entryDate) return '—';
-    const entry = new Date(entryDate);
-    const now = new Date();
-    const diff = Math.floor((now - entry) / (1000*60*60*24));
-    return diff >= 0 ? diff : '—';
-  }
-
-  return `
-    <!-- Minimal Header -->
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px">
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="logo-icon" style="width:32px;height:32px;font-size:14px;border-radius:8px">أ</div>
-        <span style="font-size:18px;font-weight:700">${t('أصول — الموجز', 'Osoul — Lite')}</span>
-      </div>
-      <span class="update-time">🔄 ${timeSince(d.lastUpdated)}</span>
-    </div>
-
-    <!-- Status Bar (compact) -->
-    <div class="status-bar" style="margin-bottom:16px;padding:10px 14px" dir="${dir}">
-      <div class="status-item">
-        <span class="status-dot ${statusDotClass}"></span>
-        <span>${t('النظام', 'System')}: <strong>${systemStatus}</strong></span>
-      </div>
-      <div class="status-item">
-        <span>📡</span>
-        <span>${t('المسح القادم', 'Next Scan')}: <strong dir="ltr">${nextScanDate}</strong></span>
-      </div>
-      <div class="status-item" style="margin-right:auto">
-        <span>📊</span>
-        <span>${m.US.activeTickers + m.KW.activeTickers} ${t('سهم', 'stocks')} • ${s.openTrades} ${t('مفتوح', 'open')}</span>
-      </div>
-    </div>
-
-    <!-- Compact KPI row -->
-    <div class="kpi-grid kpi-grid-5 kpi-compact" dir="${dir}" style="margin-bottom:16px">
-      <div class="kpi-card">
-        <div class="kpi-label">${t('الصفقات المفتوحة', 'Open')}</div>
-        <div class="kpi-value">${s.openTrades}</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">${t('إجمالي الصفقات', 'Total')}</div>
-        <div class="kpi-value">${s.totalTrades}</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">${t('نسبة النجاح', 'Win Rate')}</div>
-        <div class="kpi-value text-green">${s.winRate}%</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Sharpe US</div>
-        <div class="kpi-value text-blue">${s.sharpeUS.toFixed(2)}</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Sharpe KW</div>
-        <div class="kpi-value text-accent">${s.sharpeKW.toFixed(2)}</div>
-      </div>
-    </div>
-
-    <!-- Open Positions (compact) -->
-    <div class="card" style="margin-bottom:14px;padding:14px">
-      <div class="section-header" style="margin-bottom:10px">
-        <div class="section-title" style="font-size:15px">${t('الصفقات المفتوحة', 'Open Positions')} <span style="font-weight:400;font-size:12px;color:var(--text-muted)">(${s.openTrades})</span></div>
-      </div>
-      <div class="table-wrap">
-        <table class="table-compact" dir="${dir}">
-          <thead>
-            <tr>
-              <th>${t('السهم', 'Ticker')}</th>
-              <th>${t('السوق', 'Mkt')}</th>
-              <th>${t('الدخول', 'Entry')}</th>
-              <th>${t('الحالي', 'Current')}</th>
-              <th>${t('الربح/الخسارة', 'P&L')}</th>
-              <th>${t('الأيام', 'Days')}</th>
-              <th>${t('الحالة', 'Status')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${d.openPositions.slice(0, 10).map(p => {
-              const pnl = ((p.currentPrice - p.entryPrice) / p.entryPrice) * 100;
-              const days = daysInTrade(p.entryDate);
-              return `<tr>
-                <td><strong>${p.ticker}</strong></td>
-                <td><span style="font-size:13px">${p.market === 'US' ? '🇺🇸' : '🇰🇼'}</span></td>
-                <td dir="ltr" style="font-size:12px">${formatCurrency(p.entryPrice, p.market)}</td>
-                <td dir="ltr" style="font-size:12px">${formatCurrency(p.currentPrice, p.market)}</td>
-                <td class="${pnl >= 0 ? 'text-green' : 'text-red'}" dir="ltr"><strong>${formatPercent(pnl)}</strong></td>
-                <td dir="ltr">${days}</td>
-                <td><span class="status-badge ${p.status === 'OPEN' || p.status === 'active' ? 'status-active' : 'status-closed'}" style="font-size:10px">${p.status === 'OPEN' || p.status === 'active' ? t('مفتوح', 'Open') : p.status}</span></td>
-              </tr>`
-            }).join('')}
-            ${d.openPositions.length === 0 ? `<tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:20px">${t('لا توجد صفقات مفتوحة', 'No open positions')}</td></tr>` : ''}
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Last 5 Closed Trades -->
-    <div class="card" style="padding:14px">
-      <div class="section-header" style="margin-bottom:10px">
-        <div class="section-title" style="font-size:15px">${t('آخر الصفقات المغلقة', 'Last Closed Trades')} <span style="font-weight:400;font-size:12px;color:var(--text-muted)">(${Math.min(5, d.lastTrades.length)})</span></div>
-      </div>
-      <div class="table-wrap">
-        <table class="table-compact" dir="${dir}">
-          <thead>
-            <tr>
-              <th>${t('السهم', 'Ticker')}</th>
-              <th>${t('السوق', 'Mkt')}</th>
-              <th>${t('تاريخ الخروج', 'Exit')}</th>
-              <th>${t('الربح/الخسارة', 'P&L')}</th>
-              <th>${t('المدة', 'Days')}</th>
-              <th>${t('النتيجة', 'Result')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${d.lastTrades.slice(0, 5).map(tr => `
-              <tr>
-                <td><strong>${tr.ticker}</strong></td>
-                <td><span style="font-size:13px">${tr.market === 'US' ? '🇺🇸' : '🇰🇼'}</span></td>
-                <td dir="ltr" style="font-size:12px">${formatDate(tr.exitDate)}</td>
-                <td class="${tr.pnl >= 0 ? 'text-green' : 'text-red'}" dir="ltr">${formatPercent(tr.pnl)}</td>
-                <td dir="ltr">${tr.days}</td>
-                <td>${tr.result === 'win' ? '✅' : '❌'} <span style="font-size:11px;color:${tr.result === 'win' ? 'var(--green)' : 'var(--red)'}">${tr.result === 'win' ? t('ربح', 'Win') : t('خسارة', 'Loss')}</span></td>
-              </tr>
-            `).join('')}
-            ${d.lastTrades.length === 0 ? `<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:20px">${t('لا توجد صفقات مغلقة', 'No closed trades')}</td></tr>` : ''}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  `;
-}
-
-// ============================================================
-// PAGE 3A — STOCK LIST
-// ============================================================
-function renderStocksList(d) {
-  const stocks = d.stocks || [];
-  const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-
-  return `
-    <div class="section-header">
-      <div>
-        <div class="section-title">${t('تحليل الأسهم', 'Stock Analysis')}</div>
-        <div class="section-subtitle">${t('جميع الأسهم تحت المراقبة — اضغط للسهم لتفاصيل التصنيف', 'All monitored stocks — click for detailed analysis')}</div>
-      </div>
-      <span style="font-size:13px;color:var(--text-muted)">${stocks.length} ${t('سهم', 'stocks')}</span>
-    </div>
-
-    <!-- Filter bar -->
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
-      <input type="text" id="stockSearch" placeholder="${t('🔍 بحث عن سهم...', '🔍 Search stock...')}" 
-        style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:8px 14px;border-radius:8px;font-size:13px;font-family:inherit;flex:1;min-width:180px"
-        oninput="filterStockCards(this.value)">
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <button class="nav-tab stock-filter active" data-filter="all" onclick="filterStockMarket('all',this)" style="padding:6px 14px;font-size:12px">${t('الكل', 'All')}</button>
-        <button class="nav-tab stock-filter" data-filter="US" onclick="filterStockMarket('US',this)" style="padding:6px 14px;font-size:12px">🇺🇸 US</button>
-        <button class="nav-tab stock-filter" data-filter="KW" onclick="filterStockMarket('KW',this)" style="padding:6px 14px;font-size:12px">🇰🇼 KW</button>
-      </div>
-    </div>
-
-    <div class="stock-grid" id="stockGrid">
-      ${stocks.map(st => {
-        const scoreColor = getScoreColor(st.overallScore);
-        const classClass = getClassClass(st.classification);
-        const percent = (st.overallScore / 10) * 100;
-        return `
-          <div class="stock-card" data-ticker="${st.ticker}" data-market="${st.market}" data-name="${st.name}" onclick="navigateTo('#stock=${st.ticker}')">
-            <div class="stock-card-header">
-              <span class="stock-ticker">${st.ticker}</span>
-              <span class="stock-market">${st.market === 'US' ? '🇺🇸' : '🇰🇼'}</span>
-            </div>
-            <div class="stock-name" title="${st.name}">${st.name}</div>
-            <div class="stock-sector">${st.sector}</div>
-            <div class="stock-score-row">
-              <span class="stock-score ${scoreColor}">${st.overallScore.toFixed(1)}</span>
-              <span class="stock-class ${classClass}">${st.classification}</span>
-            </div>
-            <!-- Mini progress bar bg -->
-            <div style="margin-top:8px;height:3px;background:var(--border);border-radius:2px;overflow:hidden">
-              <div style="height:100%;width:${percent}%;background:${getScoreHex(st.overallScore)};border-radius:2px;transition:width 0.5s"></div>
-            </div>
-          </div>
-        `
-      }).join('')}
-    </div>
-  `;
-}
-
-// Stock list filter functions
-function filterStockCards(query) {
-  const q = query.toLowerCase().trim();
-  document.querySelectorAll('.stock-card').forEach(card => {
-    const ticker = card.dataset.ticker.toLowerCase();
-    const name = card.dataset.name.toLowerCase();
-    const match = !q || ticker.includes(q) || name.includes(q);
-    card.style.display = match ? '' : 'none';
-  });
-}
-
-function filterStockMarket(market, btn) {
-  document.querySelectorAll('.stock-filter').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  document.querySelectorAll('.stock-card').forEach(card => {
-    if (market === 'all') {
-      card.style.display = '';
-    } else {
-      card.style.display = card.dataset.market === market ? '' : 'none';
-    }
-  });
-}
-
-// ============================================================
-// PAGE 3B — STOCK DETAIL
-// ============================================================
-function renderStockDetail(d, ticker) {
-  const stock = d.stocks.find(s => s.ticker === ticker);
-  const dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-
-  if (!stock) {
-    return `
-      <button class="back-btn" onclick="navigateTo('#stocks')">← ${t('رجوع', 'Back')}</button>
-      <div class="error-state">
-        <div class="error-icon">🔍</div>
-        <h2>${t('السهم غير موجود', 'Stock not found')}</h2>
-        <p>${t('لم يتم العثور على السهم المطلوب', 'The requested stock was not found')}</p>
-        <button class="retry-btn" onclick="navigateTo('#stocks')">${t('العودة للقائمة', 'Back to list')}</button>
-      </div>
-    `;
-  }
-
-  const methods = stock.methods || [];
-  const radarLabels = methods.map(m => m.label || m.method);
-  const radarScores = methods.map(m => m.score);
-  const radarColors = methods.map(m => {
-    const map = { 'Buffett': '#22c55e', 'Graham': '#3b82f6', 'Lynch': '#f59e0b', 'ONeil': '#a855f7', 'Piotroski': '#06b6d4' };
-    return map[m.method] || '#3b82f6';
-  });
-
-  const percent = (stock.overallScore / 10) * 100;
-  const circumference = 2 * Math.PI * 56; // r=56
-  const offset = circumference - (percent / 100) * circumference;
-  const scoreHex = getScoreHex(stock.overallScore);
-
-  // Classification description
-  let classDesc = '';
-  const cls = stock.classification || '';
-  if (cls.includes('ممتاز') || cls === 'Excellent') {
-    classDesc = t('السهم يتمتع بأساسيات قوية جداً وجاذبية استثمارية عالية وفق جميع طرق التحليل. مناسب للاستثمار طويل الأجل.', 'The stock has very strong fundamentals and high investment appeal across all analysis methods. Suitable for long-term investment.');
-  } else if (cls.includes('جيد جداً')) {
-    classDesc = t('السهم يتمتع بأساسيات جيدة مع بعض نقاط القوة في طرق تحليل محددة. مرشح جيد للاستثمار مع مراقبة مستمرة.', 'The stock has good fundamentals with strengths in specific analysis methods. A good candidate for investment with continuous monitoring.');
-  } else if (cls.includes('جيد')) {
-    classDesc = t('السهم لديه بعض نقاط القوة ولكن يحتاج إلى تقييم دقيق. قد يكون مناسباً للمستثمرين ذوي المخاطر المتوسطة.', 'The stock has some strengths but needs careful evaluation. May be suitable for medium-risk investors.');
-  } else {
-    classDesc = t('السهم يحتاج إلى مراجعة شاملة. المخاطر مرتفعة نسبياً ويوصى بالحذر.', 'The stock needs comprehensive review. Risks are relatively high and caution is recommended.');
-  }
-
-  return `
-    <button class="back-btn" onclick="navigateTo('#stocks')">← ${t('رجوع إلى قائمة الأسهم', 'Back to stock list')}</button>
-
-    <!-- Stock Detail Header -->
-    <div class="stock-detail-header" dir="${dir}">
-      <span class="stock-detail-ticker">${stock.ticker}</span>
-      <span style="font-size:22px">${stock.market === 'US' ? '🇺🇸' : '🇰🇼'}</span>
-      <span class="stock-detail-name">${stock.name}</span>
-      <span class="stock-detail-sector">${stock.sector}</span>
-      <span class="stock-detail-class ${getClassClass(stock.classification)}">${stock.classification}</span>
-    </div>
-
-    <div class="stock-detail-body" dir="${dir}">
-      <!-- Left Column -->
-      <div class="stock-detail-left">
-        <!-- Radial Score Gauge -->
-        <div class="score-gauge">
-          <div class="radial-score">
-            <svg width="140" height="140" viewBox="0 0 140 140">
-              <circle class="bg-circle" cx="70" cy="70" r="56"/>
-              <circle class="progress-circle" cx="70" cy="70" r="56" 
-                stroke="${scoreHex}" 
-                stroke-dasharray="${circumference}"
-                stroke-dashoffset="${offset}" 
-                style="transition: stroke-dashoffset 0.8s ease"/>
-            </svg>
-            <div class="score-text" style="color:${scoreHex}">
-              ${stock.overallScore.toFixed(1)}
-              <span class="score-label">${t('الدرجة الكلية', 'Overall Score')}</span>
-            </div>
-          </div>
-          <div style="margin-top:8px">
-            <span class="stock-class ${getClassClass(stock.classification)}" style="font-size:14px;padding:6px 16px">${stock.classification}</span>
-          </div>
-        </div>
-
-        <!-- Method Score Bars -->
-        <div class="card" style="padding:16px">
-          <div class="section-header" style="margin-bottom:12px">
-            <div class="section-title" style="font-size:15px">${t('درجات طرق التحليل', 'Method Scores')}</div>
-          </div>
-          <div class="method-bars">
-            ${methods.map(m => {
-              const color = radarColors[methods.indexOf(m)] || '#3b82f6';
-              const pct = (m.score / 10) * 100;
-              return `
-                <div class="method-bar-item">
-                  <span class="method-label">${m.label || m.method}</span>
-                  <div class="method-bar-wrap">
-                    <div class="method-bar-fill" style="width:${pct}%;background:${color}"></div>
-                  </div>
-                  <span class="method-score" style="color:${color}">${m.score.toFixed(1)}</span>
-                </div>
-              `
-            }).join('')}
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Column -->
-      <div class="stock-detail-right">
-        <!-- Radar Chart -->
-        <div class="card card-chart" style="padding:16px">
-          <div class="section-header" style="margin-bottom:8px">
-            <div class="section-title" style="font-size:15px">${t('مخطط طرق التحليل', 'Analysis Radar')}</div>
-          </div>
-          <div class="chart-container" style="height:280px">
-            <canvas id="stockRadarChart"></canvas>
-          </div>
-        </div>
-
-        <!-- Classification Description -->
-        <div class="classification-box">
-          <div class="class-title" style="color:${scoreHex}">${t('تصنيفه', 'Classification')}: ${stock.classification}</div>
-          <div class="class-desc">${classDesc}</div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
-            <span>📊 ${t('الدرجة:', 'Score:')} <strong style="color:${scoreHex}">${stock.overallScore.toFixed(1)}/10</strong></span>
-            <span>📈 ${t('السوق:', 'Market:')} <strong>${stock.market === 'US' ? '🇺🇸 US' : '🇰🇼 KW'}</strong></span>
-            <span>🔄 ${t('آخر تحديث:', 'Updated:')} <strong>${stock.lastUpdated || '—'}</strong></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-// ============================================================
-// CHARTS — DASHBOARD
-// ============================================================
-function renderDashboardCharts(data) {
-  const isAr = currentLang === 'ar';
-  const textColor = '#94a3b8';
-  const gridColor = 'rgba(30,42,69,0.5)';
-  const font = isAr ? "'IBM Plex Sans Arabic'" : "'Inter'";
-
-  const chartDefaults = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        labels: { color: textColor, font: { family: font, size: 11 } }
-      }
-    },
-    scales: {
-      x: {
-        grid: { color: gridColor, display: false },
-        ticks: { color: textColor, font: { family: font, size: 10 }, maxRotation: 45 }
-      },
-      y: {
-        grid: { color: gridColor },
-        ticks: { color: textColor, font: { family: font, size: 10 } }
+  <script>
+    // Theme toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const btn = document.querySelector('.theme-btn');
+      if (current === 'light') {
+        html.removeAttribute('data-theme');
+        btn.textContent = '🌙';
+        localStorage.setItem('osoul-theme', 'dark');
+      } else {
+        html.setAttribute('data-theme', 'light');
+        btn.textContent = '☀️';
+        localStorage.setItem('osoul-theme', 'light');
       }
     }
-  };
 
-  // 1. Equity Curve
-  const eqCtx = document.getElementById('equityChart');
-  if (eqCtx) {
-    chartInstances.equity = new Chart(eqCtx, {
-      type: 'line',
-      data: {
-        labels: data.equityCurve.map(e => e.month),
-        datasets: [
-          {
-            label: 'US Market',
-            data: data.equityCurve.map(e => e.us),
-            borderColor: '#3b82f6',
-            backgroundColor: 'rgba(59,130,246,0.1)',
-            fill: true,
-            tension: 0.3,
-            pointRadius: 2,
-            pointHoverRadius: 5,
-            borderWidth: 2
-          },
-          {
-            label: t('سوق الكويت', 'Kuwait Market'),
-            data: data.equityCurve.map(e => e.kw),
-            borderColor: '#f59e0b',
-            backgroundColor: 'rgba(245,158,11,0.1)',
-            fill: true,
-            tension: 0.3,
-            pointRadius: 2,
-            pointHoverRadius: 5,
-            borderWidth: 2
-          }
-        ]
-      },
-      options: {
-        ...chartDefaults,
-        plugins: {
-          ...chartDefaults.plugins,
-          tooltip: {
-            callbacks: {
-              label: ctx => ctx.dataset.label + ': $' + ctx.parsed.y.toLocaleString()
-            }
-          }
-        },
-        scales: {
-          ...chartDefaults.scales,
-          y: {
-            ...chartDefaults.scales.y,
-            ticks: { ...chartDefaults.scales.y.ticks, callback: v => '$' + v.toLocaleString() }
-          }
-        }
+    // Load saved theme
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('osoul-theme');
+      if (saved === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.querySelector('.theme-btn').textContent = '☀️';
       }
     });
-  }
+  </script>
 
-  // 2. Monthly Returns Bar Chart
-  const retCtx = document.getElementById('returnsChart');
-  if (retCtx) {
-    chartInstances.returns = new Chart(retCtx, {
-      type: 'bar',
-      data: {
-        labels: data.monthlyReturns.map(m => m.month),
-        datasets: [
-          {
-            label: 'US',
-            data: data.monthlyReturns.map(m => m.us),
-            backgroundColor: data.monthlyReturns.map(m => m.us >= 0 ? 'rgba(34,197,94,0.7)' : 'rgba(239,68,68,0.7)'),
-            borderColor: data.monthlyReturns.map(m => m.us >= 0 ? '#22c55e' : '#ef4444'),
-            borderWidth: 1,
-            borderRadius: 2
-          },
-          {
-            label: 'KW',
-            data: data.monthlyReturns.map(m => m.kw),
-            backgroundColor: data.monthlyReturns.map(m => m.kw >= 0 ? 'rgba(245,158,11,0.7)' : 'rgba(239,68,68,0.7)'),
-            borderColor: data.monthlyReturns.map(m => m.kw >= 0 ? '#f59e0b' : '#ef4444'),
-            borderWidth: 1,
-            borderRadius: 2
-          }
-        ]
-      },
-      options: {
-        ...chartDefaults,
-        plugins: {
-          ...chartDefaults.plugins,
-          tooltip: {
-            callbacks: {
-              label: ctx => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) + '%'
-            }
-          }
-        },
-        scales: {
-          ...chartDefaults.scales,
-          y: {
-            ...chartDefaults.scales.y,
-            ticks: { ...chartDefaults.scales.y.ticks, callback: v => v + '%' }
-          }
-        }
-      }
-    });
-  }
-
-  // 3. Score Breakdown Bar Chart
-  const breakCtx = document.getElementById('breakdownChart');
-  if (breakCtx) {
-    chartInstances.breakdown = new Chart(breakCtx, {
-      type: 'bar',
-      data: {
-        labels: data.scoreBreakdown.map(s => s.method),
-        datasets: [{
-          label: t('متوسط الدرجة', 'Avg Score'),
-          data: data.scoreBreakdown.map(s => s.average),
-          backgroundColor: data.scoreBreakdown.map(s => s.color),
-          borderColor: data.scoreBreakdown.map(s => s.color),
-          borderWidth: 1,
-          borderRadius: 4,
-          barThickness: 24
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        indexAxis: 'y',
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: ctx => ctx.parsed.x.toFixed(1) + '/10'
-            }
-          }
-        },
-        scales: {
-          x: {
-            grid: { color: gridColor },
-            ticks: { color: textColor, font: { family: font, size: 10 }, maxTicksLimit: 6 },
-            min: 0,
-            max: 10
-          },
-          y: {
-            grid: { display: false },
-            ticks: { color: textColor, font: { family: font, size: 11 } }
-          }
-        }
-      }
-    });
-  }
-
-  // 4. Score Category Doughnut
-  const catCtx = document.getElementById('categoryChart');
-  if (catCtx) {
-    chartInstances.category = new Chart(catCtx, {
-      type: 'doughnut',
-      data: {
-        labels: data.scoreDistribution.map(s => s.category),
-        datasets: [{
-          data: data.scoreDistribution.map(s => s.count),
-          backgroundColor: data.scoreDistribution.map(s => s.color),
-          borderWidth: 0,
-          hoverOffset: 6
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        cutout: '60%',
-        plugins: {
-          legend: {
-            position: 'right',
-            labels: { color: textColor, font: { family: font, size: 10 }, padding: 8 }
-          }
-        }
-      }
-    });
-  }
-}
-
-// ============================================================
-// CHARTS — STOCK RADAR
-// ============================================================
-function renderStockCharts(data, ticker) {
-  const stock = data.stocks.find(s => s.ticker === ticker);
-  if (!stock || !stock.methods) return;
-
-  const isAr = currentLang === 'ar';
-  const textColor = '#94a3b8';
-  const gridColor = 'rgba(30,42,69,0.5)';
-  const font = isAr ? "'IBM Plex Sans Arabic'" : "'Inter'";
-
-  const labels = stock.methods.map(m => m.label || m.method);
-  const scores = stock.methods.map(m => m.score);
-
-  const radarCtx = document.getElementById('stockRadarChart');
-  if (!radarCtx) return;
-
-  chartInstances.radar = new Chart(radarCtx, {
-    type: 'radar',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: stock.ticker,
-        data: scores,
-        backgroundColor: 'rgba(245,158,11,0.15)',
-        borderColor: '#f59e0b',
-        borderWidth: 2,
-        pointBackgroundColor: stock.methods.map(m => {
-          const map = { 'Buffett': '#22c55e', 'Graham': '#3b82f6', 'Lynch': '#f59e0b', 'ONeil': '#a855f7', 'Piotroski': '#06b6d4' };
-          return map[m.method] || '#f59e0b';
-        }),
-        pointBorderColor: '#fff',
-        pointBorderWidth: 1,
-        pointRadius: 4,
-        pointHoverRadius: 6
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: ctx => ctx.label + ': ' + ctx.parsed.r.toFixed(1) + '/10'
-          }
-        }
-      },
-      scales: {
-        r: {
-          beginAtZero: true,
-          max: 10,
-          grid: { color: gridColor },
-          angleLines: { color: gridColor },
-          pointLabels: { color: textColor, font: { family: font, size: 11 } },
-          ticks: {
-            display: true,
-            color: textColor,
-            backdropColor: 'transparent',
-            font: { family: font, size: 9 },
-            stepSize: 2
-          }
-        }
-      }
-    }
-  });
-}
-
-// ============================================================
-// LANGUAGE TOGGLE
-// ============================================================
-function toggleLang() {
-  currentLang = currentLang === 'ar' ? 'en' : 'ar';
-  localStorage.setItem('osoul-lang', currentLang);
-  document.documentElement.lang = currentLang;
-  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-  document.body.className = currentLang === 'en' ? 'en' : '';
-  render(window._d);
-}
-
-// ============================================================
-// DATA LOADER
-// ============================================================
-async function loadData() {
-  try {
-    const resp = await fetch('./data.json');
-    if (resp.ok) {
-      const json = await resp.json();
-      window._d = json;
-      render(json);
-    } else {
-      throw new Error('Failed to fetch');
-    }
-  } catch(e) {
-    // Show error state
-    const app = document.getElementById('app');
-    app.innerHTML = `
-      <div class="error-state">
-        <div class="error-icon">⚠️</div>
-        <h2>${t('فشل تحميل البيانات', 'Failed to load data')}</h2>
-        <p>${t('تعذر تحميل data.json. يرجى التأكد من وجود الملف.', 'Could not load data.json. Please ensure the file exists.')}</p>
-        <button class="retry-btn" onclick="loadData()">${t('إعادة المحاولة', 'Retry')}</button>
-      </div>
-    `;
-    console.error('Data load error:', e);
-  }
-}
-
-// ============================================================
-// INIT
-// ============================================================
-document.documentElement.lang = currentLang;
-document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-document.body.className = currentLang === 'en' ? 'en' : '';
-loadData();
-</script>
 </body>
 </html>
