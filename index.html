@@ -177,9 +177,8 @@
     .pick-return { font-size: 0.875rem; font-weight: 600; }
     .halal-badge { font-size: 0.625rem; padding: 1px 8px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.2); margin-right: 8px; }
     .chart-bars { display: flex; align-items: flex-end; gap: 8px; height: 120px; padding: 16px 0 0; }
-    .chart-bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
-    .chart-bar { width: 85%; min-height: 4px; border-radius: 4px 4px 0 0; transition: height 0.5s ease; }
-    .chart-bar:first-of-type { margin-bottom: 0; }
+    .chart-bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .chart-bar { width: 100%; min-height: 4px; border-radius: 4px 4px 0 0; transition: height 0.5s ease; }
     .chart-bar.pos { background: linear-gradient(to top, #10B98133, #10B981); }
     .chart-bar.neg { background: linear-gradient(to top, #EF444433, #EF4444); }
     .chart-label { font-size: 0.625rem; color: #64748B; font-weight: 500; }
@@ -287,124 +286,82 @@
       .kpi-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
-      .kpi-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .market-grid { grid-template-columns: 1fr; gap: 12px; }
-      .bottom-grid { grid-template-columns: 1fr; gap: 12px; }
-      .analysis-grid { grid-template-columns: 1fr; gap: 12px; }
-      .portfolio-summary { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .market-grid { grid-template-columns: 1fr; }
+      .bottom-grid { grid-template-columns: 1fr; }
+      .analysis-grid { grid-template-columns: 1fr; }
+      .portfolio-summary { grid-template-columns: repeat(2, 1fr); }
       .nav-links { display: none; }
-      .hero { padding: 16px 0 10px; gap: 8px; flex-direction: column; }
-      .hero-left h1 { font-size: 1.35rem; margin-bottom: 2px; }
-      .hero-left .subtitle { font-size: 0.75rem; }
-      .hero-right { gap: 8px; }
-      .container { padding: 0 12px; }
-      .kpi-card { padding: 8px 10px; }
-      .kpi-label { font-size: 0.6rem; margin-bottom: 2px; }
-      .kpi-value { font-size: 1.1rem; }
-      .kpi-change { font-size: 0.6rem; }
-      .market-card { padding: 12px; }
-      .market-header { margin-bottom: 10px; }
-      .market-name { font-size: 0.85rem; }
-      .market-stats { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-      .market-stat .stat-label { font-size: 0.55rem; }
-      .market-stat .stat-value { font-size: 0.8rem; }
-      .table-section { margin-bottom: 12px; border-radius: 8px; }
-      .table-header { padding: 8px 10px; }
-      .table-header h3 { font-size: 0.8rem; }
-      .table-header .count { font-size: 0.6rem; }
-      thead th { padding: 6px 8px; font-size: 0.55rem; }
-      tbody td { padding: 6px 8px; font-size: 0.7rem; }
-      .score-badge { width: 24px; height: 24px; font-size: 0.65rem; }
-      .signal-pill { font-size: 0.6rem; padding: 2px 8px; }
-      .filter-chip { padding: 5px 10px; font-size: 0.65rem; }
-      .search-bar { padding: 6px 10px; margin-bottom: 10px; }
-      .stock-item { padding: 8px 10px; }
-      .stock-name { font-size: 0.75rem; }
-      .stock-ticker { font-size: 0.6rem; }
-      .stock-price { font-size: 0.75rem; }
-      .stock-change { font-size: 0.6rem; }
-      .stock-flag { font-size: 1rem; }
-      .stock-left { gap: 8px; }
-      .analysis-card { padding: 12px; margin-bottom: 12px; }
-      .metric-label { font-size: 0.7rem; }
-      .metric-value { font-size: 0.75rem; }
-      .portfolio-card { padding: 10px; }
-      .port-value { font-size: 1.1rem; }
-      .bottom-card { padding: 12px; }
-      .pick-item { padding: 6px 0; }
-      .bottom-card h3 { font-size: 0.85rem; margin-bottom: 10px; }
-      .chart-bars { height: 80px; gap: 4px; padding: 8px 0 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .chart-label { font-size: 0.5rem; }
-      .chart-value { font-size: 0.5rem; }
+      .hero-left h1 { font-size: 1.75rem; }
+      .container { padding: 0 14px; }
+      .kpi-card { padding: 12px 14px; }
+      .kpi-value { font-size: 1.35rem; }
+      .market-card { padding: 14px; }
+      .market-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .table-header { padding: 12px 14px; }
+      .table-header h3 { font-size: 0.875rem; }
+      thead th { padding: 8px 10px; font-size: 0.625rem; }
+      tbody td { padding: 8px 10px; font-size: 0.75rem; }
+      .bottom-card { padding: 14px; }
+      .hero { padding: 20px 0 14px; gap: 10px; }
+      .hero-right .status-badge { font-size: 0.7rem; padding: 4px 10px; }
+      .hero-right .shariah-badge { font-size: 0.65rem; padding: 4px 10px; }
+      .filter-chip { padding: 6px 12px; font-size: 0.7rem; }
+      .search-bar { padding: 8px 12px; }
+      .stock-item { padding: 10px 12px; }
+      .stock-name { font-size: 0.8rem; }
+      .stock-ticker { font-size: 0.65rem; }
+      .stock-price { font-size: 0.8rem; }
+      .stock-change { font-size: 0.65rem; }
+      .score-badge { width: 26px; height: 26px; font-size: 0.7rem; }
+      .signal-pill { font-size: 0.65rem; padding: 2px 8px; }
+      .analysis-card { padding: 14px; }
+      .metric-label { font-size: 0.75rem; }
+      .metric-value { font-size: 0.8rem; }
+      .portfolio-card { padding: 12px; }
+      .port-value { font-size: 1.2rem; }
+      .portfolio-summary { gap: 8px; }
+      .pick-item { padding: 8px 0; }
+      .pick-name { font-size: 0.8rem; }
+      .pick-desc { font-size: 0.65rem; }
+      .chart-bars { height: 90px; gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .chart-bar-group { min-width: 48px; }
-      .chart-bar { width: 40%; }
-      .pick-name { font-size: 0.75rem; }
-      .pick-desc { font-size: 0.6rem; }
-      .pick-return { font-size: 0.75rem; }
-      #analysisStockSelect { width: 100%; max-width: none; font-size: 0.75rem; padding: 6px 10px; }
-      footer { padding: 16px 0 60px; }
-      footer p { font-size: 0.7rem; }
-      /* Bottom nav */
+      .chart-bar { width: 85%; }
       .bottom-nav { display: flex; }
-      body { padding-bottom: 56px; }
+      body { padding-bottom: 60px; }
       .round-btn { display: flex; }
-      /* Make stock table scrollable horizontally */
-      .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      /* Reduce spacing */
-      .hero + .kpi-grid { margin-top: -4px; }
-      .kpi-grid { margin-bottom: 12px; }
-      .market-grid { margin-bottom: 12px; }
-      .bottom-grid { margin-bottom: 24px; }
-      .portfolio-summary { margin-bottom: 12px; }
-      .nav-inner { height: 52px; }
-      .nav-logo { font-size: 1rem; }
-      .nav-logo svg { width: 22px; height: 22px; }
-      .nav-actions .theme-btn { width: 32px; height: 32px; font-size: 0.85rem; }
-      .btn-gold { padding: 6px 14px; font-size: 0.7rem; }
-      .hero-right .status-badge { font-size: 0.65rem; padding: 4px 10px; }
-      .hero-right .shariah-badge { font-size: 0.6rem; padding: 4px 8px; }
+      .portfolio-summary { grid-template-columns: repeat(2, 1fr); }
+      #analysisStockSelect { width: 100%; max-width: none; }
     }
     @media (max-width: 480px) {
-      .kpi-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
-      .market-stats { grid-template-columns: 1fr 1fr; gap: 4px; }
+      .kpi-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .market-stats { grid-template-columns: 1fr 1fr; }
       .portfolio-summary { grid-template-columns: 1fr 1fr; gap: 6px; }
-      .hero-left h1 { font-size: 1.1rem; }
-      .hero-left .subtitle { font-size: 0.65rem; }
-      .kpi-card { padding: 6px 8px; }
-      .kpi-label { font-size: 0.55rem; margin-bottom: 2px; }
-      .kpi-value { font-size: 0.95rem; }
-      .kpi-change { font-size: 0.55rem; }
-      .container { padding: 0 8px; }
-      .market-stats { gap: 4px; }
-      .market-stat .stat-label { font-size: 0.5rem; }
-      .market-stat .stat-value { font-size: 0.75rem; }
-      thead th { padding: 4px 4px; font-size: 0.5rem; }
-      tbody td { padding: 4px 4px; font-size: 0.6rem; }
-      .score-badge { width: 18px; height: 18px; font-size: 0.5rem; border-radius: 4px; }
-      .stock-flag { font-size: 0.85rem; }
-      .stock-left { gap: 4px; }
-      .filter-chip { padding: 4px 8px; font-size: 0.55rem; }
-      .table-header h3 { font-size: 0.7rem; }
-      .table-header .count { font-size: 0.55rem; }
-      .table-header { padding: 6px 8px; }
-      .bottom-nav a { font-size: 0.5rem; }
-      .bottom-nav a .nav-icon { font-size: 1rem; }
-      .chart-bars { height: 70px; gap: 3px; }
-      .chart-label { font-size: 0.45rem; }
-      .chart-value { font-size: 0.45rem; }
-      .nav-inner { height: 48px; }
-      .nav-logo { font-size: 0.85rem; }
-      .market-card { padding: 8px; }
-      .stock-item { padding: 6px 8px; }
-      .stock-name { font-size: 0.7rem; }
-      .stock-ticker { font-size: 0.55rem; }
-      .stock-price { font-size: 0.7rem; }
-      .stock-change { font-size: 0.55rem; }
-      .search-bar { padding: 4px 8px; margin-bottom: 8px; }
-      .search-bar input { font-size: 0.75rem; }
-      .nav-actions .theme-btn { width: 28px; height: 28px; font-size: 0.75rem; }
-      .btn-gold { padding: 4px 10px; font-size: 0.65rem; }
-      footer { padding: 12px 0 56px; }
+      .hero-left h1 { font-size: 1.35rem; }
+      .hero-left .subtitle { font-size: 0.8rem; }
+      .kpi-card { padding: 10px 12px; }
+      .kpi-label { font-size: 0.65rem; margin-bottom: 3px; }
+      .kpi-value { font-size: 1.2rem; }
+      .kpi-change { font-size: 0.65rem; }
+      .container { padding: 0 10px; }
+      .market-stats { gap: 6px; }
+      .market-stat .stat-label { font-size: 0.6rem; }
+      .market-stat .stat-value { font-size: 0.85rem; }
+      thead th { padding: 6px 6px; font-size: 0.55rem; }
+      tbody td { padding: 6px 6px; font-size: 0.65rem; }
+      .score-badge { width: 22px; height: 22px; font-size: 0.6rem; border-radius: 6px; }
+      .stock-flag { font-size: 1rem; }
+      .stock-left { gap: 6px; }
+      .filter-chip { padding: 5px 10px; font-size: 0.65rem; }
+      .table-header h3 { font-size: 0.8rem; }
+      .table-header .count { font-size: 0.65rem; }
+      .bottom-nav a { font-size: 0.55rem; }
+      .bottom-nav a .nav-icon { font-size: 1.1rem; }
+      .chart-bars { height: 80px; gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .chart-bar-group { min-width: 48px; }
+      .chart-bar { width: 40%; }
+      .chart-label { font-size: 0.5rem; }
+      .chart-value { font-size: 0.5rem; }
     }
 
     [data-theme="light"] body { background: #F8FAFC; color: #0F172A; }
