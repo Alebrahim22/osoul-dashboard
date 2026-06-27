@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-26T11:01:03.068424+00:00",
+  "lastUpdated": "2026-06-27T11:00:13.694751+00:00",
   "system": {
     "status": "active",
     "nextScan": "2026-07-01T01:00:00+03:00",
@@ -1094,8 +1094,8 @@
       "name": "Danaher Corp.",
       "entryDate": "2026-06-09",
       "entryPrice": 188.41,
-      "currentPrice": 193.2100067138672,
-      "highPrice": 193.2100067138672,
+      "currentPrice": 192.80999755859375,
+      "highPrice": 192.80999755859375,
       "target1": 201.5987,
       "target2": 211.0192,
       "stopLoss": 178.9895,
