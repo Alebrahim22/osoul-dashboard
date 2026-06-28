@@ -213,7 +213,9 @@ def build_stocks_array(scores_data):
         "MEZZAN": "مجموعة المزان القابضة", "INTEGRATED": "الشركة المتكاملة القابضة",
         "BOURSA": "بورصة الكويت للأوراق المالية", "ALG": "علي الغانم وأولاده للسيارات",
         "BEYOUT": "مجموعة بيوت القابضة", "ALFTAQA": "شركة أفتاق للطاقة",
-        "TROLLEY": "شركة ترولي للتجارة العامة"
+        "TROLLEY": "شركة ترولي للتجارة العامة",
+        "ALMANAR": "المنار للتمويل والإجارة",
+        "OOREDOO": "Ooredoo الكويت"
     }
     sectors = {
         "NVDA": "Technology", "GOOGL": "Technology", "AAPL": "Technology",
@@ -248,9 +250,11 @@ def build_stocks_array(scores_data):
         "GFH": "استثمار", "WARBABANK": "بنوك إسلامية",
         "STC": "اتصالات", "MEZZAN": "غذاء", "INTEGRATED": "صناعة",
         "BOURSA": "استثمار", "ALG": "سيارات", "BEYOUT": "استثمار",
-        "ALFTAQA": "طاقة", "TROLLEY": "تجارة"
+        "ALFTAQA": "طاقة", "TROLLEY": "تجارة",
+        "ALMANAR": "استثمار",
+        "OOREDOO": "اتصالات"
     }
-    kw_tickers = ["NBK","GBK","ABK","KIB","BURG","KFH","BOUBYAN","KINV","IFA","NINV","KPROJ","ARZAN","AAYAN","KRE","URC","SRE","MABANEE","ALTIJARIA","NIND","CABLE","SHIP","BPCC","MKHZN","ZAIN","HUMANSOFT","IFAHR","CGC","OULAFUEL","JAZEERA","GFH","WARBABANK","STC","MEZZAN","INTEGRATED","BOURSA","ALG","BEYOUT","ALFTAQA","TROLLEY"]
+    kw_tickers = ["NBK","GBK","ABK","KIB","BURG","KFH","BOUBYAN","KINV","IFA","NINV","KPROJ","ARZAN","AAYAN","KRE","URC","SRE","MABANEE","ALTIJARIA","NIND","CABLE","SHIP","BPCC","MKHZN","ZAIN","HUMANSOFT","IFAHR","CGC","OULAFUEL","JAZEERA","GFH","WARBABANK","STC","MEZZAN","INTEGRATED","BOURSA","ALG","BEYOUT","ALFTAQA","TROLLEY","ALMANAR","OOREDOO"]
 
     stocks = []
     for ticker, versions in scores_data.items():

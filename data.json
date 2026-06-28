@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T22:19:08.405435+00:00",
+  "lastUpdated": "2026-06-28T23:38:07.633519+00:00",
   "system": {
     "status": "active",
     "nextScan": "2026-07-01T01:00:00+03:00",
@@ -1722,9 +1722,9 @@
     },
     {
       "ticker": "ALMANAR",
-      "name": "ALMANAR",
-      "market": "US",
-      "sector": "Other",
+      "name": "المنار للتمويل والإجارة",
+      "market": "KW",
+      "sector": "استثمار",
       "overallScore": 8.6,
       "methods": [
         {
@@ -2190,9 +2190,9 @@
     },
     {
       "ticker": "OOREDOO",
-      "name": "OOREDOO",
-      "market": "US",
-      "sector": "Other",
+      "name": "Ooredoo الكويت",
+      "market": "KW",
+      "sector": "اتصالات",
       "overallScore": 8.1,
       "methods": [
         {
