@@ -140,11 +140,11 @@
     .status-badge {
       display: flex; align-items: center; gap: 8px;
       padding: 6px 16px; border-radius: 20px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.2);
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2);
       font-size: 0.813rem; font-weight: 500; color: var(--accent-green);
     }
-    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #10B981; animation: pulse 2s infinite; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
     .shariah-badge {
       display: flex; align-items: center; gap: 6px;
@@ -170,7 +170,7 @@
     .market-card { background: #111827; border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: all 0.25s; }
     .market-card:hover { border-color: #D4A85344; }
     .market-card.us { border-top: 2px solid #3B82F6; }
-    .market-card.kw { border-top: 2px solid #10B981; }
+    .market-card.kw { border-top: 2px solid #22C55E; }
     .market-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
     .market-name { font-size: 1rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
     .market-name .flag { font-size: 1.125rem; }
@@ -207,7 +207,7 @@
       width: 32px; height: 32px; border-radius: 8px;
       font-family: var(--font-mono); font-size: 0.813rem; font-weight: 600;
     }
-    .score-high { background: rgba(16, 185, 129, 0.12); color: var(--accent-green); }
+    .score-high { background: rgba(34, 197, 94, 0.12); color: var(--accent-green); }
     .score-mid { background: rgba(212, 168, 83, 0.12); color: var(--accent-gold); }
     .score-low { background: rgba(239, 68, 68, 0.12); color: var(--danger); }
     .signal-pill {
@@ -215,7 +215,7 @@
       padding: 3px 12px; border-radius: 20px;
       font-size: 0.75rem; font-weight: 600;
     }
-    .signal-buy { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.2); }
+    .signal-buy { background: rgba(34, 197, 94, 0.1); color: var(--accent-green); border: 1px solid rgba(34, 197, 94, 0.2); }
     .signal-hold { background: rgba(212, 168, 83, 0.1); color: var(--accent-gold); border: 1px solid rgba(212, 168, 83, 0.2); }
     .signal-sell { background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.2); }
     .change-up { color: var(--accent-green); font-family: var(--font-mono); font-weight: 500; }
@@ -234,16 +234,16 @@
     .pick-name { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); }
     .pick-desc { font-size: 0.75rem; color: var(--text-muted); }
     .pick-return { font-size: 0.875rem; font-weight: 600; }
-    .halal-badge { font-size: 0.625rem; padding: 1px 8px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.2); margin-right: 8px; }
+    .halal-badge { font-size: 0.625rem; padding: 1px 8px; border-radius: 10px; background: rgba(34, 197, 94, 0.1); color: var(--accent-green); border: 1px solid rgba(34, 197, 94, 0.2); margin-right: 8px; }
     .chart-bars { display: flex; align-items: flex-end; gap: 8px; height: 120px; padding: 16px 0 0; }
     .chart-bar-group { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .chart-bar { width: 100%; min-height: 4px; border-radius: 4px 4px 0 0; transition: height 0.5s ease; }
-    .chart-bar.pos { background: linear-gradient(to top, #10B98133, #10B981); }
+    .chart-bar.pos { background: linear-gradient(to top, #22C55E33, #22C55E); }
     .chart-bar.neg { background: linear-gradient(to top, #EF444433, #EF4444); }
     .chart-label { font-size: 0.625rem; color: var(--text-muted); font-weight: 500; }
     .chart-value { font-size: 0.625rem; font-family: var(--font-mono); color: var(--text-muted); }
     footer { text-align: center; padding: 24px 0 40px; border-top: 1px solid var(--border); }
-    footer p { font-size: 0.813rem; color: #475569; line-height: 1.8; }
+    footer p { font-size: 0.813rem; color: var(--text-muted); line-height: 1.8; }
     footer .gold { color: var(--accent-gold); }
     footer .links { display: flex; justify-content: center; gap: 16px; margin-top: 8px; }
     footer .links a { font-size: 0.75rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
@@ -320,14 +320,36 @@
       gap: 2px; text-decoration: none; color: var(--text-muted);
       font-size: 0.6rem; font-weight: 500; transition: all 0.2s;
       padding: 4px 8px; border-radius: 8px; min-width: 60px; min-height: 44px;
+      -webkit-tap-highlight-color: transparent; user-select: none;
     }
-    .bottom-nav a .nav-icon { font-size: 1.25rem; line-height: 1; }
+    .bottom-nav a .nav-icon { font-size: 1.25rem; line-height: 1; display: flex; align-items: center; justify-content: center; }
     .bottom-nav a.active { color: var(--accent-gold); }
     .bottom-nav a:hover { color: #E2E8F0; }
-    [data-theme="light"] .bottom-nav { background: rgba(255,255,255,0.95); border-color: #E2E8F0; }
+    .bottom-nav a:active { transform: scale(0.92); }
+    [data-theme="light"] .bottom-nav { background: rgba(255,255,255,0.95); border-color: var(--border); }
     [data-theme="light"] .bottom-nav a { color: var(--text-secondary); }
-    [data-theme="light"] .bottom-nav a.active { color: #C49A3F; }
-    [data-theme="light"] .bottom-nav a:hover { color: #0F172A; }
+    [data-theme="light"] .bottom-nav a.active { color: var(--accent-gold); }
+    [data-theme="light"] .bottom-nav a:hover { color: var(--text-primary); }
+
+    /* === Tab transitions === */
+    .tab-content { display: none; animation: none; }
+    .tab-content.active { display: block; animation: tabFadeIn 0.35s ease-out; }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === Touch feedback === */
+    .kpi-card, .market-card, .stock-item, .filter-chip,
+    .portfolio-card, .analysis-card, .bottom-card, .pick-item,
+    .nav-links a, .round-btn {
+      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.15s, border-color 0.2s, box-shadow 0.2s;
+    }
+    .kpi-card:active, .market-card:active, .stock-item:active, .filter-chip:active,
+    .portfolio-card:active, .analysis-card:active, .bottom-card:active { transform: scale(0.98); }
+    .pick-item:active { transform: scale(0.98); }
+    .nav-links a:active { transform: scale(0.96); }
 
     /* Mobile floating refresh button */
     .round-btn {
@@ -391,6 +413,7 @@
       .bottom-nav { display: flex; }
       body { padding-bottom: 60px; }
       .round-btn { display: flex; }
+      footer { padding: 16px 0 64px; }
       .portfolio-summary { grid-template-columns: repeat(2, 1fr); }
       #analysisStockSelect { width: 100%; max-width: none; }
     }
@@ -727,7 +750,7 @@
       document.getElementById('marketGrid').innerHTML =
         '<div class="market-card us"><div class="market-header"><div class="market-name"><span class="flag">🇺🇸</span> السوق الأمريكي</div><span style="color:#3B82F6;font-size:0.813rem;font-weight:500;">العائد ' + (d.markets.US ? (d.markets.US.annualReturn||0).toFixed(1) : 0) + '%</span></div>' +
         '<div class="market-stats"><div class="market-stat"><div class="stat-label">صفقات مفتوحة</div><div class="stat-value">' + (d.markets.US ? d.markets.US.totalTrades || 0 : 0) + '</div></div><div class="market-stat"><div class="stat-label">نسبة نجاح</div><div class="stat-value">' + (d.markets.US ? (d.markets.US.winRate||0).toFixed(1) : 0) + '%</div></div><div class="market-stat"><div class="stat-label">العائد</div><div class="stat-value text-green">+' + (d.markets.US ? (d.markets.US.annualReturn||0).toFixed(1) : 0) + '%</div></div><div class="market-stat"><div class="stat-label">Max DD</div><div class="stat-value">' + (d.markets.US ? (d.markets.US.maxDrawdown||0).toFixed(1) : 0) + '%</div></div></div></div>' +
-        '<div class="market-card kw"><div class="market-header"><div class="market-name"><span class="flag">🇰🇼</span> السوق الكويتي</div><span style="color:#10B981;font-size:0.813rem;font-weight:500;">العائد ' + (d.markets.KW ? (d.markets.KW.annualReturn||0).toFixed(1) : 0) + '%</span></div>' +
+        '<div class="market-card kw"><div class="market-header"><div class="market-name"><span class="flag">🇰🇼</span> السوق الكويتي</div><span style="color:#22C55E;font-size:0.813rem;font-weight:500;">العائد ' + (d.markets.KW ? (d.markets.KW.annualReturn||0).toFixed(1) : 0) + '%</span></div>' +
         '<div class="market-stats"><div class="market-stat"><div class="stat-label">صفقات مفتوحة</div><div class="stat-value">' + (d.markets.KW ? d.markets.KW.totalTrades || 0 : 0) + '</div></div><div class="market-stat"><div class="stat-label">نسبة نجاح</div><div class="stat-value">' + (d.markets.KW ? (d.markets.KW.winRate||0).toFixed(1) : 0) + '%</div></div><div class="market-stat"><div class="stat-label">العائد</div><div class="stat-value text-green">+' + (d.markets.KW ? (d.markets.KW.annualReturn||0).toFixed(1) : 0) + '%</div></div><div class="market-stat"><div class="stat-label">Max DD</div><div class="stat-value">' + (d.markets.KW ? (d.markets.KW.maxDrawdown||0).toFixed(1) : 0) + '%</div></div></div></div>';
 
       // Top stocks table
@@ -767,7 +790,7 @@
             const mName = m.month.substring(5,7) + '/' + m.month.substring(2,4);
             return '<div class="chart-bar-group"><div class="chart-value" style="font-size:0.55rem;">' + (m.us>0?'+':'') + (m.us||0).toFixed(1) + '%</div><div class="chart-bar ' + (m.us >= 0 ? 'pos' : 'neg') + '" style="height:' + usH + 'px;"></div><div class="chart-bar ' + (m.kw >= 0 ? 'pos' : 'neg') + '" style="height:' + kwH + 'px;"></div><div class="chart-label">' + mName + '</div></div>';
           }).join('') + '</div>' +
-          '<div style="display:flex;justify-content:center;gap:16px;margin-top:8px;font-size:0.65rem;color:#64748B;"><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:linear-gradient(to top,#10B98133,#10B981);display:inline-block;"></span> US</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:linear-gradient(to top,#3B82F633,#3B82F6);display:inline-block;"></span> KW</span></div>';
+          '<div style="display:flex;justify-content:center;gap:16px;margin-top:8px;font-size:0.65rem;color:#64748B;"><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:linear-gradient(to top,#22C55E33,#22C55E);display:inline-block;"></span> US</span><span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;border-radius:2px;background:linear-gradient(to top,#3B82F633,#3B82F6);display:inline-block;"></span> KW</span></div>';
       } else {
         chartEl.innerHTML = '<p style="text-align:center;color:#64748B;padding:24px;">لا توجد بيانات شهرية</p>';
       }
@@ -837,8 +860,8 @@
       const s = stocksCache.find(st => st.ticker === ticker);
       if (!s) { container.innerHTML = '<div class="loading-dash"><p>لم يتم العثور على السهم</p></div>'; return; }
 
-      const scoreClass = s.score >= 7.5 ? '#10B981' : s.score >= 6 ? '#D4A853' : '#EF4444';
-      const signalColor = s.signal === 'buy' ? '#10B981' : s.signal === 'sell' ? '#EF4444' : '#D4A853';
+      const scoreClass = s.score >= 7.5 ? '#22C55E' : s.score >= 6 ? '#D4A853' : '#EF4444';
+      const signalColor = s.signal === 'buy' ? '#22C55E' : s.signal === 'sell' ? '#EF4444' : '#D4A853';
       const signalText = s.signal === 'buy' ? '▲ شراء' : s.signal === 'sell' ? '▼ بيع' : '● انتظار';
       const t1Status = s.signal === 'buy' ? '🎯 في الطريق' : '—';
       const t2Status = s.signal === 'buy' ? '🎯 في الطريق' : '—';
@@ -861,7 +884,7 @@
           '</div>' +
           '<div class="analysis-card"><h3 class="heading-sm text-gold" style="margin-bottom:16px;">معلومات السهم</h3>' +
             '<div class="analysis-metric"><span class="metric-label">السعر الحالي</span><span class="metric-value">' + s.price + '</span></div>' +
-            '<div class="analysis-metric"><span class="metric-label">التغير</span><span class="metric-value" style="color:' + (s.up ? '#10B981' : '#EF4444') + '">' + s.change + '</span></div>' +
+            '<div class="analysis-metric"><span class="metric-label">التغير</span><span class="metric-value" style="color:' + (s.up ? '#22C55E' : '#EF4444') + '">' + s.change + '</span></div>' +
             '<div class="analysis-metric"><span class="metric-label">السوق</span><span class="metric-value">' + (s.market==='US'?'🇺🇸 السوق الأمريكي':'🇰🇼 السوق الكويتي') + '</span></div>' +
             '<div class="analysis-metric"><span class="metric-label">القطاع</span><span class="metric-value">' + s.sector + '</span></div>' +
             '<div class="analysis-metric"><span class="metric-label">B/P/E</span><span class="metric-value mono">' + s.bpe + '</span></div>' +
@@ -871,7 +894,7 @@
         '<div class="analysis-card" style="background:#111827;border:1px solid #1E293B;border-radius:12px;padding:20px;margin-bottom:24px;">' +
           '<h3 class="heading-sm text-gold" style="margin-bottom:16px;">التوصيات</h3>' +
           '<div style="display:flex;gap:12px;flex-wrap:wrap;">' +
-            '<div style="flex:1;min-width:200px;padding:16px;background:rgba(16,185,129,0.05);border:1px solid rgba(16,185,129,0.15);border-radius:10px;text-align:center;">' +
+            '<div style="flex:1;min-width:200px;padding:16px;background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15);border-radius:10px;text-align:center;">' +
               '<div style="font-size:0.75rem;color:#64748B;margin-bottom:4px;">الإشارة الحالية</div>' +
               '<div style="font-size:1.25rem;font-weight:700;color:' + signalColor + '">' + signalText + '</div></div>' +
             '<div style="flex:1;min-width:200px;padding:16px;background:rgba(212,168,83,0.05);border:1px solid rgba(212,168,83,0.15);border-radius:10px;text-align:center;">' +
