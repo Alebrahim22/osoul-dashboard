@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-05T11:12:16.972275+00:00",
+  "lastUpdated": "2026-07-06T11:03:44.154969+00:00",
   "system": {
     "status": "active",
     "nextScan": "2026-07-01T01:00:00+03:00",
@@ -2004,7 +2004,7 @@
       "eScore": 7.5,
       "target1Hit": false,
       "target2Hit": false,
-      "status": "OPEN"
+      "status": "T1_HIT"
     },
     {
       "ticker": "IFA.KW",
