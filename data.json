@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-11T11:00:38.489189+00:00",
+  "lastUpdated": "2026-07-12T11:00:43.847301+00:00",
   "system": {
     "status": "active",
     "nextScan": "2026-07-01T01:00:00+03:00",
@@ -456,7 +456,7 @@
       "eScore": 8.4,
       "target1Hit": false,
       "target2Hit": false,
-      "status": "OPEN"
+      "status": "CLOSED_SL"
     },
     {
       "ticker": "SRE.KW",
@@ -2166,7 +2166,7 @@
       "eScore": 6.9,
       "target1Hit": false,
       "target2Hit": false,
-      "status": "OPEN"
+      "status": "CLOSED_SL"
     },
     {
       "ticker": "BOURSA.KW",
