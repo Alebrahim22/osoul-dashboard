@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-09T11:04:28.060834+00:00",
+  "lastUpdated": "2026-08-10T11:11:55.369868+00:00",
   "system": {
     "status": "active",
     "nextScan": "2026-07-01T01:00:00+03:00",
@@ -438,7 +438,7 @@
       "eScore": 8.1,
       "target1Hit": false,
       "target2Hit": false,
-      "status": "OPEN"
+      "status": "CLOSED_SL"
     },
     {
       "ticker": "BPCC.KW",
@@ -2202,7 +2202,7 @@
       "eScore": 7.8,
       "target1Hit": false,
       "target2Hit": false,
-      "status": "OPEN"
+      "status": "T1_HIT"
     },
     {
       "ticker": "NVDA",
