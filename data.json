@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-08-15T11:01:54.917337+00:00",
+  "lastUpdated": "2026-08-16T11:01:34.383442+00:00",
   "system": {
     "status": "active",
     "nextScan": "2026-07-01T01:00:00+03:00",
@@ -3030,7 +3030,7 @@
       "eScore": 6.9,
       "target1Hit": false,
       "target2Hit": false,
-      "status": "OPEN"
+      "status": "CLOSED_SL"
     },
     {
       "ticker": "OULAFUEL.KW",
@@ -3102,7 +3102,7 @@
       "eScore": 7.3,
       "target1Hit": false,
       "target2Hit": false,
-      "status": "OPEN"
+      "status": "CLOSED_SL"
     },
     {
       "ticker": "INTEGRATED.KW",
